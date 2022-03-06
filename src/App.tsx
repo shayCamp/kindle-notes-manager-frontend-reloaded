@@ -8,13 +8,15 @@ import Login from "./Pages/Login";
 import "./Styling/App.scss";
 
 function App() {
-  const { authToken, setAuthToken } = useToken(); //Storing users unique auth token from api call
+  const { authToken, setAuthToken } = useToken();
   console.log("authToken: ", authToken);
 
   if (!authToken) {
+    //No auth the user needs to go to login
     console.log("no auth token - go to login page");
     return <Login updateAuthToken={setAuthToken} />;
   } else {
+    //Loading main app once auth is in local storage
     return (
       <div className="app">
         <Router>

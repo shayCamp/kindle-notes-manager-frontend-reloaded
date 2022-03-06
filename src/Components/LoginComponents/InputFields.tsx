@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SupervisedUserCircleIcon from "@mui/icons-material/SupervisedUserCircle";
 import "../../Styling/InputFields.scss";
 
@@ -17,7 +17,8 @@ const InputFields = ({
   onTextChange,
   incorrectCredentials,
 }: InputFieldsProps) => {
-  const [active, setActive] = useState<boolean>(type === "username");
+  const [active, setActive] = useState<boolean>(false);
+
   return (
     <div
       className={
@@ -31,14 +32,14 @@ const InputFields = ({
       <div className="centeringContainer">
         <div className="leftSideInput">
           <div className="bannerForInput">
-            <p className="tag">Username</p>
+            <p className="tag">{type}</p>
           </div>
           <input
             autoComplete="off"
             className="inputFields"
             onFocus={() => setActive(true)}
             onBlur={() => setActive(false)}
-            id="username"
+            id="field"
             type="text"
             onChange={(e) => {
               onTextChange();

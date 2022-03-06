@@ -1,16 +1,6 @@
 @import "../Styling/Breakpoints.scss";
 @import "../Styling/Theme.scss";
 
-.blueBorder {
-  border: 1.5px solid $positiveBTN;
-  box-shadow: 0px 0px 6px rgba(231, 229, 229, 0.568);
-}
-
-.redBorder {
-  border: 1.5px solid $negativeBTN;
-  box-shadow: 0px 0px 6px rgba(231, 229, 229, 0.568);
-}
-
 .inputField {
   height: 45px;
   width: 100%;
@@ -20,6 +10,7 @@
   justify-content: center;
   padding: 4px 0px 4px 0px;
   margin-bottom: 30px;
+  border: 1.5px solid #4ec5ec63;
 
   @include breakpoint-mixin("laptop-wide") {
     width: 85%;
@@ -72,4 +63,14 @@
       }
     }
   }
+}
+
+.blueBorder {
+  border: 1.5px solid $positiveBTN;
+  box-shadow: 0px 0px 6px rgba(231, 229, 229, 0.568);
+}
+
+.redBorder {
+  border: 1.5px solid $negativeBTN;
+  box-shadow: 0px 0px 6px rgba(231, 229, 229, 0.568);
 }

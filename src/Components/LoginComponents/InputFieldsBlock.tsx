@@ -12,7 +12,7 @@ const InputFieldsBlock = ({
   isNewAccount,
   updateAuthToken,
 }: InputFieldsBlockProps) => {
-  const { incorrectCredentials, postUser, clearIncorrectCredentials } =
+  const { incorrectCredentials, postUser, clearIncorrectCredentials, loading } =
     LoginUserApi();
   console.log("incorrectCredentials: ", incorrectCredentials);
   const username = useRef<string>("");
@@ -49,6 +49,7 @@ const InputFieldsBlock = ({
       />
       <SubmitBtn
         isNewAccount={isNewAccount}
+        loading={loading}
         submitFunc={
           () =>
             postUser({
