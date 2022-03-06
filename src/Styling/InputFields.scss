@@ -2,7 +2,7 @@
 @import "../Styling/Theme.scss";
 
 .inputField {
-  height: 45px;
+  height: 43px;
   width: 100%;
   border-radius: 10px;
   background-color: $card-background;
@@ -17,7 +17,8 @@
     height: 50px;
   }
   @include breakpoint-mixin("desktop") {
-    width: 70%;
+    height: 53px;
+    width: 75%;
   }
 
   .centeringContainer {

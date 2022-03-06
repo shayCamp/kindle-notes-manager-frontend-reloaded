@@ -30,7 +30,7 @@ const FormDescriptionBlock = ({
       <div className="formDescriptionBlock">
         <p>Welcome Back</p>
         <h3>
-          Log Into Your Account <span id="bullet">.</span>
+          Log into your account <span id="bullet">.</span>
         </h3>
         <p>
           Haven't Signed Up Yet?{" "}

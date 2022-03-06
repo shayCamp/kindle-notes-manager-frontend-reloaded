@@ -13,9 +13,13 @@ const LoginUserApi = () => {
   // const { setAuthToken } = useToken();
   const [incorrectCredentials, setIncorrectCredentials] = useState(false); //Stores response from api, user doesnt exist
   const [loading, setLoading] = useState(false);
+  const [incorrectCredDetails, setIncorrectCredDetails] = useState<
+    "username" | "password" | "field" | null
+  >(null);
 
   function clearIncorrectCredentials() {
     setIncorrectCredentials(false); //function to clear invalid login attempt by user
+    setIncorrectCredDetails(null);
   }
 
   /**
@@ -65,9 +69,17 @@ const LoginUserApi = () => {
         },
       })
         .then(function (response) {
+          console.log("response: ", response);
           setLoading(false);
           if (response.data.msg === "user does not exist") {
             setIncorrectCredentials(true); //if user account isnt in database to log them in
+            setIncorrectCredDetails("username");
+          } else if (response.data.msg === "invalid credentials") {
+            setIncorrectCredentials(true); //if user account isnt in database to log them in
+            setIncorrectCredDetails("password");
+          } else if (response.data.msg === "please enter all fields") {
+            setIncorrectCredentials(true); //if user account isnt in database to log them in
+            setIncorrectCredDetails("field");
           } else {
             sessionStorage.setItem("username", username);
             updateAuthToken(response.data.token); //update auth token and return it to the app.ts page in order to pass user into main application
@@ -80,7 +92,13 @@ const LoginUserApi = () => {
     }
   }
 
-  return { incorrectCredentials, postUser, clearIncorrectCredentials, loading }; //returning the login attempt value, the function to create user and clear wrong attempt
+  return {
+    incorrectCredentials,
+    postUser,
+    clearIncorrectCredentials,
+    loading,
+    incorrectCredDetails,
+  }; //returning the login attempt value, the function to create user and clear wrong attempt
 };
 
 export default LoginUserApi;

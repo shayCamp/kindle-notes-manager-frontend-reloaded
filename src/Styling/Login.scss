@@ -26,5 +26,23 @@
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    h1 {
+      color: white;
+      mix-blend-mode: difference;
+      font-size: 30px;
+      margin: 0px 30px 30px 0px;
+
+      @include breakpoint-mixin("desktop") {
+        font-size: 35px;
+      }
+    }
+
+    @media screen and (orientation: portrait) {
+      width: 40%;
+    }
   }
 }

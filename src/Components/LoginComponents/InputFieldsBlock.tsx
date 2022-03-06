@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import LoginUserApi from "../../API/LoginUserAPI";
 import InputFields from "./InputFields";
 import SubmitBtn from "./SubmitBtn";
+import "../../Styling/inputFieldsBlock.scss";
 
 interface InputFieldsBlockProps {
   isNewAccount: boolean;
@@ -12,8 +13,13 @@ const InputFieldsBlock = ({
   isNewAccount,
   updateAuthToken,
 }: InputFieldsBlockProps) => {
-  const { incorrectCredentials, postUser, clearIncorrectCredentials, loading } =
-    LoginUserApi();
+  const {
+    incorrectCredentials,
+    postUser,
+    clearIncorrectCredentials,
+    loading,
+    incorrectCredDetails,
+  } = LoginUserApi();
   console.log("incorrectCredentials: ", incorrectCredentials);
   const username = useRef<string>("");
   const password = useRef<string>("");
@@ -50,6 +56,7 @@ const InputFieldsBlock = ({
       <SubmitBtn
         isNewAccount={isNewAccount}
         loading={loading}
+        credDetail={incorrectCredDetails} //Tell user which input is wrong
         submitFunc={
           () =>
             postUser({

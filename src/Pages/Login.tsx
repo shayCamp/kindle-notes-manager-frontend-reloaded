@@ -5,7 +5,7 @@ import SubmitBtn from "../Components/LoginComponents/SubmitBtn";
 import "../Styling/Login.scss";
 
 interface LoginProps {
-  updateAuthToken: (args: string) => void;
+  updateAuthToken: (args: string | null) => void;
 }
 
 const Login = ({ updateAuthToken }: LoginProps) => {
@@ -25,7 +25,9 @@ const Login = ({ updateAuthToken }: LoginProps) => {
           />
         </div>
       </div>
-      <div className="backgroundHalf"></div>
+      <div className="backgroundHalf">
+        <h1>KTON</h1>
+      </div>
     </div>
   );
 };

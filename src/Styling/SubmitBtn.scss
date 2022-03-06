@@ -3,17 +3,23 @@
 
 .button {
   display: flex;
-  height: 45px;
-  width: 170px;
+  height: 43px;
+  padding: 0px 20px 0px 20px;
+  width: fit-content;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 25px;
   background-color: $positiveBTN;
   color: white;
   margin-top: 25px;
   cursor: pointer;
+
+  @include breakpoint-mixin("desktop") {
+    height: 48px;
+    padding: 0px 25px 0px 25px;
+  }
 }
 
 .loading {
-  background-color: #3693b37e;
+  background-color: #276b817e;
 }
