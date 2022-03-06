@@ -1,0 +1,31 @@
+@import "../Styling/Breakpoints.scss";
+@import "../Styling/Theme.scss";
+
+.formDescriptionBlock {
+  margin-bottom: 35px;
+  p {
+    color: rgba(236, 235, 235, 0.87);
+    margin: 0;
+    font-size: 18px;
+  }
+
+  h3:first-of-type {
+    font-size: 33px;
+    color: white;
+    margin: 10px 0px 15px 0px;
+
+    @include breakpoint-mixin("laptop-wide") {
+      margin: 5px 0px 15px 0px;
+    }
+
+    #bullet {
+      font-size: 40px;
+      color: $positiveBTN;
+    }
+  }
+
+  #loginBtn {
+    cursor: pointer;
+    color: $positiveBTN;
+  }
+}

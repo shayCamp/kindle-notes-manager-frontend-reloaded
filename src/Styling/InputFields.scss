@@ -1,0 +1,75 @@
+@import "../Styling/Breakpoints.scss";
+@import "../Styling/Theme.scss";
+
+.blueBorder {
+  border: 1.5px solid $positiveBTN;
+  box-shadow: 0px 0px 6px rgba(231, 229, 229, 0.568);
+}
+
+.redBorder {
+  border: 1.5px solid $negativeBTN;
+  box-shadow: 0px 0px 6px rgba(231, 229, 229, 0.568);
+}
+
+.inputField {
+  height: 45px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: $card-background;
+  display: flex;
+  justify-content: center;
+  padding: 4px 0px 4px 0px;
+  margin-bottom: 30px;
+
+  @include breakpoint-mixin("laptop-wide") {
+    width: 85%;
+    height: 50px;
+  }
+  @include breakpoint-mixin("desktop") {
+    width: 70%;
+  }
+
+  .centeringContainer {
+    width: 90%;
+    height: 100%;
+    display: flex;
+
+    .leftSideInput {
+      width: 90%;
+      height: 100%;
+
+      .bannerForInput {
+        height: 40%;
+        width: 100%;
+        // background-color: red;
+        display: flex;
+        align-items: center;
+        .tag {
+          color: rgba(236, 235, 235, 0.87);
+          font-size: 13px;
+        }
+      }
+      .inputFields {
+        height: 55%;
+        width: 100%;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: white;
+        font-size: 14px;
+      }
+    }
+    .rightSideIcon {
+      height: 100%;
+      width: 10%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+
+      #eye {
+        cursor: pointer;
+      }
+    }
+  }
+}

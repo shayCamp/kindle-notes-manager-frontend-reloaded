@@ -1,0 +1,30 @@
+@import "../Styling/Breakpoints.scss";
+@import "../Styling/Theme.scss";
+
+.loginPage {
+  height: 100vh;
+  width: 100%;
+  background-color: $background;
+  display: flex;
+
+  .formHalf {
+    height: 100vh;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .formBlock {
+      width: 80%;
+    }
+  }
+
+  .backgroundHalf {
+    height: 100vh;
+    width: 55%;
+    background-image: url("../Assests/landscape.jpg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+  }
+}

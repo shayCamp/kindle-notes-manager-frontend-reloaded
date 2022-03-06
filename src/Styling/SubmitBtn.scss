@@ -1,0 +1,15 @@
+@import "../Styling/Breakpoints.scss";
+@import "../Styling/Theme.scss";
+
+.button {
+  display: flex;
+  height: 45px;
+  width: 170px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background-color: $positiveBTN;
+  color: white;
+  margin-top: 25px;
+  cursor: pointer;
+}
