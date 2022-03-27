@@ -1,0 +1,53 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+        // "react-native/react-native": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+    ],
+    "plugins": ["react", "@typescript-eslint"],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "rules": {
+        "react/function-component-definition": [
+            "error",
+            {
+                "namedComponents": "arrow-function",
+                "unnamedComponents": "arrow-function"
+            }
+        ],
+        "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+        "react/prop-types": "off",
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error", { "variables": false }],
+        // "spaced-comment": "error",
+        // "no-inline-comments": "error",
+        // "no-console": "warn",
+        "no-warning-comments": ["warn", { "terms": ["@todo", "todo", "fixme"], "location": "start" }],
+        "@typescript-eslint/lines-between-class-members": ["error", "always", { "exceptAfterOverload": true, "exceptAfterSingleLine": true }],
+        "@typescript-eslint/no-floating-promises": "error"
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".tsx", ".ts", ".js", ".jsx", ".json"]
+            }
+        }
+    },
+    "ignorePatterns": ["babel.config.js", "metro.config.js", "jest.setup.js", ".eslintrc.js", "**/generated/**/*.ts", "jest.setup.afterenv.js"]
+}
