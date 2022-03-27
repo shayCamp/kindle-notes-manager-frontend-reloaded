@@ -1,30 +1,26 @@
-import React from "react";
-import "../../Styling/SubmitBtn.scss";
-import { css } from "@emotion/react";
-import MoonLoader from "react-spinners/MoonLoader";
+import React from 'react';
+import '../../Styling/SubmitBtn.scss';
+import { css } from '@emotion/react';
+import MoonLoader from 'react-spinners/MoonLoader';
 
 interface SubmitBtnProps {
-  submitFunc: () => void;
-  loading: boolean;
-  loginError: boolean | null;
+    submitFunc: () => void;
+    loading: boolean;
+    loginError: boolean | null;
 }
 
 const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
+    display: block;
+    margin: 0 auto;
+    border-color: red;
 `;
 
 const SubmitBtn = ({ submitFunc, loading, loginError }: SubmitBtnProps) => {
-  return (
-    <div className={loading ? "button loading" : "button"} onClick={submitFunc}>
-      {loading ? (
-        <MoonLoader css={override} size={20} color={`white`} />
-      ) : (
-        <p>{loginError ? `Invalid Request` : `Login Now`}</p>
-      )}
-    </div>
-  );
+    return (
+        <div className={loading ? 'button loading' : 'button'} onClick={submitFunc}>
+            {loading ? <MoonLoader css={override} size={20} color={`white`} /> : <p>{loginError ? `Invalid Request` : `Login Now`}</p>}
+        </div>
+    );
 };
 
 export default SubmitBtn;

@@ -1,0 +1,42 @@
+@import '../Styling/Breakpoints.scss';
+@import '../Styling/Theme.scss';
+
+.DescriptionBlock {
+    margin-bottom: 35px;
+
+    p {
+        color: rgba(236, 235, 235, 0.87);
+        margin: 0;
+        font-size: 16px;
+
+        @include breakpoint-mixin('desktop') {
+            font-size: 18px;
+        }
+    }
+
+    h3:first-of-type {
+        color: white;
+        margin: 0px 0px 10px 0px;
+        font-size: 26px;
+
+        @include breakpoint-mixin('laptop-wide') {
+            margin: 0px 0px 15px 0px;
+            font-size: 28px;
+        }
+
+        @include breakpoint-mixin('desktop') {
+            margin: 8px 0px 15px 0px;
+            font-size: 33px;
+        }
+
+        #bullet {
+            font-size: 40px;
+            color: $positiveBTN;
+        }
+    }
+
+    #loginBtn {
+        cursor: pointer;
+        color: $positiveBTN;
+    }
+}

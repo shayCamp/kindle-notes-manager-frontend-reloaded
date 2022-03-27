@@ -1,46 +1,45 @@
-import React from "react";
-import "../../Styling/FormDescriptionBlock.scss";
+import React from 'react';
+import '../../Styling/DescriptionBlock.scss';
 
-interface FormDescriptionBlockProps {
-  isNewAccount: boolean;
-  changeState: () => void;
+interface DescriptionBlockProps {
+    isNewAccount: boolean;
+    changeState: () => void;
 }
 
-const FormDescriptionBlock = ({
-  isNewAccount,
-  changeState,
-}: FormDescriptionBlockProps) => {
-  if (isNewAccount) {
-    return (
-      <div className="formDescriptionBlock">
-        <p>Start For Free</p>
-        <h3>
-          Create new account <span id="bullet">.</span>
-        </h3>
-        <p>
-          Already A Member?{" "}
-          <span id="loginBtn" onClick={changeState}>
-            Log In
-          </span>
-        </p>
-      </div>
-    );
-  } else {
-    return (
-      <div className="formDescriptionBlock">
-        <p>Welcome Back</p>
-        <h3>
-          Log into your account <span id="bullet">.</span>
-        </h3>
-        <p>
-          Haven't Signed Up Yet?{" "}
-          <span id="loginBtn" onClick={changeState}>
-            Create account
-          </span>
-        </p>
-      </div>
-    );
-  }
+const DescriptionBlock = ({ isNewAccount, changeState }: DescriptionBlockProps) => {
+    if (isNewAccount) {
+        return (
+            <div className="DescriptionBlock">
+                <p>Start For Free</p>
+                <h3>
+                    Create new account <span id="bullet">.</span>
+                </h3>
+                <p>
+                    Already A Member?{' '}
+                    <span id="loginBtn" onClick={changeState}>
+                        Log In
+                    </span>
+                </p>
+            </div>
+        );
+    } else {
+        return (
+            <div className="DescriptionBlock">
+                <p>Welcome Back</p>
+                <h3>
+                    Log into your account <span id="bullet">.</span>
+                </h3>
+                <p>
+                    {/* // eslint-disable-next-line react/no-unescaped-entities*/}
+                    Haven&apos;t Signed Up Yet?
+                    <span id="loginBtn" onClick={changeState}>
+                        {' '}
+                        Create account
+                    </span>
+                </p>
+            </div>
+        );
+    }
 };
 
-export default FormDescriptionBlock;
+export default DescriptionBlock;
