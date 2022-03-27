@@ -13,14 +13,7 @@ const InputFieldsBlock = ({
   isNewAccount,
   updateAuthToken,
 }: InputFieldsBlockProps) => {
-  const {
-    incorrectCredentials,
-    postUser,
-    clearIncorrectCredentials,
-    loading,
-    incorrectCredDetails,
-  } = LoginUserApi();
-  console.log("incorrectCredentials: ", incorrectCredentials);
+  const { loginApiError, postUser, clearLoginError, loading } = LoginUserApi();
   const username = useRef<string>("");
   const password = useRef<string>("");
 
@@ -36,27 +29,26 @@ const InputFieldsBlock = ({
 
   const onTextChange = () => {
     //This will refresh the incorrect state when user starts to type their credentials again
-    clearIncorrectCredentials();
+    clearLoginError();
   };
 
   return (
     <div className="inputFieldsBlock">
       <InputFields
-        type="username"
+        type="Username"
         updateUsername={recieveUsername} //updates username state in this component
         onTextChange={onTextChange} //This clears wrong credential view on type
-        incorrectCredentials={incorrectCredentials}
+        loginError={loginApiError}
       />
       <InputFields
-        type="password"
+        type="Password"
         updatePassword={recievePassword} //updates password state in this component
         onTextChange={onTextChange} //This clears wrong credential view on type
-        incorrectCredentials={incorrectCredentials}
+        loginError={loginApiError}
       />
       <SubmitBtn
-        isNewAccount={isNewAccount}
         loading={loading}
-        credDetail={incorrectCredDetails} //Tell user which input is wrong
+        loginError={loginApiError}
         submitFunc={
           () =>
             postUser({

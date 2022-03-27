@@ -3,11 +3,11 @@ import SupervisedUserCircleIcon from "@mui/icons-material/SupervisedUserCircle";
 import "../../Styling/InputFields.scss";
 
 interface InputFieldsProps {
-  type: "username" | "password";
+  type: "Username" | "Password";
   updatePassword?: (arg: string) => void;
   updateUsername?: (arg: string) => void;
   onTextChange: () => void;
-  incorrectCredentials: boolean;
+  loginError: boolean | null;
 }
 
 const InputFields = ({
@@ -15,14 +15,14 @@ const InputFields = ({
   updatePassword,
   updateUsername,
   onTextChange,
-  incorrectCredentials,
+  loginError,
 }: InputFieldsProps) => {
   const [active, setActive] = useState<boolean>(false);
 
   return (
     <div
       className={
-        incorrectCredentials
+        loginError
           ? "inputField redBorder"
           : active
           ? "inputField blueBorder"
@@ -37,7 +37,10 @@ const InputFields = ({
           <input
             autoComplete="off"
             className="inputFields"
-            onFocus={() => setActive(true)}
+            onFocus={() => {
+              setActive(true);
+              onTextChange();
+            }}
             onBlur={() => setActive(false)}
             id="field"
             type="text"
@@ -49,11 +52,7 @@ const InputFields = ({
                 updateUsername(e.target.value);
               }
             }}
-            placeholder={
-              type === "username"
-                ? "Enter Your Username"
-                : "Enter Your Password"
-            }
+            placeholder={`Enter Your ${type}`}
           ></input>
         </div>
         <div className="rightSideIcon">

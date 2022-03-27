@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import FormDescriptionBlock from "../Components/LoginComponents/FormDescriptionBlock";
-import InputFieldsBlock from "../Components/LoginComponents/InputFieldsBlock";
+import DescriptionBlock from "../Components/LoginComponents/DescriptionBlock";
+import FormBlock from "../Components/LoginComponents/FormBlock";
 import SubmitBtn from "../Components/LoginComponents/SubmitBtn";
 import "../Styling/Login.scss";
 
@@ -9,17 +9,17 @@ interface LoginProps {
 }
 
 const Login = ({ updateAuthToken }: LoginProps) => {
-  const [isNewAccount, setIsNewAccount] = useState(false);
+  const [isNewAccount, setIsNewAccount] = useState(false); //is the user logining in or creating an account
 
   return (
     <div className="loginPage">
       <div className="formHalf">
         <div className="formBlock">
-          <FormDescriptionBlock
+          <DescriptionBlock
             isNewAccount={isNewAccount}
             changeState={() => setIsNewAccount(!isNewAccount)}
           />
-          <InputFieldsBlock
+          <FormBlock
             isNewAccount={isNewAccount}
             updateAuthToken={updateAuthToken}
           />

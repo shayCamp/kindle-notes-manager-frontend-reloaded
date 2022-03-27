@@ -11,15 +11,12 @@ interface postUserProps {
 
 const LoginUserApi = () => {
   // const { setAuthToken } = useToken();
-  const [incorrectCredentials, setIncorrectCredentials] = useState(false); //Stores response from api, user doesnt exist
   const [loading, setLoading] = useState(false);
-  const [incorrectCredDetails, setIncorrectCredDetails] = useState<
-    "username" | "password" | "field" | null
-  >(null);
+  const [loginApiError, setLoginApiError] = useState<boolean | null>(null); //holds the error returned from the login request
 
-  function clearIncorrectCredentials() {
-    setIncorrectCredentials(false); //function to clear invalid login attempt by user
-    setIncorrectCredDetails(null);
+  function clearLoginError() {
+    //Function used to clear the error state when user types
+    setLoginApiError(null);
   }
 
   /**
@@ -52,10 +49,15 @@ const LoginUserApi = () => {
         },
       })
         .then((response) => {
-          updateAuthToken(response.data.token); //This is passed from login page, which allows the auth to be updated and passed back to login page
           setLoading(false);
+          sessionStorage.setItem("username", username);
+          updateAuthToken(response.data.token); //update auth token and return it to the app.ts page in order to pass user into main application
         })
-        .catch((error) => console.log("Form submit error", error));
+        .catch((error) => {
+          console.log("error: ", error);
+          setLoading(false);
+          setLoginApiError(true);
+        });
     } else {
       //else log user in
       console.log("logging user in");
@@ -69,35 +71,22 @@ const LoginUserApi = () => {
         },
       })
         .then(function (response) {
-          console.log("response: ", response);
           setLoading(false);
-          if (response.data.msg === "user does not exist") {
-            setIncorrectCredentials(true); //if user account isnt in database to log them in
-            setIncorrectCredDetails("username");
-          } else if (response.data.msg === "invalid credentials") {
-            setIncorrectCredentials(true); //if user account isnt in database to log them in
-            setIncorrectCredDetails("password");
-          } else if (response.data.msg === "please enter all fields") {
-            setIncorrectCredentials(true); //if user account isnt in database to log them in
-            setIncorrectCredDetails("field");
-          } else {
-            sessionStorage.setItem("username", username);
-            updateAuthToken(response.data.token); //update auth token and return it to the app.ts page in order to pass user into main application
-          }
+          sessionStorage.setItem("username", username);
+          updateAuthToken(response.data.token); //update auth token and return it to the app.ts page in order to pass user into main application
         })
         .catch(function (error) {
-          console.log(`handle login error:`, error);
-          console.log("response: ", error.status);
+          setLoading(false);
+          setLoginApiError(true);
         });
     }
   }
 
   return {
-    incorrectCredentials,
+    loginApiError,
     postUser,
-    clearIncorrectCredentials,
+    clearLoginError,
     loading,
-    incorrectCredDetails,
   }; //returning the login attempt value, the function to create user and clear wrong attempt
 };
 
