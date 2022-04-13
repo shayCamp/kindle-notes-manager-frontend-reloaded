@@ -3,6 +3,7 @@ import LoginUserApi from '../../API/LoginUserAPI';
 import InputFields from './InputFields';
 import SubmitBtn from './SubmitBtn';
 import '../../Styling/FormBlock.scss';
+import DoneIcon from '@mui/icons-material/Done';
 
 interface InputFieldsBlockProps {
     isNewAccount: boolean;
@@ -14,6 +15,7 @@ const InputFieldsBlock = ({ isNewAccount, updateAuthToken }: InputFieldsBlockPro
     const username = useRef<string>('');
     const password = useRef<string>('');
     const [localError, setLocalError] = useState<string | boolean>(false);
+    const [tos, setTos] = useState(false);
 
     const recievePassword = (childPassword: string): void => {
         //taking password from input component
@@ -62,7 +64,14 @@ const InputFieldsBlock = ({ isNewAccount, updateAuthToken }: InputFieldsBlockPro
                 ApiError={loginApiError}
                 localError={localError}
             />
-            <p id="ErrorMsg">{localError ? `Please Enter ${localError}` : loginApiError ? `Check Credentials` : null}</p>
+            <p className="smallPrint">Forgot Password?</p>
+            <div className="serviceTerms">
+                <div className="radio-container" onClick={() => setTos(!tos)}>
+                    {tos ? <DoneIcon id="tickIcon" /> : null}
+                </div>
+                <p className="smallPrint">I agree to terms of service</p>
+            </div>
+            <p className="smallPrint">{localError ? `Please Enter ${localError}` : loginApiError ? `Check Credentials` : null}</p>
             <SubmitBtn
                 loading={loading}
                 loginError={loginApiError}

@@ -18,7 +18,7 @@ const override = css`
 const SubmitBtn = ({ submitFunc, loading, loginError }: SubmitBtnProps) => {
     return (
         <div className={loading ? 'button loading' : 'button'} onClick={submitFunc}>
-            {loading ? <MoonLoader css={override} size={20} color={`white`} /> : <p>{loginError ? `Invalid Request` : `Login Now`}</p>}
+            {loading ? <MoonLoader css={override} size={20} color={`white`} /> : <p>{loginError ? `Invalid Request` : `Advance`}</p>}
         </div>
     );
 };
