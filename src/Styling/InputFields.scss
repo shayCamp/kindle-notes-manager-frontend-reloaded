@@ -62,8 +62,27 @@
             align-items: center;
             color: white;
 
-            #eye {
+            #lock {
                 cursor: pointer;
+                font-size: 21px;
+                animation: fadeIn 1s;
+            }
+
+            #tickIcon {
+                font-size: 21px;
+                padding: 2px;
+                border-radius: 6px;
+                background-color: #242424;
+                animation: fadeIn 1s;
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
             }
         }
     }

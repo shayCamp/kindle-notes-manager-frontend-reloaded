@@ -2,6 +2,7 @@ import React from 'react';
 import '../../Styling/SubmitBtn.scss';
 import { css } from '@emotion/react';
 import MoonLoader from 'react-spinners/MoonLoader';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 interface SubmitBtnProps {
     submitFunc: () => void;

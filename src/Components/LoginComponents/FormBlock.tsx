@@ -39,7 +39,7 @@ const InputFieldsBlock = ({ isNewAccount, updateAuthToken }: InputFieldsBlockPro
         }
 
         if (!username.current.replace(/\s/g, '').length && !password.current.replace(/\s/g, '').length) {
-            setLocalError(`both`);
+            setLocalError(`All Credentials`);
         } else if (!username.current.replace(/\s/g, '').length) {
             setLocalError(`Username`);
         } else if (!password.current.replace(/\s/g, '').length) {
@@ -64,6 +64,7 @@ const InputFieldsBlock = ({ isNewAccount, updateAuthToken }: InputFieldsBlockPro
                 ApiError={loginApiError}
                 localError={localError}
             />
+            <p className="smallPrint">{localError ? `Please Enter ${localError}` : loginApiError ? `Check Credentials` : null}</p>
             <p className="smallPrint">Forgot Password?</p>
             <div className="serviceTerms">
                 <div className="radio-container" onClick={() => setTos(!tos)}>
@@ -71,7 +72,7 @@ const InputFieldsBlock = ({ isNewAccount, updateAuthToken }: InputFieldsBlockPro
                 </div>
                 <p className="smallPrint">I agree to terms of service</p>
             </div>
-            <p className="smallPrint">{localError ? `Please Enter ${localError}` : loginApiError ? `Check Credentials` : null}</p>
+
             <SubmitBtn
                 loading={loading}
                 loginError={loginApiError}
