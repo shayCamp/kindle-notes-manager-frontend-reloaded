@@ -9,12 +9,24 @@ import './Styling/App.scss';
 
 const App = () => {
     const { authToken, setAuthToken } = useToken();
-    console.log('authToken: ', authToken);
+    const [advanceUser, setAdvanceUser] = useState(false);
 
-    if (!authToken) {
+    useEffect(() => {
+        //Checking if there is authToken on page load only, if so pass them into application
+        if (authToken) {
+            advanceUserFunc();
+        }
+    }, []); //Use state means it only checks authToken when the page loads, instead of constantly, which allows the animation to take place and not get cutt off and user passed straight into app
+
+    const advanceUserFunc = () => {
+        //Function used to pass user to app
+        setAdvanceUser(true);
+    };
+
+    if (!advanceUser) {
         //No auth the user needs to go to login
         console.log('no auth token - go to login page');
-        return <Login updateAuthToken={setAuthToken} />;
+        return <Login updateAuthToken={setAuthToken} advanceUser={advanceUserFunc} authToken={authToken} />;
     } else {
         //Loading main app once auth is in local storage
         return (
