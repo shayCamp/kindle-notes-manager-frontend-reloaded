@@ -1,48 +1,69 @@
-@import "../Styling/Breakpoints.scss";
-@import "../Styling/Theme.scss";
+@import '../Styling/Breakpoints.scss';
+@import '../Styling/Theme.scss';
 
 .loginPage {
-  height: 100vh;
-  width: 100%;
-  background-color: $background;
-  display: flex;
-
-  .formHalf {
     height: 100vh;
-    width: 45%;
+    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .formBlock {
-      width: 80%;
-    }
-  }
-
-  .backgroundHalf {
-    height: 100vh;
-    width: 55%;
-    background-image: url("../Assests/landscape.jpg");
+    background-image: url('../Assests/landscape.jpg');
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    overflow-y: none;
 
-    h1 {
-      color: white;
-      mix-blend-mode: difference;
-      font-size: 30px;
-      margin: 0px 30px 30px 0px;
+    .formHalf {
+        height: 100vh;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: $background;
+        border-radius: 0px 25px 25px 0px;
+        transform: translateX(-100%);
+        transition: transform 2s;
 
-      @include breakpoint-mixin("desktop") {
-        font-size: 35px;
-      }
+        @include breakpoint-mixin('laptop-wide') {
+            width: 44%;
+        }
+
+        @include breakpoint-mixin('desktop') {
+            width: 35%;
+        }
+
+        .formHolder {
+            width: 80%;
+            height: 88%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 30px;
+
+            @include breakpoint-mixin('laptop-wide') {
+                height: 90%;
+            }
+        }
+        .socialHolder {
+            width: 80%;
+            height: 12%;
+            display: flex;
+            align-items: center;
+
+            @include breakpoint-mixin('laptop-wide') {
+                height: 10%;
+            }
+
+            p {
+                border-left: 1.5px solid $border;
+                padding-left: 20px;
+                font-size: 16px;
+                color: white;
+                opacity: 0.7;
+            }
+        }
     }
 
-    @media screen and (orientation: portrait) {
-      width: 40%;
+    .slide {
+        transform: translateX(0%);
     }
-  }
 }

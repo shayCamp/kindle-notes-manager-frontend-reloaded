@@ -12,7 +12,7 @@ const DescriptionBlock = ({ isNewAccount, changeState }: DescriptionBlockProps) 
             <div className="DescriptionBlock">
                 <p>Start For Free</p>
                 <h3>
-                    Create new account <span id="bullet">.</span>
+                    Create account <span id="bullet">.</span>
                 </h3>
                 <p>
                     Already A Member?{' '}
@@ -27,7 +27,7 @@ const DescriptionBlock = ({ isNewAccount, changeState }: DescriptionBlockProps) 
             <div className="DescriptionBlock">
                 <p>Welcome Back</p>
                 <h3>
-                    Log into your account <span id="bullet">.</span>
+                    Log in<span id="bullet">.</span>
                 </h3>
                 <p>
                     {/* // eslint-disable-next-line react/no-unescaped-entities*/}

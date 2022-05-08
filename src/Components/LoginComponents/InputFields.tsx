@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import LockIcon from '@mui/icons-material/Lock';
 import '../../Styling/InputFields.scss';
+import DoneIcon from '@mui/icons-material/Done';
 
 interface InputFieldsProps {
     type: 'Username' | 'Password';
@@ -15,8 +15,8 @@ interface InputFieldsProps {
 
 const InputFields = ({ type, updatePassword, updateUsername, clearErrors, ApiError, localError }: InputFieldsProps) => {
     const [active, setActive] = useState<boolean>(false);
-    console.log('active: ', active);
     const [viewPassword, setViewPassword] = useState<boolean>(false);
+    const [inputText, setInputText] = useState('');
 
     // ApiError
     //     ? 'inputField redBorder'
@@ -59,6 +59,7 @@ const InputFields = ({ type, updatePassword, updateUsername, clearErrors, ApiErr
                         id="field"
                         type={type === 'Username' || viewPassword ? 'text' : 'password'}
                         onChange={(e) => {
+                            setInputText(e.target.value.replace(/\s/g, ''));
                             if (updatePassword) {
                                 updatePassword(e.target.value);
                             } else if (updateUsername) {
@@ -69,13 +70,16 @@ const InputFields = ({ type, updatePassword, updateUsername, clearErrors, ApiErr
                     ></input>
                 </div>
                 <div className="rightSideIcon">
-                    {type === 'Username' ? (
-                        <SupervisedUserCircleIcon fontSize="medium" />
-                    ) : viewPassword ? (
-                        <VisibilityIcon id="eye" onClick={() => setViewPassword(!viewPassword)} />
-                    ) : (
-                        <VisibilityOffIcon id="eye" onClick={() => setViewPassword(!viewPassword)} />
-                    )}
+                    {type === 'Username' ? inputText ? <DoneIcon id="tickIcon" /> : null : null}
+                    {type === 'Password' ? (
+                        inputText ? (
+                            viewPassword ? (
+                                <LockOpenIcon id="lock" onClick={() => setViewPassword(!viewPassword)} />
+                            ) : (
+                                <LockIcon id="lock" onClick={() => setViewPassword(!viewPassword)} />
+                            )
+                        ) : null
+                    ) : null}
                 </div>
             </div>
         </div>

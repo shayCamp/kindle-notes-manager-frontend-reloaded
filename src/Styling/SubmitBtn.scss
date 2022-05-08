@@ -1,25 +1,29 @@
-@import "../Styling/Breakpoints.scss";
-@import "../Styling/Theme.scss";
+@import '../Styling/Breakpoints.scss';
+@import '../Styling/Theme.scss';
 
 .button {
-  display: flex;
-  height: 43px;
-  padding: 0px 20px 0px 20px;
-  width: fit-content;
-  justify-content: center;
-  align-items: center;
-  border-radius: 25px;
-  background-color: $positiveBTN;
-  color: white;
-  margin-top: 25px;
-  cursor: pointer;
+    display: flex;
+    height: 45px;
+    padding: 0px 20px 0px 20px;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: $positiveBTN;
+    color: white;
+    margin-top: 35px;
+    cursor: pointer;
 
-  @include breakpoint-mixin("desktop") {
-    height: 48px;
-    padding: 0px 25px 0px 25px;
-  }
+    @include breakpoint-mixin('laptop-wide') {
+        height: 55px;
+    }
+
+    @include breakpoint-mixin('desktop') {
+        height: 65px;
+        padding: 0px 35px 0px 35px;
+    }
 }
 
 .loading {
-  background-color: #276b817e;
+    background-color: #276b817e;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import '../../Styling/SubmitBtn.scss';
 import { css } from '@emotion/react';
 import MoonLoader from 'react-spinners/MoonLoader';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 interface SubmitBtnProps {
     submitFunc: () => void;
@@ -18,7 +19,7 @@ const override = css`
 const SubmitBtn = ({ submitFunc, loading, loginError }: SubmitBtnProps) => {
     return (
         <div className={loading ? 'button loading' : 'button'} onClick={submitFunc}>
-            {loading ? <MoonLoader css={override} size={20} color={`white`} /> : <p>{loginError ? `Invalid Request` : `Login Now`}</p>}
+            {loading ? <MoonLoader css={override} size={20} color={`white`} /> : <p>{loginError ? `Invalid Request` : `Advance`}</p>}
         </div>
     );
 };
