@@ -28,7 +28,6 @@ const LoginUserApi = () => {
      */
 
     function postUser({ isNewAccount, username, password, updateAuthToken }: postUserProps) {
-        console.log('running function');
         setLoading(true);
 
         if (isNewAccount) {
@@ -55,7 +54,6 @@ const LoginUserApi = () => {
                 });
         } else {
             //else log user in
-            console.log('logging user in');
             axios({
                 method: `POST`,
                 url: 'https://kindle-project-backend-v2.herokuapp.com/login',

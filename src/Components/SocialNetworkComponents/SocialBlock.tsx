@@ -7,7 +7,6 @@ import SocialCards from './SocialCards';
 // }
 
 const SocialBlock = ({ ...props }) => {
-    console.log(props);
     return (
         <div className="socialBlock">
             <span className="borderLine"></span>

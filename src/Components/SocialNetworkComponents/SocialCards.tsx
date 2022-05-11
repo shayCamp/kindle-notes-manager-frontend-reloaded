@@ -5,7 +5,6 @@ import '../../Styling/socialCards.scss';
 // }
 
 const SocialCards = ({ ...props }) => {
-    console.log(props);
     return <div className="card"></div>;
 };
 
