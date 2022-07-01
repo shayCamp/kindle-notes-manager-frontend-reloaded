@@ -23,7 +23,6 @@ const Login = ({ updateAuthToken, advanceUser, authToken }: LoginProps) => {
 
     useEffect(() => {
         //Function to set slide animation on page load
-        console.log('runnnn');
         setTimeout(function () {
             setSlide(true);
         }, 1200);
@@ -38,10 +37,12 @@ const Login = ({ updateAuthToken, advanceUser, authToken }: LoginProps) => {
         }
     }, [authToken]);
 
-    if (authToken && !inView) {
-        //If user has an authToken and form is not inView then we can advance user
-        advanceUser();
-    }
+    useEffect(() => {
+        if (authToken && !inView) {
+            //If user has an authToken and form is not inView then we can advance user
+            advanceUser();
+        }
+    }, [authToken, inView]);
 
     return (
         <div className="loginPage">
