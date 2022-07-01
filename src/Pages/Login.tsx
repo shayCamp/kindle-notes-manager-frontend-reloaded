@@ -23,18 +23,24 @@ const Login = ({ updateAuthToken, advanceUser, authToken }: LoginProps) => {
 
     useEffect(() => {
         //Function to set slide animation on page load
-        setTimeout(function () {
+        const timer = setTimeout(function () {
             setSlide(true);
         }, 1200);
+
+        return () => {
+            clearTimeout(timer);
+          }
     }, []);
 
     useEffect(() => {
         //Function to remove slide animation when there is an authToken
         if (authToken) {
-            setTimeout(function () {
+            const timer = setTimeout(function () {
                 setSlide(false);
             }, 200);
+
         }
+        
     }, [authToken]);
 
     useEffect(() => {

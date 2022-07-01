@@ -56,7 +56,6 @@ const InputFields = ({ type, updatePassword, updateUsername, clearErrors, ApiErr
                         onBlur={() => {
                             setActive(false);
                         }}
-                        id="field"
                         type={type === 'Username' || viewPassword ? 'text' : 'password'}
                         onChange={(e) => {
                             setInputText(e.target.value.replace(/\s/g, ''));

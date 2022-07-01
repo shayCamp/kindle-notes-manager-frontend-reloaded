@@ -10,9 +10,13 @@ const LandingPage = ({ ...props }) => {
 
     useEffect(() => {
         //Function to set slide animation on page load
-        setTimeout(function () {
+        const timer = setTimeout(function () {
             setSlide(true);
         }, 200);
+
+        return () => {
+            clearTimeout(timer);
+          }
     }, []);
 
     return (

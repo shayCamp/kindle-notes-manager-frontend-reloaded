@@ -17,7 +17,7 @@ function useToken() {
      * @param userTokenProp the auth token the user wants to save to the local storage
      */
 
-    const saveToken = (userTokenProp: string | null) => {
+    const saveToken = (userTokenProp: string) => {
         //Saving passed token to the session storage
         sessionStorage.setItem('token', JSON.stringify(userTokenProp));
         setAuthToken(userTokenProp);
