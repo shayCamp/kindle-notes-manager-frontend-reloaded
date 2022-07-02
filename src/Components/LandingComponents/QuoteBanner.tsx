@@ -14,7 +14,7 @@ const QuoteBanner = ({ ...props }) => {
 
     return (
         <div className="quoteBanner">
-            <h1>{quote}</h1>
+            <h1>In order to be a greater leader, one must first learn to follow</h1>
         </div>
     );
 };

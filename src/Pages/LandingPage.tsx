@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import QuoteBanner from '../Components/LandingComponents/QuoteBanner';
 
 import '../Styling/LandingPage.scss';
+import AnalyticPage from './AnalyticPage';
+import LibraryPage from './LibraryPage';
 
 // interface LandingPageProps {}
 
@@ -18,7 +20,10 @@ const LandingPage = ({ ...props }) => {
     return (
         <div className={slide ? 'landingPage slideImage' : 'landingPage'}>
             <QuoteBanner />
-            <div className={slide ? 'bottomHalf slideUp' : 'bottomHalf'}></div>
+            <div className={slide ? 'bottomHalf slideUp' : 'bottomHalf'}>
+                <AnalyticPage />
+                <LibraryPage />
+            </div>
         </div>
     );
 };

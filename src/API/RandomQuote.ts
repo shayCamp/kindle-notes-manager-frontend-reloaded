@@ -13,21 +13,26 @@ const RandomQuoteGenerator = () => {
     function getQuote() {
         console.log('getting Quote');
         setLoading(true);
-        axios({
-            method: `GET`,
-            url: 'https://kindle-project-backend-v2.herokuapp.com/books/random-highlight',
-            headers: {
-                'x-auth-token': `${authToken}`,
-            },
-        })
-            .then(function (response) {
-                console.log(`response:`, response);
-                // setQuote(response.data);
-                // setLoading(false);
+
+        if (authToken === null) {
+            throw new Error('no token supplied');
+        } else {
+            axios({
+                method: `GET`,
+                url: 'https://kindle-project-backend-v2.herokuapp.com/books/random-highlight',
+                headers: {
+                    'x-auth-token': authToken,
+                },
             })
-            .catch(function (error) {
-                console.log(`error:`, error);
-            });
+                .then(function (response) {
+                    console.log(`response:`, response);
+                    // setQuote(response.data);
+                    // setLoading(false);
+                })
+                .catch(function (error) {
+                    console.log(`error:`, error);
+                });
+        }
     }
 
     return {
