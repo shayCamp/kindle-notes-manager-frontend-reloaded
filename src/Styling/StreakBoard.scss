@@ -1,0 +1,9 @@
+@import '../Styling/Breakpoints.scss';
+@import '../Styling/Theme.scss';
+
+.boardContainer {
+    height: 80%;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}

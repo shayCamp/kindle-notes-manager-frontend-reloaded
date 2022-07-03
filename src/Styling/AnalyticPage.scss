@@ -2,9 +2,35 @@
 @import '../Styling/Theme.scss';
 
 .analyticPage {
-    height: 60vh;
+    height: 65vh;
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     // background-color: yellowgreen;
+    display: flex;
+    flex-direction: column;
+
+    .section1 {
+        height: 60%;
+        width: 80%;
+        display: flex;
+        align-items: flex-end;
+        // background-color: orange;
+
+        @include breakpoint-mixin('desktop') {
+            height: 65%;
+        }
+    }
+    .section2 {
+        height: 40%;
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include breakpoint-mixin('desktop') {
+            height: 35%;
+        }
+    }
 }
