@@ -1,0 +1,84 @@
+@import '../Styling/Breakpoints.scss';
+@import '../Styling/Theme.scss';
+
+.navBar {
+    transform: translateX(-100%);
+    position: fixed;
+    z-index: 2;
+    top: 8%;
+    transition: transform 1s;
+    width: 95px;
+    height: 65vh;
+    background-color: #3e445c;
+    border-radius: 0px 10px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    cursor: pointer;
+
+    @include breakpoint-mixin('laptop-wide') {
+        width: 115px;
+    }
+
+    @include breakpoint-mixin('desktop') {
+        width: 125px;
+        height: 60vh;
+    }
+
+    .circleOpt {
+        height: 30%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        @include breakpoint-mixin('desktop') {
+            height: 27%;
+        }
+
+        .circle {
+            width: 60px;
+            height: 60px;
+            background-color: orange;
+            border-radius: 100%;
+            overflow: hidden;
+
+            @include breakpoint-mixin('laptop-wide') {
+                width: 80px;
+                height: 80px;
+            }
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        p {
+            color: white;
+        }
+    }
+
+    .navOpt {
+        height: 15%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .icon {
+            color: white;
+            font-size: 25px;
+
+            @include breakpoint-mixin('laptop-wide') {
+                font-size: 30px;
+            }
+        }
+    }
+}
+
+.show {
+    transform: translateX(0%);
+}

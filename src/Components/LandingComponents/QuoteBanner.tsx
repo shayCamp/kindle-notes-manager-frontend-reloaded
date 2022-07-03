@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../Styling/QuoteBanner.scss';
 import RandomQuoteGenerator from '../../API/RandomQuote';
 
@@ -14,7 +14,7 @@ const QuoteBanner = ({ ...props }) => {
 
     return (
         <div className="quoteBanner">
-            <h1>In order to be a greater leader, one must first learn to follow</h1>
+            <h1 id="Quote">In order to be a great leader, one must first learn to follow</h1>
         </div>
     );
 };
