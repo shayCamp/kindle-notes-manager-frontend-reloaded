@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import useToken from '../API/useToken';
+import { randomHighlight } from './Interface';
 
 const RandomQuoteGenerator = () => {
     const [quote, setQuote] = useState('Currently No Quote');
     const [loading, setLoading] = useState(false);
-
-    console.log('quote: ', quote);
     const { authToken, setAuthToken } = useToken(); //Retrieving authToken
-    console.log('authToken: ', authToken);
 
     function getQuote() {
         console.log('getting Quote');
@@ -21,13 +19,13 @@ const RandomQuoteGenerator = () => {
                 method: `GET`,
                 url: 'https://kindle-project-backend-v2.herokuapp.com/books/random-highlight',
                 headers: {
-                    'x-auth-token': authToken,
+                    'x-auth-token': authToken.replace(/\"/g, ''),
                 },
             })
-                .then(function (response) {
-                    console.log(`response:`, response);
-                    // setQuote(response.data);
-                    // setLoading(false);
+                .then(function (response: AxiosResponse<randomHighlight>) {
+                    console.log('response: ', response);
+                    setQuote(response.data.randomHighlight.highlight.Text);
+                    setLoading(false);
                 })
                 .catch(function (error) {
                     console.log(`error:`, error);

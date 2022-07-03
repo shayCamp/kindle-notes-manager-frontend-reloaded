@@ -8,5 +8,20 @@
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 22px;
+
+    #Quote {
+        width: 80%;
+        font-size: 28px;
+        text-align: center;
+
+        @include breakpoint-mixin('laptop-wide') {
+            width: 85%;
+            font-size: 35px;
+        }
+
+        @include breakpoint-mixin('desktop') {
+            width: 85%;
+            font-size: 40px;
+        }
+    }
 }
