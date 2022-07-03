@@ -57,7 +57,7 @@
         }
 
         p {
-            color: white;
+            color: $background-light;
         }
     }
 
@@ -67,14 +67,19 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all;
 
         .icon {
-            color: white;
+            color: $background-light;
             font-size: 25px;
 
             @include breakpoint-mixin('laptop-wide') {
                 font-size: 30px;
             }
+        }
+
+        .active {
+            color: $positiveBTN;
         }
     }
 }
