@@ -9,7 +9,20 @@ const QuoteBanner = ({ ...props }) => {
     // console.log('quote: ', quote);
 
     useEffect(() => {
-        getQuote();
+        let isMounted = true;
+
+        if (isMounted) {
+            getQuote(); //runs once when the Home page first loads
+
+            const interval = setInterval(() => {
+                getQuote(); //secures a random quote every 60 seconds
+            }, 60000); // runs every 60 seconds
+
+            return () => clearInterval(interval);
+        }
+        return () => {
+            isMounted = false;
+        };
     }, []);
 
     return (

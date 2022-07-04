@@ -25,10 +25,6 @@ const LandingPage = ({ ...props }) => {
         }, 200);
     }, []);
 
-    useEffect(() => {
-        console.log('inView');
-    }, [inView]);
-
     return (
         <div className={slide ? 'landingPage slideImage' : 'landingPage'}>
             <QuoteBanner />

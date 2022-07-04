@@ -1,0 +1,13 @@
+@import '../Styling/Breakpoints.scss';
+@import '../Styling/Theme.scss';
+
+.card1 {
+    height: 65%;
+    width: 30%;
+    background-color: white;
+    border-radius: 10px;
+
+    @include breakpoint-mixin('laptop-wide') {
+        height: 70%;
+    }
+}
