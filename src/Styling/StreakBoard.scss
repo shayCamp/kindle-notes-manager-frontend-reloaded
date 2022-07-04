@@ -6,4 +6,16 @@
     width: 100%;
     background-color: white;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .calenderContainer {
+        width: 95%;
+
+        .react-calendar-heatmap text {
+            font-size: 7px;
+            fill: #aaa;
+        }
+    }
 }

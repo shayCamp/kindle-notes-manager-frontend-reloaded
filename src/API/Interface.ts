@@ -10,6 +10,15 @@ export interface highlight {
     notes: string;
     starred: boolean;
 }
+export interface AllHighlights {
+    allHighlights: [
+        {
+            author: string;
+            highlight: highlight;
+            title: string;
+        },
+    ];
+}
 
 export interface randomHighlight {
     randomHighlight: {

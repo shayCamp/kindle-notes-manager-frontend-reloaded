@@ -9,7 +9,6 @@ const RandomQuoteGenerator = () => {
     const { authToken, setAuthToken } = useToken(); //Retrieving authToken
 
     function getQuote() {
-        console.log('getting Quote');
         setLoading(true);
 
         if (authToken === null) {
@@ -23,7 +22,6 @@ const RandomQuoteGenerator = () => {
                 },
             })
                 .then(function (response: AxiosResponse<randomHighlight>) {
-                    console.log('response: ', response);
                     setQuote(response.data.randomHighlight.highlight.Text);
                     setLoading(false);
                 })

@@ -4,7 +4,6 @@ import StreakBoard from '../Components/LandingComponents/StreakBoard';
 import '../Styling/AnalyticPage.scss';
 
 const AnalyticPage = ({ ...props }) => {
-    console.log(props);
     return (
         <div className="analyticPage">
             <div className="section1">
