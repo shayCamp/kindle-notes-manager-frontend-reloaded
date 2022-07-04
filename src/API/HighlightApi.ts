@@ -25,7 +25,7 @@ function HighlightApi() {
                             response.data.allHighlights.sort(function (a, b) {
                                 // Turn your strings into dates, and then subtract them
                                 // to get a value that is either negative, positive, or zero.
-                                return new Date(b.highlight.Date).valueOf() - new Date(a.highlight.Date).valueOf();
+                                return <any>new Date(b.highlight.Date) - <any>new Date(a.highlight.Date);
                             }),
                         );
                         setLoading(false);
