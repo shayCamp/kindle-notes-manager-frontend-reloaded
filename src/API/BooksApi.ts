@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
 import useToken from '../API/useToken';
-import { randomHighlight } from './Interface';
+import { dbBook } from './Interface';
 
-const RandomQuoteGenerator = () => {
-    const [quote, setQuote] = useState('No Quote');
-    const [loading, setLoading] = useState(true);
+function BooksApi() {
     const { authToken, setAuthToken } = useToken(); //Retrieving authToken
+    const [books, setBooks] = useState<dbBook[]>();
+    const [loading, setLoading] = useState(true);
 
-    function getQuote() {
+    function getAllBooks() {
         if (authToken === null) {
             throw new Error('no token supplied');
         } else {
             axios({
                 method: `GET`,
-                url: 'https://kindle-project-backend-v2.herokuapp.com/books/random-highlight',
+                url: 'https://kindle-project-backend-v2.herokuapp.com/books',
                 headers: {
                     'x-auth-token': authToken.replace(/\"/g, ''),
                 },
             })
-                .then(function (response: AxiosResponse<randomHighlight>) {
-                    setQuote(response.data.randomHighlight.highlight.Text);
+                .then(function (response: AxiosResponse<dbBook[]>) {
+                    setBooks(response.data);
                     setLoading(false);
                 })
                 .catch(function (error) {
@@ -30,10 +30,10 @@ const RandomQuoteGenerator = () => {
     }
 
     return {
-        getQuote,
-        quote,
+        getAllBooks,
+        books,
         loading,
     };
-};
+}
 
-export default RandomQuoteGenerator;
+export default BooksApi;

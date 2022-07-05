@@ -25,7 +25,6 @@ const App = () => {
 
     if (!advanceUser) {
         //No auth the user needs to go to login
-        console.log('no auth token - go to login page');
         return <Login updateAuthToken={setAuthToken} advanceUser={advanceUserFunc} authToken={authToken} />;
     } else {
         //Loading main app once auth is in local storage

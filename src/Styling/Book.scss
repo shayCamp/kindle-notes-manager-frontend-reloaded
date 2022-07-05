@@ -1,0 +1,66 @@
+@import '../Styling/Breakpoints.scss';
+@import '../Styling/Theme.scss';
+
+.book {
+    height: 50vh;
+    width: 100%;
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 5px 8px 7px rgba(50, 49, 49, 0.561);
+    border-radius: 10px;
+    cursor: pointer;
+
+    .book__image {
+        height: 70%;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 120%;
+            height: 120%;
+            object-fit: cover;
+            // object-position: center center;
+        }
+    }
+
+    .book__description {
+        height: 30%;
+        width: 100%;
+        // background-color: pink;
+        padding: 5px 10px 5px 10px;
+
+        .description__tags {
+            height: 30%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+
+            #tag {
+                width: fit-content;
+                padding: 3px 20px 3px 20px;
+                background-color: rgb(111, 201, 201);
+                border-radius: 5px;
+                color: white;
+                font-size: 13px;
+
+                @include breakpoint-mixin('laptop-wide') {
+                    padding: 4px 22px 4px 22px;
+                    font-size: 15px;
+                }
+
+                @include breakpoint-mixin('desktop') {
+                    padding: 3px 20px 3px 20px;
+                }
+            }
+        }
+    }
+}
+
+.book:hover {
+    border: 2px solid $border;
+    transition: all 1s ease;
+    transform: scale(1.05);
+}

@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import '../../Styling/QuoteBanner.scss';
 import RandomQuoteGenerator from '../../API/RandomQuote';
+import BarLoader from 'react-spinners/BarLoader';
+import { css } from '@emotion/react';
 
 // interface QuoteBannerProps {}
 
 const QuoteBanner = ({ ...props }) => {
-    const { getQuote, quote } = RandomQuoteGenerator();
-    // console.log('quote: ', quote);
+    const { getQuote, quote, loading } = RandomQuoteGenerator();
+
+    const override = css`
+        position: absolute;
+        width: 200px;
+        top: 20%;
+        left: 45%;
+    `;
 
     useEffect(() => {
         let isMounted = true;
@@ -25,11 +33,7 @@ const QuoteBanner = ({ ...props }) => {
         };
     }, []);
 
-    return (
-        <div className="quoteBanner">
-            <h1 id="Quote">{quote}</h1>
-        </div>
-    );
+    return <div className="quoteBanner">{loading ? <BarLoader color={'#FFFFFF'} css={override} /> : <h1 id="Quote">{quote}</h1>}</div>;
 };
 
 export default QuoteBanner;

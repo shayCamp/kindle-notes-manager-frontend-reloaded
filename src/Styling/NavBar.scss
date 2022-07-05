@@ -9,7 +9,7 @@
     transition: transform 1s;
     width: 95px;
     height: 65vh;
-    background-color: #3e445c;
+    background-color: $blue-accent;
     border-radius: 0px 10px 10px 0px;
     display: flex;
     flex-direction: column;
@@ -70,7 +70,7 @@
         transition: all;
 
         .icon {
-            color: $background-light;
+            color: white;
             font-size: 25px;
 
             @include breakpoint-mixin('laptop-wide') {
@@ -82,6 +82,10 @@
             color: $positiveBTN;
         }
     }
+}
+
+.navBar:hover {
+    border: 2px solid $border;
 }
 
 .show {

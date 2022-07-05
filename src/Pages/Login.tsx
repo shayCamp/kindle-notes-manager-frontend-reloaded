@@ -45,13 +45,13 @@ const Login = ({ updateAuthToken, advanceUser, authToken }: LoginProps) => {
     }, [authToken, inView]);
 
     return (
-        <div className="loginPage">
-            <div className={slide ? 'formHalf slide' : 'formHalf'} ref={ref}>
-                <div className="formHolder">
+        <div className="login-page">
+            <div className={slide ? 'login-page__form slide' : 'login-page__form'} ref={ref}>
+                <div className="form__details">
                     <DescriptionBlock isNewAccount={isNewAccount} changeState={() => setIsNewAccount(!isNewAccount)} />
                     <FormBlock isNewAccount={isNewAccount} updateAuthToken={updateAuthToken} />
                 </div>
-                <div className="socialHolder">
+                <div className="form__socials">
                     <SocialBlock />
                     <p>Socials</p>
                 </div>
