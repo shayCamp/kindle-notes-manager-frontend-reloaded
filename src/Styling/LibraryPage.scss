@@ -1,10 +1,107 @@
 @import '../Styling/Breakpoints.scss';
 @import '../Styling/Theme.scss';
 
-.libraryPage {
-    height: 100vh;
+.lib-page {
+    min-height: 100vh;
+    height: fit-content;
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
     // background-color: orange;
+
+    .lib-page__searchSection {
+        height: 10vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .searchSection__searchBar {
+            height: 70%;
+            width: 40%;
+            background-color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+
+            @include breakpoint-mixin('laptop-wide') {
+                height: 75%;
+                width: 35%;
+            }
+
+            @include breakpoint-mixin('desktop') {
+                height: 65%;
+                width: 35%;
+            }
+
+            #icon {
+                position: absolute;
+                left: 7px;
+                color: white;
+                padding: 5px;
+                background-color: $blue-accent;
+                // align-items: center;
+                border-radius: 10px;
+
+                @include breakpoint-mixin('laptop-wide') {
+                    left: 10px;
+                    padding: 8px;
+                }
+
+                @include breakpoint-mixin('desktop') {
+                    left: 12px;
+                    padding: 10px;
+                }
+            }
+
+            input {
+                width: 70%;
+                height: 100%;
+                border: none;
+                outline: none;
+                font-size: 15px;
+                // text-align: center;
+
+                @include breakpoint-mixin('laptop-wide') {
+                    font-size: 17px;
+                }
+            }
+        }
+
+        .searchSection__searchBar:hover {
+            border: 2px solid $border;
+        }
+    }
+
+    .lib-page__bookSection {
+        min-height: 90vh;
+        width: 80%;
+        padding: 20px 20px 100px 20px;
+        // background-color: yellowgreen;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 50px;
+        margin-top: 50px;
+        overflow-y: scroll;
+
+        @include breakpoint-mixin('laptop-wide') {
+            gap: 90px;
+        }
+
+        @include breakpoint-mixin('desktop') {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 90px;
+        }
+    }
+
+    .lib-page__bookSection::-webkit-scrollbar {
+        display: none;
+    }
 }

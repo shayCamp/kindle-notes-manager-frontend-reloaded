@@ -29,7 +29,7 @@ export interface randomHighlight {
     };
 }
 
-export interface dbBook extends Document {
+export interface dbBook {
     userID: string;
     cover_image: string;
     isbn: string;

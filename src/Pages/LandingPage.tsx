@@ -26,20 +26,20 @@ const LandingPage = ({ ...props }) => {
     }, []);
 
     return (
-        <div className={slide ? 'landingPage slideImage' : 'landingPage'}>
+        <div className={slide ? 'landing-page move-background' : 'landing-page'}>
             <QuoteBanner />
             <InvisibleBar toggleTrue={() => setShowNav(true)} toggleFalse={() => setShowNav(false)} />
             <NavBar
                 show={showNav}
                 toggle={(opt) => setShowNav(opt)}
                 libraryActive={inView}
-                scroll={(prop) => document.getElementById(prop)?.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })}
+                scroll={(prop) => document.getElementById(prop)?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })}
             />
-            <div className={slide ? 'bottomHalf slideUp' : 'bottomHalf'}>
-                <div id="dashboard">
+            <div className={slide ? 'landing-page__bottom move-bottom' : 'landing-page__bottom'}>
+                <div id="bottom__dashboard">
                     <AnalyticPage />
                 </div>
-                <div id="library" ref={ref}>
+                <div id="bottom__library" ref={ref}>
                     <LibraryPage />
                 </div>
             </div>

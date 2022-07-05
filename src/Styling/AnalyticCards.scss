@@ -6,8 +6,13 @@
     width: 30%;
     background-color: white;
     border-radius: 10px;
+    cursor: pointer;
 
     @include breakpoint-mixin('laptop-wide') {
         height: 70%;
     }
+}
+
+.card1:hover {
+    border: 2px solid $border;
 }

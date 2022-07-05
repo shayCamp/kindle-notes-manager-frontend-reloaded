@@ -32,7 +32,6 @@ const LoginUserApi = () => {
 
         if (isNewAccount) {
             //if new account create account
-            console.log('creating account');
             axios({
                 method: 'POST',
                 url: 'https://kindle-project-backend-v2.herokuapp.com/users/',

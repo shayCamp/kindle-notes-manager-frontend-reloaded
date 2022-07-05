@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 
     .calenderContainer {
         width: 95%;
@@ -18,4 +19,10 @@
             fill: #aaa;
         }
     }
+}
+
+.boardContainer:hover {
+    border: 2px solid $border;
+    transition: all 1s ease;
+    transform: scale(1.05);
 }

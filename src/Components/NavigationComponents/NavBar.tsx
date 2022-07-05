@@ -23,10 +23,10 @@ const NavBar = ({ show, toggle, scroll, libraryActive }: NavBarProps) => {
                 <p>{username?.toLocaleUpperCase()}</p>
             </div>
             <div className="navOpt">
-                <DashboardIcon className={libraryActive ? 'icon' : 'active icon'} onClick={() => scroll('dashboard')} />
+                <DashboardIcon className={libraryActive ? 'icon' : 'active icon'} onClick={() => scroll('bottom__dashboard')} />
             </div>
             <div className="navOpt">
-                <MenuBookIcon className={libraryActive ? 'active icon' : 'icon'} onClick={() => scroll('library')} />
+                <MenuBookIcon className={libraryActive ? 'active icon' : 'icon'} onClick={() => scroll('bottom__library')} />
             </div>
             <div className="navOpt">
                 <BarChartIcon className="icon" />
