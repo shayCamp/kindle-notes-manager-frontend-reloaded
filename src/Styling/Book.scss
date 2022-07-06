@@ -6,8 +6,8 @@
     width: 100%;
     background-color: white;
     overflow: hidden;
-    box-shadow: 5px 8px 7px rgba(50, 49, 49, 0.561);
-    border-radius: 10px;
+    box-shadow: 5px 8px 7px $boxShadow;
+    border-radius: 5px;
     cursor: pointer;
 
     .book__image {

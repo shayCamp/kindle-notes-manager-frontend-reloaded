@@ -15,7 +15,7 @@ const LandingPage = ({ ...props }) => {
 
     const { ref, inView, entry } = useInView({
         /* Optional options */
-        threshold: 0.6, //When the form is in the viewport set inView to true
+        threshold: 0.1, //When the form is in the viewport set inView to true
     });
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const LandingPage = ({ ...props }) => {
     }, []);
 
     return (
-        <div className={slide ? 'landing-page move-background' : 'landing-page'}>
+        <div id="scrollTo" className={slide ? 'landing-page move-background' : 'landing-page'}>
             <QuoteBanner />
             <InvisibleBar toggleTrue={() => setShowNav(true)} toggleFalse={() => setShowNav(false)} />
             <NavBar

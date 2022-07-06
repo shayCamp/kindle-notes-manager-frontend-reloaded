@@ -10,30 +10,32 @@
     flex-direction: column;
     margin-top: 50px;
     align-items: center;
-    // background-color: orange;
 
-    .lib-page__searchSection {
+    .lib-page__search-section {
         height: 10vh;
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
 
-        .searchSection__searchBar {
-            height: 70%;
-            width: 40%;
+        .search-section__search-bar {
+            height: 78%;
+            width: 50%;
             background-color: white;
             border-radius: 10px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+            justify-content: space-between;
+            padding-left: 10px;
+
+            // overflow: hidden;
             cursor: pointer;
+            box-shadow: 5px 5px 5px $boxShadow;
 
             @include breakpoint-mixin('laptop-wide') {
                 height: 75%;
-                width: 35%;
+                width: 40%;
             }
 
             @include breakpoint-mixin('desktop') {
@@ -41,41 +43,110 @@
                 width: 35%;
             }
 
-            #icon {
-                position: absolute;
-                left: 7px;
+            #search-icon {
                 color: white;
                 padding: 5px;
                 background-color: $blue-accent;
                 // align-items: center;
-                border-radius: 10px;
+                border-radius: 5px;
 
                 @include breakpoint-mixin('laptop-wide') {
-                    left: 10px;
-                    padding: 8px;
+                    padding: 7px;
                 }
 
                 @include breakpoint-mixin('desktop') {
-                    left: 12px;
                     padding: 10px;
                 }
             }
 
             input {
-                width: 70%;
-                height: 100%;
+                width: 60%;
+                height: 95%;
                 border: none;
                 outline: none;
                 font-size: 15px;
+                // background-color: yellowgreen;
                 // text-align: center;
 
                 @include breakpoint-mixin('laptop-wide') {
                     font-size: 17px;
                 }
             }
+
+            .search-bar__drop-part {
+                height: 80%;
+                width: 25%;
+                font-size: 15px;
+                border-left: 2px solid $border;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                position: relative;
+
+                // background-color: orange;
+
+                .drop-part__drop {
+                    position: absolute;
+                    display: flex;
+                    flex-direction: column;
+                    top: 100%;
+                    width: 100%;
+                    border-radius: 0px 0px 10px 10px;
+                    background-color: white;
+                    height: fit-content;
+                    box-shadow: 5px 5px 5px $boxShadow;
+                    z-index: -1;
+
+                    .drop__option {
+                        pointer-events: none;
+
+                        height: 50px;
+                        display: flex;
+                        align-items: center;
+                        padding-left: 15px;
+                        cursor: pointer;
+                        // background-color: orange;
+                        // justify-content: center;
+                    }
+
+                    .drop__option:hover {
+                        background-color: $positiveBTN;
+                    }
+                }
+
+                @include breakpoint-mixin('laptop-wide') {
+                    font-size: 17px;
+                }
+
+                .arrow {
+                    color: black;
+                    font-size: 25px;
+                    border-radius: 5px;
+                    padding: 0.5px;
+                    transform: rotate(-90deg);
+                    transition: all 0.5s ease;
+
+                    @include breakpoint-mixin('laptop-wide') {
+                        padding: 1px;
+                    }
+                    @include breakpoint-mixin('desktop') {
+                        padding: 2px;
+                    }
+                }
+
+                .arrowActive {
+                    transition: all 0.5s ease;
+                    transform: rotate(0deg);
+                }
+
+                .arrow:hover {
+                    background-color: $blue-accent;
+                    color: white;
+                }
+            }
         }
 
-        .searchSection__searchBar:hover {
+        .search-section__searchBar:hover {
             border: 2px solid $border;
         }
     }
@@ -99,6 +170,10 @@
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
             gap: 90px;
         }
+    }
+
+    .margin {
+        margin-top: 150px;
     }
 
     .lib-page__bookSection::-webkit-scrollbar {

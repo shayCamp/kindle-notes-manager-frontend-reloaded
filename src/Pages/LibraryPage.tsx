@@ -5,10 +5,13 @@ import BooksApi from '../API/BooksApi';
 import BarLoader from 'react-spinners/BarLoader';
 import { css } from '@emotion/react';
 import Book from '../Components/LibraryComponents/Book';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import { AiOutlineStar } from 'react-icons/ai';
 
 const LibraryPage = ({ ...props }) => {
     const { getAllBooks, books, loading } = BooksApi();
     const [searchValue, setSearchValue] = useState('');
+    const [displayDrop, setDisplayDrop] = useState(false);
 
     useEffect(() => {
         getAllBooks();
@@ -23,13 +26,24 @@ const LibraryPage = ({ ...props }) => {
 
     return (
         <div className="lib-page">
-            <div className="lib-page__searchSection">
-                <div className="searchSection__searchBar">
-                    <SearchIcon id="icon" />
+            <div className="lib-page__search-section">
+                <div className="search-section__search-bar">
+                    <SearchIcon id="search-icon" />
                     <input placeholder="Search For Books By Title or Author" onChange={(e) => setSearchValue(e.target.value)}></input>
+                    <div className="search-bar__drop-part" onClick={() => setDisplayDrop(!displayDrop)}>
+                        <MdKeyboardArrowDown className={displayDrop ? 'arrow arrowActive' : 'arrow'} />
+                        <p>Book Filter</p>
+                        {displayDrop ? (
+                            <div className="drop-part__drop">
+                                <div className="drop__option">Rating</div>
+                                <div className="drop__option">Recent</div>
+                                <div className="drop__option">Genre</div>
+                            </div>
+                        ) : null}
+                    </div>
                 </div>
             </div>
-            <div className="lib-page__bookSection">
+            <div className={displayDrop ? 'lib-page__bookSection margin' : 'lib-page__bookSection'}>
                 {loading || books === undefined || books === null ? (
                     <BarLoader color={'#FFFFFF'} css={override} />
                 ) : books.length !== 0 ? (

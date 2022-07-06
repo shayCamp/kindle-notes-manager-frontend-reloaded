@@ -9,8 +9,8 @@
     transition: transform 1s;
     width: 95px;
     height: 65vh;
-    background-color: $blue-accent;
-    border-radius: 0px 10px 10px 0px;
+    background-color: $card-background;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -22,7 +22,7 @@
 
     @include breakpoint-mixin('desktop') {
         width: 125px;
-        height: 60vh;
+        height: 55vh;
     }
 
     .circleOpt {
@@ -40,7 +40,6 @@
         .circle {
             width: 60px;
             height: 60px;
-            background-color: orange;
             border-radius: 100%;
             overflow: hidden;
 
@@ -54,6 +53,12 @@
                 width: 100%;
                 object-fit: cover;
             }
+        }
+
+        .circle:hover {
+            border: 2px solid $positiveBTN;
+            transition: all 0.1s ease-in-out;
+            transform: scale(1.05);
         }
 
         p {
@@ -72,10 +77,12 @@
         .icon {
             color: white;
             font-size: 25px;
-
-            @include breakpoint-mixin('laptop-wide') {
-                font-size: 30px;
-            }
+            border-radius: 5px;
+            padding: 5px;
+        }
+        .icon:hover {
+            transition: all 0.5s ease;
+            transform: scale(1.2);
         }
 
         .active {
@@ -89,5 +96,5 @@
 }
 
 .show {
-    transform: translateX(0%);
+    transform: translateX(5%);
 }
