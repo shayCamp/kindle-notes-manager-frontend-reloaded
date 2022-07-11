@@ -28,7 +28,6 @@
             align-items: center;
             justify-content: space-between;
             padding-left: 10px;
-
             // overflow: hidden;
             cursor: pointer;
             box-shadow: 5px 5px 5px $boxShadow;
@@ -89,17 +88,23 @@
                     position: absolute;
                     display: flex;
                     flex-direction: column;
-                    top: 100%;
+                    top: 150%;
                     width: 100%;
-                    border-radius: 0px 0px 10px 10px;
+                    border-radius: 10px;
+                    overflow: hidden;
                     background-color: white;
                     height: fit-content;
                     box-shadow: 5px 5px 5px $boxShadow;
-                    z-index: -1;
+                    // z-index: -1;
+
+                    p {
+                        padding-left: 15px;
+                        width: 100%;
+                        font-size: 15px;
+                        // background-color: orange;
+                    }
 
                     .drop__option {
-                        pointer-events: none;
-
                         height: 50px;
                         display: flex;
                         align-items: center;
@@ -109,8 +114,9 @@
                         // justify-content: center;
                     }
 
-                    .drop__option:hover {
-                        background-color: $positiveBTN;
+                    .active {
+                        background-color: $blue-accent;
+                        color: $positiveBTN;
                     }
                 }
 
@@ -153,27 +159,27 @@
 
     .lib-page__bookSection {
         min-height: 90vh;
-        width: 80%;
+        width: 90%;
         padding: 20px 20px 100px 20px;
-        // background-color: yellowgreen;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 50px;
+        gap: 40px;
         margin-top: 50px;
         overflow-y: scroll;
 
         @include breakpoint-mixin('laptop-wide') {
-            gap: 90px;
+            width: 80%;
+            gap: 75px;
         }
 
         @include breakpoint-mixin('desktop') {
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            gap: 90px;
+            gap: 85px;
         }
     }
 
     .margin {
-        margin-top: 150px;
+        margin-top: 250px;
     }
 
     .lib-page__bookSection::-webkit-scrollbar {

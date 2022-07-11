@@ -20,7 +20,7 @@ function BooksApi() {
                 },
             })
                 .then(function (response: AxiosResponse<dbBook[]>) {
-                    setBooks(response.data);
+                    setBooks(response.data.reverse());
                     setLoading(false);
                 })
                 .catch(function (error) {

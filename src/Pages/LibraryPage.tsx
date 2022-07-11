@@ -12,6 +12,9 @@ const LibraryPage = ({ ...props }) => {
     const { getAllBooks, books, loading } = BooksApi();
     const [searchValue, setSearchValue] = useState('');
     const [displayDrop, setDisplayDrop] = useState(false);
+    const [recent, setRecent] = useState(true);
+    const [rating, setRating] = useState(false);
+    const [genre, setGenre] = useState(false);
 
     useEffect(() => {
         getAllBooks();
@@ -24,6 +27,20 @@ const LibraryPage = ({ ...props }) => {
         left: 45%;
     `;
 
+    const filterFunction = (filter: string) => {
+        switch (filter) {
+            case 'Rating':
+                setRating(!rating);
+                break;
+            case 'Recent':
+                setRecent(!recent);
+                break;
+            case 'Genre':
+                setGenre(!genre);
+                break;
+        }
+    };
+
     return (
         <div className="lib-page">
             <div className="lib-page__search-section">
@@ -35,9 +52,34 @@ const LibraryPage = ({ ...props }) => {
                         <p>Book Filter</p>
                         {displayDrop ? (
                             <div className="drop-part__drop">
-                                <div className="drop__option">Rating</div>
-                                <div className="drop__option">Recent</div>
-                                <div className="drop__option">Genre</div>
+                                <p>Sorting</p>
+                                <div
+                                    className={recent ? 'drop__option active' : 'drop__option'}
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        filterFunction('Recent');
+                                    }}
+                                >
+                                    Recent
+                                </div>
+                                <div
+                                    className={rating ? 'drop__option active' : 'drop__option'}
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        filterFunction('Rating');
+                                    }}
+                                >
+                                    Rating
+                                </div>
+                                <div
+                                    className={genre ? 'drop__option active' : 'drop__option'}
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        filterFunction('Genre');
+                                    }}
+                                >
+                                    Genre
+                                </div>
                             </div>
                         ) : null}
                     </div>
@@ -46,8 +88,23 @@ const LibraryPage = ({ ...props }) => {
             <div className={displayDrop ? 'lib-page__bookSection margin' : 'lib-page__bookSection'}>
                 {loading || books === undefined || books === null ? (
                     <BarLoader color={'#FFFFFF'} css={override} />
-                ) : books.length !== 0 ? (
+                ) : recent ? (
                     books
+                        .slice()
+                        .sort(function (a, b): number {
+                            if (rating) {
+                                return b.rating - a.rating;
+                            } else {
+                                return 0;
+                            }
+                        })
+                        .sort(function (a, b): number {
+                            if (genre) {
+                                return b.genre > a.genre ? 1 : -1;
+                            } else {
+                                return 0;
+                            }
+                        })
                         .filter(
                             (book) =>
                                 book.deleted === false &&
@@ -56,7 +113,33 @@ const LibraryPage = ({ ...props }) => {
                                     book.genre.toUpperCase().includes(searchValue.toUpperCase())),
                         )
                         .map((book, i) => <Book key={i} data={book} />)
-                ) : null}
+                ) : (
+                    books
+                        .slice()
+                        .reverse()
+                        .sort(function (a, b): number {
+                            if (rating) {
+                                return b.rating - a.rating;
+                            } else {
+                                return 0;
+                            }
+                        })
+                        .sort(function (a, b): number {
+                            if (genre) {
+                                return b.genre > a.genre ? 1 : -1;
+                            } else {
+                                return 0;
+                            }
+                        })
+                        .filter(
+                            (book) =>
+                                book.deleted === false &&
+                                (book.title.toUpperCase().includes(searchValue.toUpperCase()) ||
+                                    book.author.toUpperCase().includes(searchValue.toUpperCase()) ||
+                                    book.genre.toUpperCase().includes(searchValue.toUpperCase())),
+                        )
+                        .map((book, i) => <Book key={i} data={book} />)
+                )}
             </div>
         </div>
     );
