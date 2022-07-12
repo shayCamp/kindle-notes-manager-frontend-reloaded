@@ -45,7 +45,7 @@
             #search-icon {
                 color: white;
                 padding: 5px;
-                background-color: $blue-accent;
+                background-color: $icons-light;
                 // align-items: center;
                 border-radius: 5px;
 
@@ -115,7 +115,7 @@
                     }
 
                     .active {
-                        background-color: $blue-accent;
+                        background-color: $icons-light;
                         color: $positiveBTN;
                     }
                 }
@@ -146,7 +146,7 @@
                 }
 
                 .arrow:hover {
-                    background-color: $blue-accent;
+                    background-color: $icons-light;
                     color: white;
                 }
             }
