@@ -1,8 +1,18 @@
-$background-dark: #121212;
+//Light Theme
 $background-light: #e5e5e5;
-$card-background: #171717;
-$border: #78747476;
-$blue-accent: #3e445c;
+$card-background-light: white;
+$hover-light: #d9d9d9;
+$icons-light: #3e445c;
+
+//Dark Theme
+$background-dark: #121212;
+$card-background-dark: #171717;
+$hover-dark: #3e445c;
+
+//Positive & Negative
 $positiveBTN: #3fcdfc;
 $negativeBTN: #ff4a4a;
+
+//Border & Shadow
+$border: #78747476;
 $boxShadow: rgba(50, 49, 49, 0.561);

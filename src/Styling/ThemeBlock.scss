@@ -1,0 +1,79 @@
+@import '../Styling/Breakpoints.scss';
+@import '../Styling/Theme.scss';
+
+.theme-example {
+    height: 100%;
+    width: 40%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 25px;
+    border: 1px solid $border;
+    cursor: pointer;
+
+    @include breakpoint-mixin('laptop-wide') {
+        margin-right: 50px;
+        width: 35%;
+    }
+    @include breakpoint-mixin('desktop') {
+        margin-right: 70px;
+        width: 30%;
+    }
+
+    .bar {
+        height: 17%;
+        width: 80%;
+        background-color: white;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        border: 1px solid $border;
+
+        .square {
+            height: 10px;
+            border-radius: 5px;
+
+            width: 10px;
+            background-color: $hover-light;
+            opacity: 0.6;
+        }
+
+        .rectangle {
+            border-radius: 5px;
+
+            height: 10px;
+            width: 80%;
+            background-color: $hover-light;
+        }
+    }
+
+    .bar-top-light {
+        background-color: $hover-light;
+    }
+    .bar-top-dark {
+        background-color: $hover-dark;
+    }
+
+    .light {
+        background-color: $card-background-light;
+    }
+    .dark {
+        background-color: $card-background-dark;
+    }
+}
+
+.light {
+    background-color: $background-light;
+}
+.dark {
+    background-color: $background-dark;
+}
+
+.theme-example:hover {
+    border: 2px solid $positiveBTN;
+    transition: all 0.5s ease;
+    transform: scale(1.05);
+}

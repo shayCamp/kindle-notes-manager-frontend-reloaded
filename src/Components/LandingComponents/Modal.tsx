@@ -67,13 +67,13 @@ const Modal = ({ modalToggle }: ModalProps) => {
                 </div>
                 <div className="modal__content">
                     {setting_opt === 'Account' ? (
-                        <AccountOpt />
+                        <AccountOpt title={setting_opt} />
                     ) : setting_opt === 'Appearance' ? (
-                        <AppearanceOpt />
+                        <AppearanceOpt title={setting_opt} />
                     ) : setting_opt === 'Import' ? (
-                        <ImportOpt />
+                        <ImportOpt title={setting_opt} />
                     ) : setting_opt === 'Export' ? (
-                        <ExportOpt />
+                        <ExportOpt title={setting_opt} />
                     ) : null}
                 </div>
             </div>
