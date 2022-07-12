@@ -47,14 +47,22 @@ const Book = ({ data }: BookProps) => {
                     <p>{data.author}</p>
                 </div>
                 <div className="description__stars">
-                    <p>
-                        {[...Array(data.rating)].map((eachStar) => (
-                            <FaStar key={eachStar} id="star" />
-                        ))}
-                        {[...Array(5 - data.rating)].map((eachStar) => (
-                            <FaRegStar key={eachStar} id="star" />
-                        ))}
-                    </p>
+                    {data.rating === null ? (
+                        <p>
+                            {[...Array(5)].map((eachStar) => (
+                                <FaRegStar key={eachStar} id="star" />
+                            ))}
+                        </p>
+                    ) : (
+                        <p>
+                            {[...Array(data.rating)].map((eachStar) => (
+                                <FaStar key={eachStar} id="star" />
+                            ))}
+                            {[...Array(5 - data.rating)].map((eachStar) => (
+                                <FaRegStar key={eachStar} id="star" />
+                            ))}
+                        </p>
+                    )}
                 </div>
             </div>
         </div>

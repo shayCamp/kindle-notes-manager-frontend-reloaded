@@ -19,7 +19,7 @@ const Modal = ({ modalToggle }: ModalProps) => {
 
     return (
         <div className="modal-container" onClick={() => modalToggle()}>
-            <div className="modal-container__modal">
+            <div className="modal-container__modal" onClick={(event) => event.stopPropagation()}>
                 <div className="modal__navbar">
                     <div className="modal__navbar__title">
                         <p id="title">{username}</p>

@@ -173,8 +173,7 @@
         }
 
         @include breakpoint-mixin('desktop') {
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            gap: 85px;
+            gap: 150px;
         }
     }
 
