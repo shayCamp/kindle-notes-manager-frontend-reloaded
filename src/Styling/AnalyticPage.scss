@@ -13,10 +13,13 @@
 
     .section1 {
         height: 60%;
-        width: 80%;
+        width: 90%;
         display: flex;
         align-items: flex-end;
-        // background-color: orange;
+
+        @include breakpoint-mixin('laptop-wide') {
+            width: 80%;
+        }
 
         @include breakpoint-mixin('desktop') {
             height: 65%;
@@ -24,10 +27,14 @@
     }
     .section2 {
         height: 40%;
-        width: 80%;
+        width: 90%;
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @include breakpoint-mixin('laptop-wide') {
+            width: 80%;
+        }
 
         @include breakpoint-mixin('desktop') {
             height: 35%;

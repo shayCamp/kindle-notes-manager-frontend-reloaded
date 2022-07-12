@@ -1,0 +1,83 @@
+@import '../Styling/Breakpoints.scss';
+@import '../Styling/Theme.scss';
+
+.modal-container {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+
+    // overflow-y: hidden;
+
+    .modal-container__modal {
+        border: 2px solid $border;
+        top: 8%;
+        position: relative;
+        height: 80%;
+        width: 70%;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+
+        .modal__navbar {
+            height: 100%;
+            width: 25%;
+            background-color: $background-light;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            .modal__navbar__title {
+                height: 10%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                font-size: 16px;
+
+                #title {
+                    margin-left: 20px;
+                }
+            }
+
+            .modal__navbar__option {
+                height: 10%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                font-size: 16px;
+                cursor: pointer;
+
+                @include breakpoint-mixin('laptop-wide') {
+                    font-size: 17px;
+                }
+                @include breakpoint-mixin('desktop') {
+                    height: 9%;
+                }
+
+                .icon {
+                    color: $blue-accent;
+                    font-size: 18px;
+                    border-radius: 5px;
+                    padding: 5px;
+                    margin-right: 10px;
+                    margin-left: 20px;
+                }
+            }
+
+            .active {
+                background-color: $border;
+            }
+
+            .modal__navbar__option:hover {
+                background-color: $border;
+            }
+        }
+
+        .modal__content {
+            height: 100%;
+            width: 75%;
+        }
+    }
+}

@@ -1,17 +1,34 @@
 @import '../Styling/Breakpoints.scss';
 @import '../Styling/Theme.scss';
 
+@include breakpoint-mixin('laptop-wide') {
+    width: 115px;
+}
+
+@include breakpoint-mixin('desktop') {
+    width: 125px;
+    height: 55vh;
+}
+
 .book {
-    height: 50vh;
+    height: 65vh;
     width: 100%;
     background-color: white;
     overflow: hidden;
-    box-shadow: 5px 8px 7px rgba(50, 49, 49, 0.561);
-    border-radius: 10px;
+    box-shadow: 5px 8px 7px $boxShadow;
+    border-radius: 5px;
     cursor: pointer;
 
+    @include breakpoint-mixin('laptop-wide') {
+        height: 60vh;
+    }
+
+    @include breakpoint-mixin('desktop') {
+        height: 55vh;
+    }
+
     .book__image {
-        height: 70%;
+        height: 65%;
         width: 100%;
         overflow: hidden;
         display: flex;
@@ -19,22 +36,24 @@
         align-items: center;
 
         img {
-            width: 120%;
-            height: 120%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             // object-position: center center;
         }
     }
 
     .book__description {
-        height: 30%;
+        height: 35%;
         width: 100%;
-        // background-color: pink;
-        padding: 5px 10px 5px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
         .description__tags {
-            height: 30%;
-            width: 100%;
+            height: 25%;
+            width: 90%;
             display: flex;
             align-items: center;
 
@@ -44,7 +63,7 @@
                 background-color: rgb(111, 201, 201);
                 border-radius: 5px;
                 color: white;
-                font-size: 13px;
+                font-size: 14px;
 
                 @include breakpoint-mixin('laptop-wide') {
                     padding: 4px 22px 4px 22px;
@@ -54,6 +73,68 @@
                 @include breakpoint-mixin('desktop') {
                     padding: 3px 20px 3px 20px;
                 }
+            }
+        }
+
+        .description__title {
+            height: 20%;
+            width: 90%;
+            display: flex;
+            align-items: center;
+            font-weight: 650;
+
+            p {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 17px;
+
+                @include breakpoint-mixin('laptop-wide') {
+                    font-size: 18px;
+                }
+                @include breakpoint-mixin('desktop') {
+                    font-size: 20px;
+                }
+            }
+        }
+        .description__author {
+            height: 25%;
+            width: 90%;
+            display: flex;
+            align-items: center;
+            font-weight: 650;
+
+            p {
+                opacity: 0.7;
+                font-size: 14px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                @include breakpoint-mixin('desktop') {
+                    font-size: 15px;
+                }
+            }
+        }
+        .description__stars {
+            height: 25%;
+            width: 90%;
+            display: flex;
+            align-items: center;
+            font-weight: 650;
+
+            p {
+                font-size: 18px;
+
+                @include breakpoint-mixin('laptop-wide') {
+                    font-size: 20px;
+                }
+                @include breakpoint-mixin('desktop') {
+                    font-size: 22px;
+                }
+            }
+            #star {
+                margin-right: 5px;
             }
         }
     }

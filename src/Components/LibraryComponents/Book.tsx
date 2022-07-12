@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { dbBook } from '../../API/Interface';
 import '../../Styling/Book.scss';
+import { FaStar } from 'react-icons/fa';
+import { FaRegStar } from 'react-icons/fa';
 
 interface BookProps {
     data: dbBook;
@@ -37,6 +39,30 @@ const Book = ({ data }: BookProps) => {
                     <p id="tag" style={{ backgroundColor: genreColor }}>
                         {data.genre !== '' ? data.genre : 'No Genre'}
                     </p>
+                </div>
+                <div className="description__title">
+                    <p>{data.title}</p>
+                </div>
+                <div className="description__author">
+                    <p>{data.author}</p>
+                </div>
+                <div className="description__stars">
+                    {data.rating === null ? (
+                        <p>
+                            {[...Array(5)].map((eachStar) => (
+                                <FaRegStar key={eachStar} id="star" />
+                            ))}
+                        </p>
+                    ) : (
+                        <p>
+                            {[...Array(data.rating)].map((eachStar) => (
+                                <FaStar key={eachStar} id="star" />
+                            ))}
+                            {[...Array(5 - data.rating)].map((eachStar) => (
+                                <FaRegStar key={eachStar} id="star" />
+                            ))}
+                        </p>
+                    )}
                 </div>
             </div>
         </div>

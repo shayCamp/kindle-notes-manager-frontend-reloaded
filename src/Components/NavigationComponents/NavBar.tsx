@@ -1,18 +1,20 @@
 import React from 'react';
 import '../../Styling/NavBar.scss';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
-import SettingsIcon from '@mui/icons-material/Settings';
+import { MdSpaceDashboard } from 'react-icons/md';
+import { IoAnalyticsSharp } from 'react-icons/io5';
+import { ImBooks } from 'react-icons/im';
+import { BsToggles } from 'react-icons/bs';
 
 interface NavBarProps {
     show: boolean;
     toggle: (args: boolean) => void;
     scroll: (args: string) => void;
     libraryActive: boolean;
+    modalToggle: () => void;
+    modalActive: boolean;
 }
 
-const NavBar = ({ show, toggle, scroll, libraryActive }: NavBarProps) => {
+const NavBar = ({ show, toggle, scroll, libraryActive, modalToggle, modalActive }: NavBarProps) => {
     const username = sessionStorage.getItem('username');
     return (
         <div className={show ? 'show navBar' : 'navBar'} onMouseEnter={() => toggle(true)} onMouseLeave={() => toggle(false)}>
@@ -23,17 +25,17 @@ const NavBar = ({ show, toggle, scroll, libraryActive }: NavBarProps) => {
                 <p>{username?.toLocaleUpperCase()}</p>
             </div>
             <div className="navOpt">
-                <DashboardIcon className={libraryActive ? 'icon' : 'active icon'} onClick={() => scroll('bottom__dashboard')} />
+                <MdSpaceDashboard className={libraryActive ? 'icon' : 'active icon'} onClick={() => scroll('scrollTo')} />
             </div>
             <div className="navOpt">
-                <MenuBookIcon className={libraryActive ? 'active icon' : 'icon'} onClick={() => scroll('bottom__library')} />
+                <ImBooks className={libraryActive ? 'active icon' : 'icon'} onClick={() => scroll('bottom__library')} />
             </div>
             <div className="navOpt">
-                <BarChartIcon className="icon" />
+                <IoAnalyticsSharp className="icon" />
             </div>
 
             <div className="navOpt">
-                <SettingsIcon className="icon" />
+                <BsToggles className={modalActive ? 'active icon' : 'icon'} onClick={() => modalToggle()} />
             </div>
         </div>
     );
