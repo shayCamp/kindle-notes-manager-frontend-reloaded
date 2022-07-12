@@ -10,9 +10,11 @@ interface NavBarProps {
     toggle: (args: boolean) => void;
     scroll: (args: string) => void;
     libraryActive: boolean;
+    modalToggle: () => void;
+    modalActive: boolean;
 }
 
-const NavBar = ({ show, toggle, scroll, libraryActive }: NavBarProps) => {
+const NavBar = ({ show, toggle, scroll, libraryActive, modalToggle, modalActive }: NavBarProps) => {
     const username = sessionStorage.getItem('username');
     return (
         <div className={show ? 'show navBar' : 'navBar'} onMouseEnter={() => toggle(true)} onMouseLeave={() => toggle(false)}>
@@ -33,7 +35,7 @@ const NavBar = ({ show, toggle, scroll, libraryActive }: NavBarProps) => {
             </div>
 
             <div className="navOpt">
-                <BsToggles className="icon" />
+                <BsToggles className={modalActive ? 'active icon' : 'icon'} onClick={() => modalToggle()} />
             </div>
         </div>
     );

@@ -6,12 +6,12 @@ import '../Styling/LandingPage.scss';
 import AnalyticPage from './AnalyticPage';
 import LibraryPage from './LibraryPage';
 import { useInView } from 'react-intersection-observer';
-
-// interface LandingPageProps {}
+import Modal from '../Components/LandingComponents/Modal';
 
 const LandingPage = ({ ...props }) => {
     const [slide, setSlide] = useState(false);
     const [showNav, setShowNav] = useState(false);
+    const [viewModal, setViewModal] = useState(false);
 
     const { ref, inView, entry } = useInView({
         /* Optional options */
@@ -25,6 +25,10 @@ const LandingPage = ({ ...props }) => {
         }, 200);
     }, []);
 
+    const modalToggle = () => {
+        setViewModal(!viewModal);
+    };
+
     return (
         <div id="scrollTo" className={slide ? 'landing-page move-background' : 'landing-page'}>
             <QuoteBanner />
@@ -33,7 +37,9 @@ const LandingPage = ({ ...props }) => {
                 show={showNav}
                 toggle={(opt) => setShowNav(opt)}
                 libraryActive={inView}
+                modalActive={viewModal}
                 scroll={(prop) => document.getElementById(prop)?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })}
+                modalToggle={modalToggle}
             />
             <div className={slide ? 'landing-page__bottom move-bottom' : 'landing-page__bottom'}>
                 <div id="bottom__dashboard">
@@ -43,6 +49,7 @@ const LandingPage = ({ ...props }) => {
                     <LibraryPage />
                 </div>
             </div>
+            {viewModal ? <Modal modalToggle={modalToggle} /> : null}
         </div>
     );
 };

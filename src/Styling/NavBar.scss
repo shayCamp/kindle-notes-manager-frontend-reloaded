@@ -9,7 +9,7 @@
     transition: transform 1s;
     width: 95px;
     height: 65vh;
-    background-color: $card-background;
+    background-color: white;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -62,7 +62,7 @@
         }
 
         p {
-            color: $background-light;
+            color: $blue-accent;
         }
     }
 
@@ -75,7 +75,7 @@
         transition: all;
 
         .icon {
-            color: white;
+            color: $blue-accent;
             font-size: 25px;
             border-radius: 5px;
             padding: 5px;
