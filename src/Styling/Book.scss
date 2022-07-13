@@ -13,11 +13,11 @@
 .book {
     height: 65vh;
     width: 100%;
-    background-color: $card-background-light;
     overflow: hidden;
     box-shadow: 5px 8px 7px $boxShadow;
     border-radius: 5px;
     cursor: pointer;
+    border: 1px solid $border;
 
     @include breakpoint-mixin('laptop-wide') {
         height: 60vh;
@@ -141,7 +141,6 @@
 }
 
 .book:hover {
-    border: 2px solid $border;
     transition: all 1s ease;
     transform: scale(1.05);
 }

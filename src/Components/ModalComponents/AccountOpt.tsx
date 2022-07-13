@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../Context/UserContext';
 import '../../Styling/AccountOpt.scss';
 import { BsFillPencilFill } from 'react-icons/bs';
 
 // interface MyAccountProps {}
 
 const AccountOpt = ({ ...props }) => {
-    console.log(props);
+    const userInfo = useContext(UserContext);
+    const dark = userInfo?.dark_mode;
     return (
         <div className="AccountOpt-page">
             <div className="circle">
@@ -13,10 +15,10 @@ const AccountOpt = ({ ...props }) => {
                     <BsFillPencilFill id="edit-icon" />
                 </div>
             </div>
-            <div className="info-block"></div>
-            <div className="linked-block"></div>
+            <div className={dark ? 'info-block bg-dark' : 'info-block'}></div>
+            <div className={dark ? 'linked-block bg-dark' : 'linked-block'}></div>
             <div
-                className="signOut-block"
+                className={dark ? 'signOut-block bg-dark' : 'signOut-block'}
                 onClick={() => {
                     sessionStorage.clear();
                     history.go(0);

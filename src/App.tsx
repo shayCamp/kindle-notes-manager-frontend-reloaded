@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import UserInfoApi from './API/UserInfo';
 import useToken from './API/useToken';
-import { UserContext } from './Context/UserContext';
 import LandingPage from './Pages/LandingPage';
 import Login from './Pages/Login';
-
+import { UserContext } from './Context/UserContext';
 import './Styling/App.scss';
 
 const App = () => {
     const { authToken, setAuthToken } = useToken();
+    console.log('authToken: ', authToken);
+    const { userInfo } = UserInfoApi();
     const [advanceUser, setAdvanceUser] = useState(false);
 
     useEffect(() => {
-        //Checking if there is authToken on page load only, if so pass them into application
         if (authToken) {
             advanceUserFunc();
         }
-    }, []); //Use state means it only checks authToken when the page loads, instead of constantly, which allows the animation to take place and not get cutt off and user passed straight into app
+    }, []);
 
     const advanceUserFunc = () => {
         //Function used to pass user to app
@@ -31,9 +32,11 @@ const App = () => {
         return (
             <div className="app">
                 <Router>
-                    <Routes>
-                        <Route path="/" element={<LandingPage />} />
-                    </Routes>
+                    <UserContext.Provider value={userInfo}>
+                        <Routes>
+                            <Route path="/" element={<LandingPage />} />
+                        </Routes>
+                    </UserContext.Provider>
                 </Router>
             </div>
         );

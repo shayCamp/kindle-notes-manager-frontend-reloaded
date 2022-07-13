@@ -1,5 +1,6 @@
-import React, { createContext } from "react";
+import React, { createContext } from 'react';
+import { userInfo } from '../API/Interface';
 
-export const UserContext: React.Context<null> = createContext(null);
+export const UserContext = createContext<userInfo | undefined>(undefined);
 
 export default UserContext;

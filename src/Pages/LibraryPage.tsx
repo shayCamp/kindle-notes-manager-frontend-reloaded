@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../Context/UserContext';
 import '../Styling/LibraryPage.scss';
 import SearchIcon from '@mui/icons-material/Search';
 import BooksApi from '../API/BooksApi';
@@ -7,6 +8,7 @@ import { css } from '@emotion/react';
 import Book from '../Components/LibraryComponents/Book';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { AiOutlineStar } from 'react-icons/ai';
+import '../Styling/darkTheme.scss';
 
 const LibraryPage = ({ ...props }) => {
     const { getAllBooks, books, loading } = BooksApi();
@@ -15,6 +17,8 @@ const LibraryPage = ({ ...props }) => {
     const [recent, setRecent] = useState(true);
     const [rating, setRating] = useState(false);
     const [genre, setGenre] = useState(false);
+    const userInfo = useContext(UserContext);
+    const dark = userInfo?.dark_mode;
 
     useEffect(() => {
         getAllBooks();
@@ -44,14 +48,22 @@ const LibraryPage = ({ ...props }) => {
     return (
         <div className="lib-page">
             <div className="lib-page__search-section">
-                <div className="search-section__search-bar">
+                <div className={dark ? 'search-section__search-bar cd-dark' : 'search-section__search-bar cd-light'}>
                     <SearchIcon id="search-icon" />
-                    <input placeholder="Search For Books By Title or Author" onChange={(e) => setSearchValue(e.target.value)}></input>
-                    <div className="search-bar__drop-part" onClick={() => setDisplayDrop(!displayDrop)}>
-                        <MdKeyboardArrowDown className={displayDrop ? 'arrow arrowActive' : 'arrow'} />
+                    <input
+                        placeholder="Search For Books By Title or Author"
+                        onChange={(e) => setSearchValue(e.target.value)}
+                        className={dark ? 'text-dark' : undefined}
+                    ></input>
+                    <div className={dark ? 'search-bar__drop-part text-dark' : 'search-bar__drop-part'} onClick={() => setDisplayDrop(!displayDrop)}>
+                        <MdKeyboardArrowDown
+                            className={
+                                displayDrop ? (dark ? 'arrow arrowActive text-dark' : 'arrow arrowActive') : dark ? 'arrow text-dark' : 'arrow'
+                            }
+                        />
                         <p>Book Filter</p>
                         {displayDrop ? (
-                            <div className="drop-part__drop">
+                            <div className={dark ? 'drop-part__drop cd-dark' : 'drop-part__drop cd-light'}>
                                 <p>Sorting</p>
                                 <div
                                     className={recent ? 'drop__option active' : 'drop__option'}

@@ -4,12 +4,12 @@
 .boardContainer {
     height: 80%;
     width: 100%;
-    background-color: $card-background-light;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    border: 1px solid $border;
 
     .calenderContainer {
         width: 95%;
@@ -22,7 +22,6 @@
 }
 
 .boardContainer:hover {
-    border: 2px solid $border;
     transition: all 1s ease;
     transform: scale(1.05);
 }

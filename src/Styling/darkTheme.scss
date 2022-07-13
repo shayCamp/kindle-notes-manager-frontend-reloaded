@@ -1,0 +1,27 @@
+@import '../Styling/Theme.scss';
+
+.bg-light {
+    background-color: $background-light;
+}
+
+.bg-dark {
+    background-color: $background-dark;
+}
+
+.cd-light {
+    background-color: $card-background-light;
+}
+.cd-dark {
+    background-color: $card-background-dark;
+}
+
+.text-dark {
+    color: white;
+}
+
+.icon-dark {
+    color: $icons-dark;
+}
+.icon-light {
+    color: $icons-light;
+}
