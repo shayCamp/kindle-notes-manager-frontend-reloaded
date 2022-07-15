@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../Context/UserContext';
 import '../../Styling/Modal.scss';
 import { BiImport } from 'react-icons/bi';
 import { BiExport } from 'react-icons/bi';
-import { GrView } from 'react-icons/gr';
+import { AiOutlineFormatPainter } from 'react-icons/ai';
 import { VscAccount } from 'react-icons/vsc';
 import AccountOpt from '../ModalComponents/AccountOpt';
 import AppearanceOpt from '../ModalComponents/AppearanceOpt';
 import ImportOpt from '../ModalComponents/ImportOpt';
 import ExportOpt from '../ModalComponents/ExportOpt';
+import '../../Styling/darkTheme.scss';
 
 interface ModalProps {
     modalToggle: () => void;
@@ -16,11 +18,16 @@ interface ModalProps {
 const Modal = ({ modalToggle }: ModalProps) => {
     const username = sessionStorage.getItem('username');
     const [setting_opt, setSetting_opt] = useState('Account');
+    const userInfo = useContext(UserContext);
+    const dark = userInfo?.dark_mode;
 
     return (
         <div className="modal-container" onClick={() => modalToggle()}>
-            <div className="modal-container__modal" onClick={(event) => event.stopPropagation()}>
-                <div className="modal__navbar">
+            <div
+                className={dark ? 'modal-container__modal cd-dark text-dark' : 'modal-container__modal cd-light'}
+                onClick={(event) => event.stopPropagation()}
+            >
+                <div className={dark ? 'modal__navbar bg-dark ' : 'modal__navbar bg-light'}>
                     <div className="modal__navbar__title">
                         <p id="title">{username}</p>
                     </div>
@@ -41,7 +48,7 @@ const Modal = ({ modalToggle }: ModalProps) => {
                             setSetting_opt('Appearance');
                         }}
                     >
-                        <GrView className="icon" />
+                        <AiOutlineFormatPainter className="icon" />
                         <p>Appearance</p>
                     </div>
                     <div

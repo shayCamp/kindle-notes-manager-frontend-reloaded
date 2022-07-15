@@ -4,15 +4,11 @@
 .card1 {
     height: 65%;
     width: 30%;
-    background-color: $card-background-light;
     border-radius: 10px;
     cursor: pointer;
+    border: 1px solid $border;
 
     @include breakpoint-mixin('laptop-wide') {
         height: 70%;
     }
-}
-
-.card1:hover {
-    border: 2px solid $border;
 }

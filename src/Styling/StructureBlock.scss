@@ -1,66 +1,73 @@
 @import '../Styling/Breakpoints.scss';
 @import '../Styling/Theme.scss';
 
-.theme-example-container {
-    width: 40%;
+.structure-example-container {
+    // width: 40%;
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding-bottom: 30px;
     margin-right: 25px;
+    // background-color: orange;
 
     @include breakpoint-mixin('laptop-wide') {
         margin-right: 50px;
-        width: 35%;
-    }
-    @include breakpoint-mixin('desktop') {
-        margin-right: 70px;
-        width: 30%;
+        // width: 35%;
     }
 
-    .theme-example {
+    @include breakpoint-mixin('desktop') {
+        margin-right: 40px;
+        // width: 30%;
+    }
+
+    .structure-example {
         height: 80%;
-        width: 100%;
+        width: fit-content;
         border-radius: 15px;
         display: flex;
         justify-content: space-evenly;
-        flex-direction: column;
         align-items: center;
         border: 1px solid $border;
         cursor: pointer;
+        padding: 0px 5px 0px 5px;
 
-        .bar {
-            height: 17%;
-            width: 80%;
-            background-color: white;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
+        @include breakpoint-mixin('desktop') {
+            padding: 0px 10px 0px 10px;
+            // width: 30%;
+        }
+
+        .bookContainer {
+            height: 80%;
+            width: 65px;
+            margin: 0px 10px 0px 10px;
+            border-radius: 10px;
+            overflow: hidden;
             border: 1px solid $border;
 
-            .square {
-                height: 10px;
-                border-radius: 5px;
-
-                width: 10px;
-                background-color: $hover-light;
-                opacity: 0.6;
+            @include breakpoint-mixin('laptop-wide') {
+                width: 75px;
+                // width: 35%;
             }
 
-            .rectangle {
-                border-radius: 5px;
+            @include breakpoint-mixin('desktop') {
+                height: 75%;
+                width: 80px;
+                // width: 35%;
+            }
 
-                height: 10px;
-                width: 80%;
+            .upper {
+                height: 55%;
+                width: 100%;
+                margin-bottom: auto;
+                background-color: red;
+            }
+
+            .light {
                 background-color: $hover-light;
             }
-        }
-
-        .bar-top-light {
-            background-color: $hover-light;
-        }
-        .bar-top-dark {
-            background-color: $hover-dark;
+            .dark {
+                background-color: $hover-dark;
+            }
         }
 
         .light {
@@ -82,7 +89,7 @@
         background-color: $background-dark;
     }
 
-    .theme-example:hover {
+    .structure-example:hover {
         border: 2px solid $positiveBTN;
         transition: all 0.5s ease;
         transform: scale(1.02);
@@ -110,15 +117,6 @@
             @include breakpoint-mixin('desktop') {
                 margin-right: 10px;
             }
-        }
-
-        @include breakpoint-mixin('laptop-wide') {
-            margin-right: 50px;
-            width: 35%;
-        }
-        @include breakpoint-mixin('desktop') {
-            margin-right: 70px;
-            width: 30%;
         }
     }
 }

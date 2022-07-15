@@ -9,7 +9,6 @@
     transition: transform 1s;
     width: 95px;
     height: 65vh;
-    background-color: white;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -60,10 +59,6 @@
             transition: all 0.1s ease-in-out;
             transform: scale(1.05);
         }
-
-        p {
-            color: $icons-light;
-        }
     }
 
     .navOpt {
@@ -75,7 +70,6 @@
         transition: all;
 
         .icon {
-            color: $icons-light;
             font-size: 25px;
             border-radius: 5px;
             padding: 5px;
@@ -92,7 +86,7 @@
 }
 
 .navBar:hover {
-    border: 2px solid $border;
+    border: 1px solid $border;
 }
 
 .show {

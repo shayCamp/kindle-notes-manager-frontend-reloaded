@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import QuoteBanner from '../Components/LandingComponents/QuoteBanner';
 import NavBar from '../Components/NavigationComponents/NavBar';
 import InvisibleBar from '../Components/NavigationComponents/InvisibleBar';
 import '../Styling/LandingPage.scss';
 import AnalyticPage from './AnalyticPage';
 import LibraryPage from './LibraryPage';
+import { UserContext } from '../Context/UserContext';
 import { useInView } from 'react-intersection-observer';
 import Modal from '../Components/LandingComponents/Modal';
+import '../Styling/darkTheme.scss';
 
 const LandingPage = ({ ...props }) => {
     const [slide, setSlide] = useState(false);
     const [showNav, setShowNav] = useState(false);
     const [viewModal, setViewModal] = useState(false);
+    const userInfo = useContext(UserContext);
+    const dark = userInfo?.dark_mode;
 
     const { ref, inView, entry } = useInView({
         /* Optional options */
@@ -41,7 +45,11 @@ const LandingPage = ({ ...props }) => {
                 scroll={(prop) => document.getElementById(prop)?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })}
                 modalToggle={modalToggle}
             />
-            <div className={slide ? 'landing-page__bottom move-bottom' : 'landing-page__bottom'}>
+            <div
+                className={
+                    slide ? (dark ? 'landing-page__bottom move-bottom bg-dark' : 'landing-page__bottom move-bottom bg-light') : 'landing-page__bottom'
+                }
+            >
                 <div id="bottom__dashboard">
                     <AnalyticPage />
                 </div>

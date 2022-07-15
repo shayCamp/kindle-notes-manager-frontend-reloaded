@@ -8,11 +8,11 @@ import '../Styling/Login.scss';
 
 interface LoginProps {
     updateAuthToken: (args: string | null) => void;
-    advanceUser: () => void;
     authToken: string | null;
+    getUserInfo: () => void;
 }
 
-const Login = ({ updateAuthToken, advanceUser, authToken }: LoginProps) => {
+const Login = ({ updateAuthToken, authToken, getUserInfo }: LoginProps) => {
     const [isNewAccount, setIsNewAccount] = useState(false); //is the user logining in or creating an account
     const [slide, setSlide] = useState(false);
 
@@ -40,7 +40,7 @@ const Login = ({ updateAuthToken, advanceUser, authToken }: LoginProps) => {
     useEffect(() => {
         if (authToken && !inView) {
             //If user has an authToken and form is not inView then we can advance user
-            advanceUser();
+            getUserInfo();
         }
     }, [authToken, inView]);
 

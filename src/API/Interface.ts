@@ -42,3 +42,19 @@ export interface dbBook {
     upload_date: string;
     highlights: highlight[];
 }
+
+export interface users {
+    username: string;
+    userID: string;
+}
+
+export interface userInfo {
+    book_count: boolean;
+    profile_picture: string;
+    following: users[];
+    bookRecomDate: string;
+    username: string;
+    registration_date: string;
+    dark_mode: boolean;
+    __v: number;
+}

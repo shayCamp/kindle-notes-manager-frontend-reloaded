@@ -56,6 +56,7 @@
 
             #edit-icon {
                 font-size: 10px;
+                color: black;
 
                 @include breakpoint-mixin('laptop-wide') {
                     font-size: 12px;
@@ -71,19 +72,18 @@
     .info-block {
         width: 100%;
         height: 30%;
-        background-color: $background-light;
         border-radius: 10px;
+        border: 1px solid $border;
     }
     .linked-block {
         width: 100%;
         height: 20%;
-        background-color: $background-light;
         border-radius: 10px;
+        border: 1px solid $border;
     }
     .signOut-block {
         width: 20%;
         height: 10%;
-        background-color: $background-light;
         border-radius: 10px;
         margin-left: auto;
         display: flex;
@@ -91,6 +91,7 @@
         cursor: pointer;
         justify-content: center;
         transition: all 0.5s ease;
+        border: 1px solid $border;
     }
 
     .signOut-block:hover {

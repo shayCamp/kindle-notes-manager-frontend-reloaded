@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../Context/UserContext';
 import '../../Styling/StreakBoard.scss';
 import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 import HighlightApi from '../../API/HighlightApi';
 import CalenderFunctions from '../../API/CalenderFunctions';
+import '../../Styling/darkTheme.scss';
 
 // interface StreakBoardProps {}
 
 const StreakBoard = ({ ...props }) => {
     const { highlights, getAllHighlights, loading } = HighlightApi();
-    console.log('highlights: ', highlights);
     const { shiftDate } = CalenderFunctions();
     const today = new Date();
+    const userInfo = useContext(UserContext);
+    const dark = userInfo?.dark_mode;
 
     useEffect(() => {
         let isMounted = true;
@@ -26,7 +29,7 @@ const StreakBoard = ({ ...props }) => {
     }, []);
 
     return (
-        <div className="boardContainer">
+        <div className={dark ? 'boardContainer cd-dark' : 'boardContainer cd-light'}>
             <div className="calenderContainer">
                 <CalendarHeatmap
                     startDate={shiftDate(today, -365)}
