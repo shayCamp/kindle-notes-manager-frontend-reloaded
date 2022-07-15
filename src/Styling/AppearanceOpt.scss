@@ -7,6 +7,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
+    padding-left: 5px;
 
     .page-title {
         height: 10%;
@@ -22,7 +24,7 @@
         }
     }
 
-    .theme-block__title {
+    .option-title {
         height: 10%;
         width: 100%;
         display: flex;
@@ -37,34 +39,72 @@
             height: 9%;
         }
     }
-    .theme-block {
-        height: 25%;
+
+    .option-container {
+        height: 30%;
         width: 100%;
         display: flex;
-        // background-color: orange;
-    }
-
-    .theme-block__names {
-        width: 100%;
-        height: 10%;
-        display: flex;
-
-        .name {
-            width: 40%;
-            margin-right: 25px;
-            // background-color: aqua;
-            padding-left: 10px;
-            display: flex;
-            align-items: center;
-
-            @include breakpoint-mixin('laptop-wide') {
-                margin-right: 50px;
-                width: 35%;
-            }
-            @include breakpoint-mixin('desktop') {
-                margin-right: 70px;
-                width: 30%;
-            }
-        }
+        flex-wrap: wrap;
+        margin-bottom: 40px;
     }
 }
+
+.AppearanceOpt-page::-webkit-scrollbar {
+    display: none;
+}
+
+// .option-title {
+//     height: 10%;
+//     width: 100%;
+//     display: flex;
+//     align-items: center;
+
+//
+// }
+// .option-block {
+//     height: 25%;
+//     width: 100%;
+//     display: flex;
+//     // background-color: orange;
+// }
+
+// .option-block-desc {
+//     width: 100%;
+//     height: 10%;
+//     display: flex;
+
+//     .desc-theme {
+//         width: 40%;
+//         margin-right: 25px;
+//         background-color: aqua;
+//         padding-left: 10px;
+//         display: flex;
+//         align-items: center;
+
+//         @include breakpoint-mixin('laptop-wide') {
+//             font-size: 16px;
+//         }
+
+//         @include breakpoint-mixin('desktop') {
+//             font-size: 17px;
+//         }
+
+//         #check {
+//             margin-right: 10px;
+//             color: $positiveBTN;
+
+//             @include breakpoint-mixin('desktop') {
+//                 margin-right: 10px;
+//             }
+//         }
+
+//         @include breakpoint-mixin('laptop-wide') {
+//             margin-right: 50px;
+//             width: 35%;
+//         }
+//         @include breakpoint-mixin('desktop') {
+//             margin-right: 70px;
+//             width: 30%;
+//         }
+//     }
+// }

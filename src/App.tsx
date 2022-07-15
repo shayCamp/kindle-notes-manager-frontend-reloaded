@@ -9,24 +9,18 @@ import './Styling/App.scss';
 
 const App = () => {
     const { authToken, setAuthToken } = useToken();
-    console.log('authToken: ', authToken);
-    const { userInfo } = UserInfoApi();
+    const { userInfo, getUserInfo } = UserInfoApi(authToken);
     const [advanceUser, setAdvanceUser] = useState(false);
 
     useEffect(() => {
         if (authToken) {
-            advanceUserFunc();
+            getUserInfo();
         }
     }, []);
 
-    const advanceUserFunc = () => {
-        //Function used to pass user to app
-        setAdvanceUser(true);
-    };
-
-    if (!advanceUser) {
+    if (userInfo === undefined) {
         //No auth the user needs to go to login
-        return <Login updateAuthToken={setAuthToken} advanceUser={advanceUserFunc} authToken={authToken} />;
+        return <Login updateAuthToken={setAuthToken} getUserInfo={getUserInfo} authToken={authToken} />;
     } else {
         //Loading main app once auth is in local storage
         return (

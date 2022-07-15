@@ -56,6 +56,7 @@
 
             #edit-icon {
                 font-size: 10px;
+                color: black;
 
                 @include breakpoint-mixin('laptop-wide') {
                     font-size: 12px;
