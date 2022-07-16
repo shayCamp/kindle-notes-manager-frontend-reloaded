@@ -22,19 +22,35 @@ const Login = ({ updateAuthToken, authToken, getUserInfo }: LoginProps) => {
     });
 
     useEffect(() => {
+        let isMounted = true;
+
         //Function to set slide animation on page load
         setTimeout(function () {
-            setSlide(true);
+            if (isMounted) {
+                setSlide(true);
+            }
         }, 1200);
+
+        return () => {
+            isMounted = false;
+        };
     }, []);
 
     useEffect(() => {
+        let isMounted = true;
+
         //Function to remove slide animation when there is an authToken
         if (authToken) {
             setTimeout(function () {
-                setSlide(false);
+                if (isMounted) {
+                    setSlide(false);
+                }
             }, 200);
         }
+
+        return () => {
+            isMounted = false;
+        };
     }, [authToken]);
 
     useEffect(() => {

@@ -4,7 +4,7 @@
 .navBar {
     transform: translateX(-100%);
     position: fixed;
-    z-index: 2;
+    z-index: 5;
     top: 8%;
     transition: transform 1s;
     width: 95px;
@@ -14,6 +14,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     cursor: pointer;
+    border: 1px solid $border;
 
     @include breakpoint-mixin('laptop-wide') {
         width: 115px;
@@ -22,6 +23,35 @@
     @include breakpoint-mixin('desktop') {
         width: 125px;
         height: 55vh;
+    }
+
+    .toggleTag {
+        position: absolute;
+        padding: 5px;
+        border: 1px solid $border;
+        top: -1px;
+        left: 105%;
+        border-radius: 10px;
+        background-color: white;
+        z-index: -1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include breakpoint-mixin('laptop-wide') {
+            padding: 7px;
+        }
+
+        #icon {
+            font-size: 18px;
+        }
+        #icon {
+            font-size: 18px;
+
+            @include breakpoint-mixin('desktop') {
+                font-size: 20px;
+            }
+        }
     }
 
     .circleOpt {
@@ -83,10 +113,6 @@
             color: $positiveBTN;
         }
     }
-}
-
-.navBar:hover {
-    border: 1px solid $border;
 }
 
 .show {

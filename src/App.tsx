@@ -10,13 +10,7 @@ import './Styling/App.scss';
 const App = () => {
     const { authToken, setAuthToken } = useToken();
     const { userInfo, getUserInfo } = UserInfoApi(authToken);
-    const [advanceUser, setAdvanceUser] = useState(false);
-
-    useEffect(() => {
-        if (authToken) {
-            getUserInfo();
-        }
-    }, []);
+    // const { noHighlights, checkHighlights } = HighlightCheck(authToken);
 
     if (userInfo === undefined) {
         //No auth the user needs to go to login

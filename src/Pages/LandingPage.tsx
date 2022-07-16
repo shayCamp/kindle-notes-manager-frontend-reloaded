@@ -23,10 +23,18 @@ const LandingPage = ({ ...props }) => {
     });
 
     useEffect(() => {
+        let isMounted = true;
+
         //Function to set slide animation on page load
         setTimeout(function () {
-            setSlide(true);
+            if (isMounted) {
+                setSlide(true);
+            }
         }, 200);
+
+        return () => {
+            isMounted = false;
+        };
     }, []);
 
     const modalToggle = () => {
@@ -35,7 +43,7 @@ const LandingPage = ({ ...props }) => {
 
     return (
         <div id="scrollTo" className={slide ? 'landing-page move-background' : 'landing-page'}>
-            <QuoteBanner />
+            <QuoteBanner modalToggle={modalToggle} />
             <InvisibleBar toggleTrue={() => setShowNav(true)} toggleFalse={() => setShowNav(false)} />
             <NavBar
                 show={showNav}
@@ -54,7 +62,7 @@ const LandingPage = ({ ...props }) => {
                     <AnalyticPage />
                 </div>
                 <div id="bottom__library" ref={ref}>
-                    <LibraryPage />
+                    <LibraryPage modalToggle={modalToggle} />
                 </div>
             </div>
             {viewModal ? <Modal modalToggle={modalToggle} /> : null}

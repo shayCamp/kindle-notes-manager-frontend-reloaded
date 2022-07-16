@@ -17,15 +17,7 @@ const StreakBoard = ({ ...props }) => {
     const dark = userInfo?.dark_mode;
 
     useEffect(() => {
-        let isMounted = true;
-
-        if (isMounted) {
-            getAllHighlights();
-        }
-
-        return () => {
-            isMounted = false;
-        };
+        getAllHighlights();
     }, []);
 
     return (

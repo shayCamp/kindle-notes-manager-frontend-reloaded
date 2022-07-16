@@ -1,0 +1,16 @@
+@import '../Styling/Breakpoints.scss';
+@import '../Styling/Theme.scss';
+
+.placeholder-page {
+    height: 90vh;
+    width: 90%;
+    // background-color: orange;
+    color: $positiveBTN;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        cursor: pointer;
+    }
+}
