@@ -32,7 +32,10 @@ function HighlightApi() {
                     }
                 })
                 .catch(function (error) {
-                    console.log(`error:`, error);
+                    if (error.response.status === 400) {
+                        console.log('No highlights');
+                        setLoading(false);
+                    }
                 });
         }
     }

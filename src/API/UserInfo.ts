@@ -5,7 +5,6 @@ import { userInfo } from './Interface';
 
 function UserInfoApi(prop: string | null) {
     const [userInfo, setUserInfo] = useState<userInfo | undefined>(undefined);
-    const [loading, setLoading] = useState(true);
 
     function getUserInfo() {
         console.log('function running');
@@ -21,7 +20,6 @@ function UserInfoApi(prop: string | null) {
             })
                 .then(function (response: AxiosResponse<userInfo>) {
                     setUserInfo(response.data);
-                    setLoading(false);
                 })
                 .catch(function (error) {
                     console.log(`error:`, error);

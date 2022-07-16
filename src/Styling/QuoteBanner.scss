@@ -9,7 +9,7 @@
     align-items: center;
     color: white;
 
-    #Quote {
+    .Quote {
         width: 80%;
         font-size: 28px;
         text-align: center;
@@ -23,5 +23,10 @@
             width: 85%;
             font-size: 40px;
         }
+    }
+
+    .cursor {
+        cursor: pointer;
+        color: $positiveBTN;
     }
 }

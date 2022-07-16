@@ -24,7 +24,10 @@ const RandomQuoteGenerator = () => {
                     setLoading(false);
                 })
                 .catch(function (error) {
-                    console.log(`error:`, error);
+                    if (error.response.status === 400) {
+                        setQuote('Currently Have No Highlights, Go To Settings To Import');
+                        setLoading(false);
+                    }
                 });
         }
     }
