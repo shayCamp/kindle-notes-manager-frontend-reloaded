@@ -5,6 +5,7 @@ import { MdSpaceDashboard } from 'react-icons/md';
 import { IoAnalyticsSharp } from 'react-icons/io5';
 import { ImBooks } from 'react-icons/im';
 import { BsToggles } from 'react-icons/bs';
+import { IoSettingsOutline } from 'react-icons/io5';
 import '../../Styling/darkTheme.scss';
 
 interface NavBarProps {
@@ -26,8 +27,11 @@ const NavBar = ({ show, toggle, scroll, libraryActive, modalToggle, modalActive 
             onMouseEnter={() => toggle(true)}
             onMouseLeave={() => toggle(false)}
         >
+            <div className="toggleTag" onClick={() => modalToggle()}>
+                <IoSettingsOutline id="icon" />
+            </div>
             <div className={dark ? 'circleOpt text-dark' : 'circleOpt'}>
-                <div className="circle">
+                <div className="circle" onClick={() => modalToggle()}>
                     <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGk3-BmeIKmTg/profile-displayphoto-shrink_200_200/0/1581169413950?e=1662595200&v=beta&t=PiI6Mel3reQpPjsQfQepv-dXxKpoRHt2qQYyb16a85s" />
                 </div>
                 <p>{username?.toLocaleUpperCase()}</p>
@@ -41,7 +45,6 @@ const NavBar = ({ show, toggle, scroll, libraryActive, modalToggle, modalActive 
             <div className={dark ? 'navOpt icon-dark' : 'navOpt icon-light'}>
                 <IoAnalyticsSharp className="icon" />
             </div>
-
             <div className={dark ? 'navOpt icon-dark' : 'navOpt icon-light'}>
                 <BsToggles className={modalActive ? 'active icon' : 'icon'} onClick={() => modalToggle()} />
             </div>
