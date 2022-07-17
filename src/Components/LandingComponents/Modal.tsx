@@ -8,7 +8,6 @@ import { VscAccount } from 'react-icons/vsc';
 import AccountOpt from '../ModalComponents/AccountOpt';
 import AppearanceOpt from '../ModalComponents/AppearanceOpt';
 import ImportOpt from '../ModalComponents/ImportOpt';
-import ExportOpt from '../ModalComponents/ExportOpt';
 import '../../Styling/darkTheme.scss';
 
 interface ModalProps {
@@ -61,16 +60,6 @@ const Modal = ({ modalToggle }: ModalProps) => {
                         <BiImport className="icon" />
                         <p>Import</p>
                     </div>
-                    <div
-                        className={setting_opt === 'Export' ? 'modal__navbar__option active' : 'modal__navbar__option'}
-                        onClick={(event) => {
-                            event.stopPropagation();
-                            setSetting_opt('Export');
-                        }}
-                    >
-                        <BiExport className="icon" />
-                        <p>Export</p>
-                    </div>
                 </div>
                 <div className="modal__content">
                     {setting_opt === 'Account' ? (
@@ -79,8 +68,6 @@ const Modal = ({ modalToggle }: ModalProps) => {
                         <AppearanceOpt title={setting_opt} />
                     ) : setting_opt === 'Import' ? (
                         <ImportOpt title={setting_opt} />
-                    ) : setting_opt === 'Export' ? (
-                        <ExportOpt title={setting_opt} />
                     ) : null}
                 </div>
             </div>

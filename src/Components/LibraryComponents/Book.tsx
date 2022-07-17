@@ -34,9 +34,10 @@ const Book = ({ data }: BookProps) => {
 
     return (
         <div className={dark ? 'book cd-dark' : 'book cd-light'}>
-            <div className="book__image">
-                <img src={data.cover_image} />
-            </div>
+            <div
+                className={dark ? 'book__image hover-dark' : 'book__image hover-light'}
+                style={{ backgroundImage: `url("${data.cover_image}")` }}
+            ></div>
             <div className={dark ? 'book__description text-dark' : 'book__description'}>
                 <div className="description__tags">
                     <p id="tag" style={{ backgroundColor: genreColor }}>

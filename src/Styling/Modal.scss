@@ -30,7 +30,7 @@
             flex-direction: column;
 
             .modal__navbar__title {
-                height: 10%;
+                height: 9vh;
                 width: 100%;
                 display: flex;
                 align-items: center;
@@ -42,7 +42,7 @@
             }
 
             .modal__navbar__option {
-                height: 10%;
+                height: 9vh;
                 width: 100%;
                 display: flex;
                 align-items: center;
@@ -55,7 +55,7 @@
                 }
                 @include breakpoint-mixin('desktop') {
                     font-size: 17px;
-                    height: 9%;
+                    height: 8vh;
                 }
 
                 .icon {

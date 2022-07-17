@@ -7,11 +7,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-y: scroll;
     padding-left: 5px;
+    overflow-y: auto;
+    flex-flow: wrap;
 
     .page-title {
-        height: 10%;
+        height: 9vh;
         width: 100%;
         font-size: 16px;
         font-weight: 500;
@@ -25,7 +26,7 @@
     }
 
     .option-title {
-        height: 10%;
+        height: 9vh;
         width: 100%;
         display: flex;
         align-items: center;
@@ -36,16 +37,21 @@
 
         @include breakpoint-mixin('desktop') {
             font-size: 17px;
-            height: 9%;
+            height: 8vh;
         }
     }
 
     .option-container {
-        height: 30%;
+        height: 26vh;
         width: 100%;
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 40px;
+
+        @include breakpoint-mixin('desktop') {
+            font-size: 17px;
+            height: 26vh;
+        }
     }
 }
 

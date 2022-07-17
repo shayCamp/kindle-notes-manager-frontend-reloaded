@@ -5,7 +5,7 @@
     transform: translateX(-100%);
     position: fixed;
     z-index: 5;
-    top: 8%;
+    top: 1%;
     transition: transform 1s;
     width: 95px;
     height: 65vh;
@@ -32,7 +32,6 @@
         top: -1px;
         left: 105%;
         border-radius: 10px;
-        background-color: white;
         z-index: -1;
         display: flex;
         justify-content: center;

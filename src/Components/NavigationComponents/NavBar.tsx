@@ -27,7 +27,7 @@ const NavBar = ({ show, toggle, scroll, libraryActive, modalToggle, modalActive 
             onMouseEnter={() => toggle(true)}
             onMouseLeave={() => toggle(false)}
         >
-            <div className="toggleTag" onClick={() => modalToggle()}>
+            <div className={dark ? 'toggleTag cd-dark text-dark' : 'toggleTag cd-light'} onClick={() => modalToggle()}>
                 <IoSettingsOutline id="icon" />
             </div>
             <div className={dark ? 'circleOpt text-dark' : 'circleOpt'}>

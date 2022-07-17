@@ -33,9 +33,12 @@ const QuoteBanner = ({ modalToggle }: QuoteBannerProps) => {
     useEffect(() => {
         let isMounted = true;
 
-        if (quote !== 'Currently Have No Highlights, Go To Settings To Import') {
-            setNoHighlights(true);
+        if (quote === 'Currently Have No Highlights, Go To Settings To Import') {
             //If they have no quotes dont continue to generate random quotes
+            setNoHighlights(true);
+        } else {
+            setNoHighlights(false);
+
             const interval = setInterval(() => {
                 if (isMounted) {
                     getQuote(); //secures a random quote every 60 seconds
@@ -48,7 +51,7 @@ const QuoteBanner = ({ modalToggle }: QuoteBannerProps) => {
         return () => {
             isMounted = false;
         };
-    }, [getQuote]);
+    }, [quote]);
 
     return (
         <div className="quoteBanner">
