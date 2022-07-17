@@ -27,31 +27,35 @@ function UserInfoApi(prop: string | null) {
         }
     }
 
+    function updateUserInfo(dark_mode: boolean) {
+        if (prop === null) {
+            throw new Error('no token supplied');
+        } else {
+            console.log('mode', dark_mode);
+            console.log('auth', prop);
+            axios({
+                method: `PUT`,
+                url: 'https://kindle-project-backend-v2.herokuapp.com/users/info',
+                headers: {
+                    'x-auth-token': prop.replace(/\"/g, ''),
+                },
+                data: { dark_mode: dark_mode },
+            })
+                .then(function (response: any) {
+                    console.log(response);
+                    getUserInfo();
+                })
+                .catch(function (error) {
+                    console.log(`error:`, error);
+                });
+        }
+    }
+
     return {
         getUserInfo,
         userInfo,
+        updateUserInfo,
     };
 }
 
 export default UserInfoApi;
-
-// function updateUserInfo(prop) {
-//     if (prop === null) {
-//         throw new Error('no token supplied');
-//     } else {
-//         axios({
-//             method: `PUT`,
-//             url: 'https://kindle-project-backend-v2.herokuapp.com/users/info',
-//             headers: {
-//                 'x-auth-token': prop.replace(/\"/g, ''),
-//             },
-//             data: { dark_mode: prop },
-//         })
-//             .then(function (response: AxiosResponse<userInfo>) {
-//                 getUserInfo();
-//             })
-//             .catch(function (error) {
-//                 console.log(`error:`, error);
-//             });
-//     }
-// }

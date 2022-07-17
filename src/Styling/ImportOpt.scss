@@ -3,8 +3,212 @@
 
 .ImportOpt-page {
     height: 100%;
-    width: 100%;
+    width: 90%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    // justify-content: center;
     align-items: center;
+
+    .page-title {
+        height: 9vh;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 500;
+
+        @include breakpoint-mixin('laptop-wide') {
+            font-size: 18px;
+        }
+        @include breakpoint-mixin('desktop') {
+            font-size: 20px;
+        }
+    }
+
+    #input {
+        display: none;
+    }
+
+    #input-label {
+        height: 100%;
+        width: 100%;
+        // background-color: aqua;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .diagram-sect {
+            height: 35%;
+            width: 100%;
+            // background-color: orange;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .kindle-container {
+                border: 1px solid $border;
+                height: 100%;
+                width: 30%;
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                @include breakpoint-mixin('laptop-wide') {
+                    width: 28%;
+                }
+                @include breakpoint-mixin('desktop') {
+                    width: 25%;
+                }
+
+                .kindle {
+                    height: 60%;
+                    width: 50%;
+                    border-radius: 5px;
+                    background-color: black;
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    position: relative;
+
+                    @include breakpoint-mixin('laptop-wide') {
+                        height: 65%;
+                        width: 55%;
+                    }
+
+                    @include breakpoint-mixin('desktop') {
+                        height: 70%;
+                    }
+
+                    .screen {
+                        position: absolute;
+                        width: 70%;
+                        height: 65%;
+                        top: 10%;
+                        background-color: white;
+                        display: flex;
+                        justify-content: center;
+                        overflow: hidden;
+
+                        p {
+                            font-size: 6px;
+                            color: black;
+                            max-width: 90%;
+                        }
+
+                        @include breakpoint-mixin('laptop-wide') {
+                            height: 70%;
+                        }
+                    }
+
+                    p {
+                        height: 10px;
+                        font-size: 10px;
+                        color: white;
+                    }
+                }
+            }
+
+            .highlight-container {
+                border: 1px solid $border;
+                height: 100%;
+                width: 30%;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+
+                @include breakpoint-mixin('laptop-wide') {
+                    width: 28%;
+                }
+                @include breakpoint-mixin('desktop') {
+                    width: 25%;
+                }
+
+                .highlight {
+                    width: 80%;
+                    height: 20%;
+                    border-radius: 5px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    p {
+                        font-size: 5px;
+                        max-width: 90%;
+                        max-height: 75%;
+                        overflow: hidden;
+                    }
+                }
+            }
+
+            #arrow {
+                font-size: 35px;
+                margin: 20px;
+
+                @include breakpoint-mixin('laptop-wide') {
+                    font-size: 40px;
+                }
+                @include breakpoint-mixin('desktop') {
+                    font-size: 45px;
+                    margin: 25px;
+                }
+            }
+        }
+        .description-sect {
+            height: 20%;
+            width: 100%;
+            // background-color: yellowgreen;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                font-size: 22px;
+                max-width: 75%;
+                text-align: center;
+
+                @include breakpoint-mixin('laptop-wide') {
+                    font-size: 24px;
+                }
+
+                @include breakpoint-mixin('laptop-wide') {
+                    font-size: 28px;
+                    max-width: 57%;
+                }
+            }
+        }
+        .upload-sect {
+            height: 25%;
+            width: 100%;
+            // background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .upload-block {
+                width: 20%;
+                height: 40%;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                justify-content: center;
+                transition: all 0.5s ease;
+                border: 1px solid $border;
+
+                @include breakpoint-mixin('desktop') {
+                    width: 15%;
+                    height: 35%;
+                }
+            }
+
+            .active {
+                background-color: $positiveBTN;
+            }
+
+            .upload-block:hover {
+                background-color: $positiveBTN;
+            }
+        }
+    }
 }

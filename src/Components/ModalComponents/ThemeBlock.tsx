@@ -6,12 +6,12 @@ interface ThemeBlockProps {
     state: string;
     active: boolean | undefined;
     blockName: string;
+    updateUserInfo: (prop: boolean) => void;
 }
 
-const ThemeBlock = ({ state, active, blockName }: ThemeBlockProps) => {
-    console.log('active: ', active);
+const ThemeBlock = ({ state, active, blockName, updateUserInfo }: ThemeBlockProps) => {
     return (
-        <div className="theme-example-container">
+        <div className="theme-example-container" onClick={() => updateUserInfo(state === 'light' ? false : true)}>
             <div className={active ? `theme-example ${state} active-mode` : `theme-example ${state}`}>
                 <div className={`bar bar-top-${state}`}></div>
                 <div className={`bar ${state}`}>

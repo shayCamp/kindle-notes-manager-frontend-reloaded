@@ -9,7 +9,7 @@ import './Styling/App.scss';
 
 const App = () => {
     const { authToken, setAuthToken } = useToken();
-    const { userInfo, getUserInfo } = UserInfoApi(authToken);
+    const { userInfo, getUserInfo, updateUserInfo } = UserInfoApi(authToken);
     // const { noHighlights, checkHighlights } = HighlightCheck(authToken);
 
     if (userInfo === undefined) {
@@ -22,7 +22,7 @@ const App = () => {
                 <Router>
                     <UserContext.Provider value={userInfo}>
                         <Routes>
-                            <Route path="/" element={<LandingPage />} />
+                            <Route path="/" element={<LandingPage updateUserInfo={(prop: boolean) => updateUserInfo(prop)} />} />
                         </Routes>
                     </UserContext.Provider>
                 </Router>

@@ -10,7 +10,11 @@ import { useInView } from 'react-intersection-observer';
 import Modal from '../Components/LandingComponents/Modal';
 import '../Styling/darkTheme.scss';
 
-const LandingPage = ({ ...props }) => {
+interface LandingPageProps {
+    updateUserInfo: (prop: boolean) => void;
+}
+
+const LandingPage = ({ updateUserInfo }: LandingPageProps) => {
     const [slide, setSlide] = useState(false);
     const [showNav, setShowNav] = useState(false);
     const [viewModal, setViewModal] = useState(false);
@@ -61,11 +65,13 @@ const LandingPage = ({ ...props }) => {
                 <div id="bottom__dashboard">
                     <AnalyticPage />
                 </div>
-                <div id="bottom__library" ref={ref}>
-                    <LibraryPage modalToggle={modalToggle} />
-                </div>
+                {viewModal ? null : (
+                    <div id="bottom__library" ref={ref}>
+                        <LibraryPage modalToggle={modalToggle} />
+                    </div>
+                )}
             </div>
-            {viewModal ? <Modal modalToggle={modalToggle} /> : null}
+            {viewModal ? <Modal modalToggle={modalToggle} updateUserInfo={(prop: boolean) => updateUserInfo(prop)} /> : null}
         </div>
     );
 };

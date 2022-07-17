@@ -31,7 +31,7 @@
             // overflow: hidden;
             cursor: pointer;
             // box-shadow: 5px 5px 5px $boxShadow;
-            border: 1px solid $border;
+            // border: 1px solid $border;
 
             @include breakpoint-mixin('laptop-wide') {
                 height: 75%;
