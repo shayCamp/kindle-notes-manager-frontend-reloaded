@@ -162,21 +162,48 @@
 
     .lib-page__bookSection {
         min-height: 90vh;
-        width: 90%;
         padding: 20px 20px 100px 20px;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 40px;
         margin-top: 50px;
         overflow-y: scroll;
+        width: 90%;
 
         @include breakpoint-mixin('laptop-wide') {
             width: 80%;
+        }
+    }
+
+    .three {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 95px;
+
+        @include breakpoint-mixin('laptop-wide') {
+            gap: 140px;
+        }
+
+        @include breakpoint-mixin('laptop-wide') {
+            gap: 340px;
+        }
+    }
+    .four {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        width: 90%;
+        gap: 40px;
+
+        @include breakpoint-mixin('laptop-wide') {
             gap: 75px;
         }
 
         @include breakpoint-mixin('desktop') {
-            gap: 150px;
+            gap: 170px;
+        }
+    }
+    .five {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        gap: 30px;
+
+        @include breakpoint-mixin('desktop') {
+            gap: 55px;
         }
     }
 

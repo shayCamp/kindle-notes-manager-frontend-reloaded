@@ -22,7 +22,7 @@ const App = () => {
                 <Router>
                     <UserContext.Provider value={userInfo}>
                         <Routes>
-                            <Route path="/" element={<LandingPage updateUserInfo={(prop: boolean) => updateUserInfo(prop)} />} />
+                            <Route path="/" element={<LandingPage updateUserInfo={(prop: boolean | number) => updateUserInfo(prop)} />} />
                         </Routes>
                     </UserContext.Provider>
                 </Router>

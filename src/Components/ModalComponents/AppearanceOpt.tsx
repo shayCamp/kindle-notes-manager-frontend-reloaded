@@ -6,7 +6,7 @@ import StructureBlock from './StructureBlock';
 
 interface AppearanceProps {
     title: string;
-    updateUserInfo: (prop: boolean) => void;
+    updateUserInfo: (prop: boolean | number) => void;
 }
 const AppearanceOpt = ({ title, updateUserInfo }: AppearanceProps) => {
     console.log('updateUserInfo: ', updateUserInfo);
@@ -22,16 +22,16 @@ const AppearanceOpt = ({ title, updateUserInfo }: AppearanceProps) => {
                 <p>Theme</p>
             </div>
             <div className="option-container">
-                <ThemeBlock state={'light'} active={!dark} blockName="Light" updateUserInfo={(prop) => updateUserInfo(prop)} />
-                <ThemeBlock state={'dark'} active={dark} blockName="Dark" updateUserInfo={(prop) => updateUserInfo(prop)} />
+                <ThemeBlock active={!dark} blockName="Light" updateUserInfo={(prop) => updateUserInfo(prop)} />
+                <ThemeBlock active={dark} blockName="Dark" updateUserInfo={(prop) => updateUserInfo(prop)} />
             </div>
             <div className="option-title">
                 <p>Book Layout</p>
             </div>
             <div className="option-container">
-                <StructureBlock blockName="Three" />
-                <StructureBlock blockName="Four" />
-                <StructureBlock blockName="Five" />
+                <StructureBlock blockName="Three" active={userInfo?.column_count === 3} number={3} updateUserInfo={(prop) => updateUserInfo(prop)} />
+                <StructureBlock blockName="Four" active={userInfo?.column_count === 4} number={4} updateUserInfo={(prop) => updateUserInfo(prop)} />
+                <StructureBlock blockName="Five" active={userInfo?.column_count === 5} number={5} updateUserInfo={(prop) => updateUserInfo(prop)} />
             </div>
         </div>
     );

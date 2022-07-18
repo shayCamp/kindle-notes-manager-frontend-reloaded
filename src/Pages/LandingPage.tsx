@@ -11,7 +11,7 @@ import Modal from '../Components/LandingComponents/Modal';
 import '../Styling/darkTheme.scss';
 
 interface LandingPageProps {
-    updateUserInfo: (prop: boolean) => void;
+    updateUserInfo: (prop: boolean | number) => void;
 }
 
 const LandingPage = ({ updateUserInfo }: LandingPageProps) => {
@@ -71,7 +71,7 @@ const LandingPage = ({ updateUserInfo }: LandingPageProps) => {
                     </div>
                 )}
             </div>
-            {viewModal ? <Modal modalToggle={modalToggle} updateUserInfo={(prop: boolean) => updateUserInfo(prop)} /> : null}
+            {viewModal ? <Modal modalToggle={modalToggle} updateUserInfo={(prop: boolean | number) => updateUserInfo(prop)} /> : null}
         </div>
     );
 };

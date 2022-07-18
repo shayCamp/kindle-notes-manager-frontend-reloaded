@@ -56,5 +56,6 @@ export interface userInfo {
     username: string;
     registration_date: string;
     dark_mode: boolean;
+    column_count: number;
     __v: number;
 }

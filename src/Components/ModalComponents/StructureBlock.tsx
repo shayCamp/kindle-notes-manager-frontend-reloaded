@@ -5,15 +5,22 @@ import '../../Styling/StructureBlock.scss';
 
 interface StructureBlockProps {
     blockName: string;
+    updateUserInfo: (prop: boolean | number) => void;
+    number: number;
+    active: boolean;
 }
 
-const StructureBlock = ({ blockName }: StructureBlockProps) => {
+const StructureBlock = ({ blockName, updateUserInfo, number, active }: StructureBlockProps) => {
     const userInfo = useContext(UserContext);
     const dark = userInfo?.dark_mode;
+    const active_mode = active ? `active-mode` : null;
 
     return (
         <div className="structure-example-container">
-            <div className={dark ? 'structure-example dark' : 'structure-example light'}>
+            <div
+                className={dark ? `structure-example dark ${active_mode}` : `structure-example light ${active_mode}`}
+                onClick={() => updateUserInfo(number)}
+            >
                 {blockName === 'Three'
                     ? [...Array(3)].map((eachElement, i) => (
                           <div className={dark ? 'bookContainer dark' : 'bookContainer light'} key={i}>
@@ -35,7 +42,7 @@ const StructureBlock = ({ blockName }: StructureBlockProps) => {
                     : null}
             </div>
             <div className="block-name">
-                <AiOutlineCheck id="check" />
+                {active ? <AiOutlineCheck id="check" /> : null}
                 {blockName}
                 {blockName === 'Four' ? `${' '} (Recommended)` : null}
             </div>
