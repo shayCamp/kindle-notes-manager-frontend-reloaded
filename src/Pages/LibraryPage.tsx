@@ -24,6 +24,7 @@ const LibraryPage = ({ modalToggle }: LibraryPageProps) => {
     const [genre, setGenre] = useState(false);
     const userInfo = useContext(UserContext);
     const dark = userInfo?.dark_mode;
+    const column_count = userInfo?.column_count;
 
     useEffect(() => {
         getAllBooks();
@@ -105,7 +106,17 @@ const LibraryPage = ({ modalToggle }: LibraryPageProps) => {
             {books?.length === 0 ? ( //If theres no books return place holder else map through books
                 <NoBooksPlaceholder modalToggle={modalToggle} />
             ) : (
-                <div className={displayDrop ? 'lib-page__bookSection margin' : 'lib-page__bookSection'}>
+                <div
+                    className={
+                        displayDrop
+                            ? `lib-page__bookSection margin ${
+                                  column_count === 3 ? `three` : column_count === 4 ? `four` : column_count === 5 ? `five` : null
+                              }`
+                            : `lib-page__bookSection ${
+                                  column_count === 3 ? `three` : column_count === 4 ? `four` : column_count === 5 ? `five` : null
+                              }`
+                    }
+                >
                     {loading || books === undefined || books === null ? (
                         <BarLoader color={'#FFFFFF'} css={override} />
                     ) : recent ? (

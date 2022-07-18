@@ -12,7 +12,7 @@ import '../../Styling/darkTheme.scss';
 
 interface ModalProps {
     modalToggle: () => void;
-    updateUserInfo: (prop: boolean) => void;
+    updateUserInfo: (prop: boolean | number) => void;
 }
 
 const Modal = ({ modalToggle, updateUserInfo }: ModalProps) => {
@@ -66,7 +66,7 @@ const Modal = ({ modalToggle, updateUserInfo }: ModalProps) => {
                     {setting_opt === 'Account' ? (
                         <AccountOpt title={setting_opt} />
                     ) : setting_opt === 'Appearance' ? (
-                        <AppearanceOpt title={setting_opt} updateUserInfo={(prop: boolean) => updateUserInfo(prop)} />
+                        <AppearanceOpt title={setting_opt} updateUserInfo={(prop: boolean | number) => updateUserInfo(prop)} />
                     ) : setting_opt === 'Import' ? (
                         <ImportOpt title={setting_opt} />
                     ) : null}
