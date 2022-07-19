@@ -2,15 +2,16 @@ import { useState } from 'react';
 
 function useToken() {
     /**
-     *
+     *This function retrieves the authToken from the local storage
      * @returns the auth token from the local storage
      */
+
     const getToken = () => {
         const tokenString: string | null = sessionStorage.getItem('token'); //Getting auth token from local storage
         return tokenString;
     };
 
-    const [authToken, setAuthToken] = useState(getToken()); //setting auth token to state
+    const [authToken, setAuthToken] = useState(getToken()); //setting auth token to state as soon as app loads
     console.log('authToken: ', authToken);
 
     /**

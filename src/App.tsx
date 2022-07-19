@@ -8,19 +8,20 @@ import { UserContext } from './Context/UserContext';
 import './Styling/App.scss';
 
 const App = () => {
-    const { authToken, setAuthToken } = useToken();
-    const { userInfo, getUserInfo, updateUserInfo } = UserInfoApi(authToken);
-    // const { noHighlights, checkHighlights } = HighlightCheck(authToken);
+    const { authToken, setAuthToken } = useToken(); //On page load we get authToken from local storage
+    const { userInfo, getUserInfo, updateUserInfo } = UserInfoApi(authToken); //Get user info
 
     if (userInfo === undefined) {
-        //No auth the user needs to go to login
+        //Only pass user into application if userInfo is present
         return <Login updateAuthToken={setAuthToken} getUserInfo={getUserInfo} authToken={authToken} />;
     } else {
-        //Loading main app once auth is in local storage
+        //Loading main app once auth is in local storage && user info present
         return (
             <div className="app">
                 <Router>
                     <UserContext.Provider value={userInfo}>
+                        {' '}
+                        {/**passing user info down as context */}
                         <Routes>
                             <Route path="/" element={<LandingPage updateUserInfo={(prop: boolean | number) => updateUserInfo(prop)} />} />
                         </Routes>

@@ -2,8 +2,8 @@ import React from 'react';
 import '../../Styling/InvisibleBar.scss';
 
 interface InvisibleBarProps {
-    toggleTrue: () => void;
-    toggleFalse: () => void;
+    toggleTrue: () => void; //sets the nav appearance to true
+    toggleFalse: () => void; //sets the anv appearance to false
 }
 
 const InvisibleBar = ({ toggleTrue, toggleFalse }: InvisibleBarProps) => {

@@ -1,8 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import '../../Styling/ImportOpt.scss';
+import { io } from 'socket.io-client';
+import axios from 'axios';
 import { UserContext } from '../../Context/UserContext';
 import '../../Styling/darkTheme.scss';
 import { BsArrowRight } from 'react-icons/bs';
+import ImportBooksApi from '../../API/ImportBooksApi';
 
 interface ImportOptProps {
     title: string;
@@ -13,6 +16,7 @@ const ImportOpt = ({ title }: ImportOptProps) => {
     console.log('incomingFile: ', incomingFile);
     const userInfo = useContext(UserContext); //allows the current page/component to access the variables stored within he userContext
     const dark = userInfo?.dark_mode;
+    const { uploadBooks, successful } = ImportBooksApi();
 
     const uploadFile = () => {
         if (incomingFile === null) {
@@ -20,20 +24,7 @@ const ImportOpt = ({ title }: ImportOptProps) => {
         } else {
             const formData = new FormData(); // needed for uploading a file
             formData.append('clippingsFile', incomingFile); // adds the uploaded file under the name "clippingsFile" to the formData variable
-            console.log(formData);
-            // console.log('formData: ', typeof formData);
-            // axios({
-            //     method: `POST`,
-            //     url: `http://localhost:3000/upload`,
-            //     headers: { 'x-auth-token': `${authToken}` },
-            //     data: formData,
-            // })
-            //     .then(function (response) {
-            //         console.log('success');
-            //     })
-            //     .catch(function (error) {
-            //         console.log(`error:`, error);
-            //     });
+            uploadBooks(incomingFile);
         }
     };
 

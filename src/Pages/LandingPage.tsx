@@ -26,10 +26,11 @@ const LandingPage = ({ updateUserInfo }: LandingPageProps) => {
         threshold: 0.1, //When the form is in the viewport set inView to true
     });
 
+    //When the page loads, after a delay the landing page animation is triggered
+
     useEffect(() => {
         let isMounted = true;
 
-        //Function to set slide animation on page load
         setTimeout(function () {
             if (isMounted) {
                 setSlide(true);
@@ -40,6 +41,10 @@ const LandingPage = ({ updateUserInfo }: LandingPageProps) => {
             isMounted = false;
         };
     }, []);
+
+    /**
+     * This function triggers the settings menu
+     */
 
     const modalToggle = () => {
         setViewModal(!viewModal);
