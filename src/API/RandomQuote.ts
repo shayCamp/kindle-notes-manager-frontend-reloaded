@@ -12,6 +12,7 @@ const RandomQuoteGenerator = () => {
         if (authToken === null) {
             throw new Error('no token supplied');
         } else {
+            //Axios call returns random highlight or message saying no highlights
             axios({
                 method: `GET`,
                 url: 'https://kindle-project-backend-v2.herokuapp.com/books/random-highlight',

@@ -11,11 +11,13 @@ import '../../Styling/darkTheme.scss';
 
 const StreakBoard = ({ ...props }) => {
     const { highlights, getAllHighlights, loading } = HighlightApi();
+    console.log('highlights: ', highlights);
     const { shiftDate } = CalenderFunctions();
     const today = new Date();
     const userInfo = useContext(UserContext);
     const dark = userInfo?.dark_mode;
 
+    //On page load get all highlights
     useEffect(() => {
         getAllHighlights();
     }, []);
@@ -27,8 +29,8 @@ const StreakBoard = ({ ...props }) => {
                     startDate={shiftDate(today, -365)}
                     endDate={today}
                     values={[
-                        { date: '2016-01-01', count: 12 },
-                        { date: '2016-01-22', count: 122 },
+                        { date: '2022-01-01', count: 12 },
+                        { date: '2022-03-22', count: 122 },
                         { date: '2016-01-30', count: 38 },
                         // ...and so on
                     ]}

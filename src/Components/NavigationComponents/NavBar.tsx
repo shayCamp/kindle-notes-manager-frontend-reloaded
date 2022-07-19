@@ -9,7 +9,7 @@ import { IoSettingsOutline } from 'react-icons/io5';
 import '../../Styling/darkTheme.scss';
 
 interface NavBarProps {
-    show: boolean;
+    show: boolean; //Triggers when to show or hide bar
     toggle: (args: boolean) => void;
     scroll: (args: string) => void;
     libraryActive: boolean;

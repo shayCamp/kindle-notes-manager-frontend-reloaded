@@ -9,7 +9,7 @@ interface QuoteBannerProps {
 }
 
 const QuoteBanner = ({ modalToggle }: QuoteBannerProps) => {
-    const { getQuote, quote, loading } = RandomQuoteGenerator();
+    const { getQuote, quote, loading } = RandomQuoteGenerator(); //Getting a random quote
     const [noHighlights, setNoHighlights] = useState(false);
 
     const override = css`
@@ -19,11 +19,12 @@ const QuoteBanner = ({ modalToggle }: QuoteBannerProps) => {
         left: 45%;
     `;
 
+    //On page load we will get a random quote, this runs once
     useEffect(() => {
         let isMounted = true;
 
         if (isMounted) {
-            getQuote(); //runs once when the Home page first loads
+            getQuote();
         }
         return () => {
             isMounted = false;
@@ -37,6 +38,7 @@ const QuoteBanner = ({ modalToggle }: QuoteBannerProps) => {
             //If they have no quotes dont continue to generate random quotes
             setNoHighlights(true);
         } else {
+            //If they have quotes then we can update quotes every minute
             setNoHighlights(false);
 
             const interval = setInterval(() => {
