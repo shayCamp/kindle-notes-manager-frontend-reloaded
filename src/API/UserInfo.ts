@@ -28,6 +28,18 @@ function UserInfoApi(prop: string | null) {
     }
 
     function updateUserInfo(type: boolean | number) {
+        setUserInfo(
+            userInfo === undefined
+                ? undefined
+                : typeof type === 'boolean'
+                ? { ...userInfo, dark_mode: type }
+                : typeof type === 'string'
+                ? { ...userInfo, username: type }
+                : typeof type === 'number'
+                ? { ...userInfo, column_count: type }
+                : undefined,
+        );
+
         if (prop === null) {
             throw new Error('no token supplied');
         } else {
@@ -52,7 +64,7 @@ function UserInfoApi(prop: string | null) {
             })
                 .then(function (response: any) {
                     console.log(response);
-                    getUserInfo();
+                    // getUserInfo();
                 })
                 .catch(function (error) {
                     console.log(`error:`, error);

@@ -19,6 +19,11 @@ export interface AllHighlights {
         },
     ];
 }
+export interface singleHighlight {
+    author: string;
+    highlight: highlight;
+    title: string;
+}
 
 export interface randomHighlight {
     randomHighlight: {
@@ -41,6 +46,7 @@ export interface dbBook {
     deleted: boolean;
     upload_date: string;
     highlights: highlight[];
+    _id: string;
 }
 
 export interface users {

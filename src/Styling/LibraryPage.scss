@@ -31,7 +31,7 @@
             // overflow: hidden;
             cursor: pointer;
             // box-shadow: 5px 5px 5px $boxShadow;
-            // border: 1px solid $border;
+            border: 1px solid $border;
 
             @include breakpoint-mixin('laptop-wide') {
                 height: 75%;
@@ -46,7 +46,7 @@
             #search-icon {
                 color: white;
                 padding: 5px;
-                background-color: $icons-light;
+                // background-color: $icons-light;
                 // align-items: center;
                 border-radius: 5px;
 
@@ -96,8 +96,9 @@
                     border-radius: 10px;
                     overflow: hidden;
                     // background-color: white;
+                    border: 1px solid $border;
+
                     height: fit-content;
-                    box-shadow: 5px 5px 5px $boxShadow;
                     // z-index: -1;
 
                     p {
@@ -187,7 +188,6 @@
     }
     .four {
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        width: 90%;
         gap: 40px;
 
         @include breakpoint-mixin('laptop-wide') {

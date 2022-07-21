@@ -16,7 +16,7 @@ interface LibraryPageProps {
 }
 
 const LibraryPage = ({ modalToggle }: LibraryPageProps) => {
-    const { getAllBooks, books, loading } = BooksApi();
+    const { getAllBooks, books, loading, updateInfo } = BooksApi();
     const [searchValue, setSearchValue] = useState('');
     const [displayDrop, setDisplayDrop] = useState(false);
     const [recent, setRecent] = useState(true);
@@ -50,6 +50,11 @@ const LibraryPage = ({ modalToggle }: LibraryPageProps) => {
                 break;
         }
     };
+
+    interface updateInfoProps {
+        book_id: string;
+        data: string | number;
+    }
 
     return (
         <div className="lib-page">
@@ -143,7 +148,7 @@ const LibraryPage = ({ modalToggle }: LibraryPageProps) => {
                                         book.author.toUpperCase().includes(searchValue.toUpperCase()) ||
                                         book.genre.toUpperCase().includes(searchValue.toUpperCase())),
                             )
-                            .map((book, i) => <Book key={i} data={book} />)
+                            .map((book, i) => <Book key={i} data={book} updateInfo={(prop: updateInfoProps) => updateInfo(prop)} />)
                     ) : (
                         books
                             .slice()
@@ -169,7 +174,7 @@ const LibraryPage = ({ modalToggle }: LibraryPageProps) => {
                                         book.author.toUpperCase().includes(searchValue.toUpperCase()) ||
                                         book.genre.toUpperCase().includes(searchValue.toUpperCase())),
                             )
-                            .map((book, i) => <Book key={i} data={book} />)
+                            .map((book, i) => <Book key={i} data={book} updateInfo={(prop: updateInfoProps) => updateInfo(prop)} />)
                     )}
                 </div>
             )}

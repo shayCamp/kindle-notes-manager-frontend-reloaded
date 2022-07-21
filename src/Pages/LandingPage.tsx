@@ -70,11 +70,9 @@ const LandingPage = ({ updateUserInfo }: LandingPageProps) => {
                 <div id="bottom__dashboard">
                     <AnalyticPage />
                 </div>
-                {viewModal ? null : (
-                    <div id="bottom__library" ref={ref}>
-                        <LibraryPage modalToggle={modalToggle} />
-                    </div>
-                )}
+                <div id="bottom__library" ref={ref}>
+                    <LibraryPage modalToggle={modalToggle} />
+                </div>
             </div>
             {viewModal ? <Modal modalToggle={modalToggle} updateUserInfo={(prop: boolean | number) => updateUserInfo(prop)} /> : null}
         </div>
