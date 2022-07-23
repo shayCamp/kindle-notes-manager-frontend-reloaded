@@ -9,7 +9,7 @@ interface QuoteBannerProps {
 }
 
 const QuoteBanner = ({ modalToggle }: QuoteBannerProps) => {
-    const { getQuote, quote, loading } = RandomQuoteGenerator(); //Getting a random quote
+    const { getQuote, quote, author, loading, title } = RandomQuoteGenerator(); //Getting a random quote
     const [noHighlights, setNoHighlights] = useState(false);
 
     const override = css`
@@ -60,9 +60,20 @@ const QuoteBanner = ({ modalToggle }: QuoteBannerProps) => {
             {loading ? (
                 <BarLoader color={'#FFFFFF'} css={override} />
             ) : (
-                <h1 className={noHighlights ? 'Quote cursor' : 'Quote'} onClick={noHighlights ? modalToggle : undefined}>
-                    {quote}
-                </h1>
+                <>
+                    <div className="QuoteHolder">
+                        <h1 className={noHighlights ? 'Quote cursor' : 'Quote'} onClick={noHighlights ? modalToggle : undefined}>
+                            {`"${quote}"`}
+                        </h1>
+                    </div>
+                    <div className="AuthorHolder">
+                        <p className={noHighlights ? 'Author cursor' : 'Author'} onClick={noHighlights ? modalToggle : undefined}>
+                            {`- ${author}`}
+                            {/* {` `}
+                            <span>{`in ${title}`}</span> */}
+                        </p>
+                    </div>
+                </>
             )}
         </div>
     );
