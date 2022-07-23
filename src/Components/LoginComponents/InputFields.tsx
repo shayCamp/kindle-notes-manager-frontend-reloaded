@@ -36,6 +36,8 @@ const InputFields = ({ type, updatePassword, updateUsername, clearErrors, ApiErr
                     ? 'inputField redBorder'
                     : localError === type && !active
                     ? 'inputField redBorder'
+                    : localError === 'All Credentials'
+                    ? 'inputField redBorder'
                     : active
                     ? 'inputField blueBorder'
                     : 'inputField'
