@@ -9,7 +9,6 @@ function BooksApi() {
     const [loading, setLoading] = useState(true);
 
     function getAllBooks() {
-        console.log('called');
         if (authToken === null) {
             throw new Error('no token supplied');
         } else {
@@ -23,7 +22,6 @@ function BooksApi() {
                 .then(function (response: AxiosResponse<dbBook[]>) {
                     setBooks(response.data.reverse());
                     setLoading(false);
-                    console.log('completed new');
                 })
                 .catch(function (error) {
                     console.log(`error:`, error);

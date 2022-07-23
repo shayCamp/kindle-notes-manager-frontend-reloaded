@@ -2,9 +2,13 @@ import { useEffect, useContext, useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
 import useToken from './useToken';
 import { userInfo } from './Interface';
+import { dbBook } from './Interface';
 
 function UserInfoApi(prop: string | null) {
+    const { authToken, setAuthToken } = useToken(); //On page load we get authToken from local storage
+
     const [userInfo, setUserInfo] = useState<userInfo | undefined>(undefined);
+    const [hasBooks, setHasBooks] = useState<boolean>(true);
 
     function getUserInfo() {
         console.log('function running');
@@ -20,6 +24,20 @@ function UserInfoApi(prop: string | null) {
             })
                 .then(function (response: AxiosResponse<userInfo>) {
                     setUserInfo(response.data);
+                })
+                .catch(function (error) {
+                    console.log(`error:`, error);
+                });
+
+            axios({
+                method: `GET`,
+                url: 'https://kindle-project-backend-v2.herokuapp.com/books',
+                headers: {
+                    'x-auth-token': prop.replace(/\"/g, ''),
+                },
+            })
+                .then(function (response: AxiosResponse<dbBook[]>) {
+                    setHasBooks(response.data.length ? true : false);
                 })
                 .catch(function (error) {
                     console.log(`error:`, error);
@@ -76,6 +94,7 @@ function UserInfoApi(prop: string | null) {
         getUserInfo,
         userInfo,
         updateUserInfo,
+        hasBooks,
     };
 }
 
