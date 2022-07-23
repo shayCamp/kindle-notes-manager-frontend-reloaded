@@ -35,6 +35,7 @@ export interface randomHighlight {
 }
 
 export interface dbBook {
+    length: number;
     userID: string;
     cover_image: string;
     isbn: string;
