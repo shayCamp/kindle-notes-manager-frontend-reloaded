@@ -12,7 +12,6 @@ function useToken() {
     };
 
     const [authToken, setAuthToken] = useState(getToken()); //setting auth token to state as soon as app loads
-    console.log('authToken: ', authToken);
 
     /**
      *This function saves authToken to the local storage and then returns it to App.ts to pass the user in
