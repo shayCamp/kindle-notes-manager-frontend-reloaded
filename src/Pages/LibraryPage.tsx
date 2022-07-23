@@ -60,7 +60,7 @@ const LibraryPage = ({ modalToggle }: LibraryPageProps) => {
         <div className="lib-page">
             <div className="lib-page__search-section">
                 <div className={dark ? 'search-section__search-bar cd-dark' : 'search-section__search-bar cd-light'}>
-                    <SearchIcon id="search-icon" />
+                    <SearchIcon id="search-icon" className={dark ? 'text-dark' : 'text-light'} />
                     <input
                         placeholder="Search For Books By Title or Author"
                         onChange={(e) => setSearchValue(e.target.value)}

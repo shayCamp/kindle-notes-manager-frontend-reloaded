@@ -17,6 +17,20 @@ const InputFieldsBlock = ({ isNewAccount, updateAuthToken }: InputFieldsBlockPro
     const [localError, setLocalError] = useState<string | boolean>(false);
     const [tos, setTos] = useState(false);
 
+    document.addEventListener('keyup', function (event) {
+        //Checking whether the enter button is pressed, triggering advancement when pressed
+        if (event.key === 'Enter' && presenceCheck()) {
+            postUser({
+                isNewAccount,
+                username: username.current,
+                password: password.current,
+                updateAuthToken,
+            }); //Create User function
+        } else {
+            console.log('some error');
+        }
+    });
+
     const recievePassword = (childPassword: string): void => {
         //taking password from input component
         password.current = childPassword;
@@ -72,7 +86,6 @@ const InputFieldsBlock = ({ isNewAccount, updateAuthToken }: InputFieldsBlockPro
                 </div>
                 <p className="smallPrint">I agree to terms of service</p>
             </div>
-
             <SubmitBtn
                 loading={loading}
                 loginError={loginApiError}
