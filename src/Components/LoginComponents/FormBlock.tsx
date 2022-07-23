@@ -50,14 +50,14 @@ const InputFieldsBlock = ({ isNewAccount, updateAuthToken }: InputFieldsBlockPro
     const presenceCheck = () => {
         if (username.current.replace(/\s/g, '').length > 0 && password.current.replace(/\s/g, '').length > 0) {
             return true;
-        }
+        } //If username && password not empty advance user
 
         if (!username.current.replace(/\s/g, '').length && !password.current.replace(/\s/g, '').length) {
-            setLocalError(`All Credentials`);
+            setLocalError(`All Credentials`); //If no username or password set error
         } else if (!username.current.replace(/\s/g, '').length) {
-            setLocalError(`Username`);
+            setLocalError(`Username`); //If no username set error
         } else if (!password.current.replace(/\s/g, '').length) {
-            setLocalError(`Password`);
+            setLocalError(`Password`); //If no password set error
         }
         return false;
     };

@@ -5,6 +5,8 @@ import { randomHighlight } from './Interface';
 
 const RandomQuoteGenerator = () => {
     const [quote, setQuote] = useState('No Quote');
+    const [author, setAuthor] = useState('No Author');
+    const [title, setTitle] = useState('No Title');
     const [loading, setLoading] = useState(true);
     const { authToken, setAuthToken } = useToken(); //Retrieving authToken
 
@@ -22,6 +24,8 @@ const RandomQuoteGenerator = () => {
             })
                 .then(function (response: AxiosResponse<randomHighlight>) {
                     setQuote(response.data.randomHighlight.highlight.Text);
+                    setAuthor(response.data.randomHighlight.author);
+                    setTitle(response.data.randomHighlight.title);
                     setLoading(false);
                 })
                 .catch(function (error) {
@@ -35,7 +39,9 @@ const RandomQuoteGenerator = () => {
 
     return {
         getQuote,
+        author,
         quote,
+        title,
         loading,
     };
 };

@@ -8,21 +8,77 @@
     justify-content: center;
     align-items: center;
     color: white;
+    flex-direction: column;
+    // margin: 0px;
 
-    .Quote {
+    .QuoteHolder {
+        height: 80%;
         width: 80%;
-        font-size: 28px;
-        text-align: center;
-        color: white;
+        // background-color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         @include breakpoint-mixin('laptop-wide') {
             width: 85%;
-            font-size: 35px;
         }
 
-        @include breakpoint-mixin('desktop') {
+        .Quote {
+            width: 100%;
+            // height: 80%;
+            // background-color: orange;
+            font-size: 32px;
+            text-align: center;
+            margin: 0px;
+            color: white;
+            margin-top: 10px;
+
+            //Code to trancuate text
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            //Code to trancuate text
+
+            @include breakpoint-mixin('laptop-wide') {
+                font-size: 35px;
+            }
+
+            @include breakpoint-mixin('desktop') {
+                font-size: 40px;
+                margin-top: 25px;
+                -webkit-line-clamp: 4;
+            }
+        }
+    }
+
+    .AuthorHolder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 20%;
+        width: 80%;
+
+        @include breakpoint-mixin('laptop-wide') {
             width: 85%;
-            font-size: 40px;
+        }
+
+        .Author {
+            width: 100%;
+            font-size: 24px;
+            text-align: center;
+            color: white;
+            // margin-bottom: 20px;
+
+            @include breakpoint-mixin('laptop-wide') {
+                font-size: 31px;
+            }
+
+            @include breakpoint-mixin('desktop') {
+                font-size: 35px;
+            }
         }
     }
 
