@@ -28,6 +28,9 @@ const ImportOpt = ({ title }: ImportOptProps) => {
         }
     };
 
+    const loremIpsum = `Donec quis varius odio. Suspendisse vel tortor ac dui varius venenatis et sed lorem. Sed nec lectus et nulla euismod
+    ullamcorper. Donec a felis a ipsum mattis tincidunt at consequat quam. In hac habitasse platea dictumst. Ut vehicula,
+    lacus quis faucibus ultrices, urna diam pretium elit, a pharetra felis elit et mauris.`;
     return (
         <form className="ImportOpt-page">
             <div className="page-title">
@@ -63,25 +66,13 @@ const ImportOpt = ({ title }: ImportOptProps) => {
                     <BsArrowRight id="arrow" />
                     <div className={dark ? 'highlight-container bg-dark' : 'highlight-container bg-light'}>
                         <div className={dark ? 'highlight hover-dark' : 'highlight hover-light'}>
-                            <p>
-                                Donec quis varius odio. Suspendisse vel tortor ac dui varius venenatis et sed lorem. Sed nec lectus et nulla euismod
-                                ullamcorper. Donec a felis a ipsum mattis tincidunt at consequat quam. In hac habitasse platea dictumst. Ut vehicula,
-                                lacus quis faucibus ultrices, urna diam pretium elit, a pharetra felis elit et mauris.{' '}
-                            </p>
+                            <p>{loremIpsum}</p>
                         </div>
                         <div className={dark ? 'highlight hover-dark' : 'highlight hover-light'}>
-                            <p>
-                                Donec quis varius odio. Suspendisse vel tortor ac dui varius venenatis et sed lorem. Sed nec lectus et nulla euismod
-                                ullamcorper. Donec a felis a ipsum mattis tincidunt at consequat quam. In hac habitasse platea dictumst. Ut vehicula,
-                                lacus quis faucibus ultrices, urna diam pretium elit, a pharetra felis elit et mauris.{' '}
-                            </p>
+                            <p>{loremIpsum}</p>
                         </div>
                         <div className={dark ? 'highlight hover-dark' : 'highlight hover-light'}>
-                            <p>
-                                Donec quis varius odio. Suspendisse vel tortor ac dui varius venenatis et sed lorem. Sed nec lectus et nulla euismod
-                                ullamcorper. Donec a felis a ipsum mattis tincidunt at consequat quam. In hac habitasse platea dictumst. Ut vehicula,
-                                lacus quis faucibus ultrices, urna diam pretium elit, a pharetra felis elit et mauris.{' '}
-                            </p>
+                            <p>{loremIpsum}</p>
                         </div>
                     </div>
                 </div>
