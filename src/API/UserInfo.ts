@@ -45,6 +45,10 @@ function UserInfoApi(prop: string | null) {
         }
     }
 
+    const updateHasBooks = () => {
+        setHasBooks(true);
+    };
+
     function updateUserInfo(type: boolean | number) {
         setUserInfo(
             userInfo === undefined
@@ -95,6 +99,7 @@ function UserInfoApi(prop: string | null) {
         userInfo,
         updateUserInfo,
         hasBooks,
+        updateHasBooks,
     };
 }
 

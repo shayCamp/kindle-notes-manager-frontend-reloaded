@@ -9,14 +9,15 @@ import ImportBooksApi from '../../API/ImportBooksApi';
 
 interface ImportOptProps {
     title: string;
+    newUser?: boolean;
+    updateHasBooks?: () => void;
 }
 
-const ImportOpt = ({ title }: ImportOptProps) => {
-    const [incomingFile, setIncomingFile] = useState<File | null>(null);
-    console.log('incomingFile: ', incomingFile);
-    const userInfo = useContext(UserContext); //allows the current page/component to access the variables stored within he userContext
-    const dark = userInfo?.dark_mode;
+const ImportOpt = ({ title, newUser, updateHasBooks }: ImportOptProps) => {
     const { uploadBooks, successful } = ImportBooksApi();
+    const [incomingFile, setIncomingFile] = useState<File | null>(null);
+    const userInfo = useContext(UserContext); //allows the current page/component to access the variables stored within he userContext
+    const dark = newUser ? true : userInfo?.dark_mode;
 
     const uploadFile = () => {
         if (incomingFile === null) {
@@ -28,8 +29,16 @@ const ImportOpt = ({ title }: ImportOptProps) => {
         }
     };
 
+    /**
+     * Next Function -- If its a new user (i.e passed from login), on books import success we need to call updateHasBooks in order to update the APP.tsx and say that the user now has books and can be passed into the main application
+     */
+
+    const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod tellus erat, eget condimentum neque
+    ullamcorper eget. Sed sodales lacus id lectus congue cursus. Praesent porttitor felis in mattis scelerisque. Ut
+    feugiat in nibh sit amet commodo. Duis vel bibendum tortor, eget pharetra risus`;
+
     return (
-        <form className="ImportOpt-page">
+        <form className={newUser ? 'ImportOpt-page new-width' : 'ImportOpt-page'}>
             <div className="page-title">
                 <p>{title}</p>
             </div>
@@ -46,16 +55,12 @@ const ImportOpt = ({ title }: ImportOptProps) => {
                     }
                 }}
             ></input>
-            <label htmlFor="input" id="input-label">
+            <label htmlFor="input" className={newUser ? 'input-label new-width' : 'input-label'}>
                 <div className="diagram-sect">
                     <div className={dark ? 'kindle-container bg-dark' : 'kindle-container bg-light'}>
                         <div className="kindle">
                             <div className="screen">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod tellus erat, eget condimentum neque
-                                    ullamcorper eget. Sed sodales lacus id lectus congue cursus. Praesent porttitor felis in mattis scelerisque. Ut
-                                    feugiat in nibh sit amet commodo. Duis vel bibendum tortor, eget pharetra risus
-                                </p>
+                                <p>{lorem}</p>
                             </div>
                             <p>Kindle</p>
                         </div>
@@ -63,25 +68,13 @@ const ImportOpt = ({ title }: ImportOptProps) => {
                     <BsArrowRight id="arrow" />
                     <div className={dark ? 'highlight-container bg-dark' : 'highlight-container bg-light'}>
                         <div className={dark ? 'highlight hover-dark' : 'highlight hover-light'}>
-                            <p>
-                                Donec quis varius odio. Suspendisse vel tortor ac dui varius venenatis et sed lorem. Sed nec lectus et nulla euismod
-                                ullamcorper. Donec a felis a ipsum mattis tincidunt at consequat quam. In hac habitasse platea dictumst. Ut vehicula,
-                                lacus quis faucibus ultrices, urna diam pretium elit, a pharetra felis elit et mauris.{' '}
-                            </p>
+                            <p>{lorem}</p>
                         </div>
                         <div className={dark ? 'highlight hover-dark' : 'highlight hover-light'}>
-                            <p>
-                                Donec quis varius odio. Suspendisse vel tortor ac dui varius venenatis et sed lorem. Sed nec lectus et nulla euismod
-                                ullamcorper. Donec a felis a ipsum mattis tincidunt at consequat quam. In hac habitasse platea dictumst. Ut vehicula,
-                                lacus quis faucibus ultrices, urna diam pretium elit, a pharetra felis elit et mauris.{' '}
-                            </p>
+                            <p>{lorem}</p>
                         </div>
                         <div className={dark ? 'highlight hover-dark' : 'highlight hover-light'}>
-                            <p>
-                                Donec quis varius odio. Suspendisse vel tortor ac dui varius venenatis et sed lorem. Sed nec lectus et nulla euismod
-                                ullamcorper. Donec a felis a ipsum mattis tincidunt at consequat quam. In hac habitasse platea dictumst. Ut vehicula,
-                                lacus quis faucibus ultrices, urna diam pretium elit, a pharetra felis elit et mauris.{' '}
-                            </p>
+                            <p>{lorem}</p>
                         </div>
                     </div>
                 </div>

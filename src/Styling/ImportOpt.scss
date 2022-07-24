@@ -8,6 +8,7 @@
     flex-direction: column;
     // justify-content: center;
     align-items: center;
+    // background-color: orange;
 
     .page-title {
         height: 9vh;
@@ -27,7 +28,7 @@
         display: none;
     }
 
-    #input-label {
+    .input-label {
         height: 100%;
         width: 100%;
         // background-color: aqua;
@@ -38,7 +39,6 @@
         .diagram-sect {
             height: 35%;
             width: 100%;
-            // background-color: orange;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -155,7 +155,7 @@
             }
         }
         .description-sect {
-            height: 20%;
+            height: 28%;
             width: 100%;
             // background-color: yellowgreen;
             display: flex;
@@ -178,7 +178,7 @@
             }
         }
         .upload-sect {
-            height: 25%;
+            height: 18%;
             width: 100%;
             // background-color: red;
             display: flex;
@@ -187,7 +187,7 @@
 
             .upload-block {
                 width: 20%;
-                height: 40%;
+                height: 60%;
                 border-radius: 10px;
                 display: flex;
                 align-items: center;
@@ -198,7 +198,7 @@
 
                 @include breakpoint-mixin('desktop') {
                     width: 15%;
-                    height: 35%;
+                    height: 50%;
                 }
             }
 
@@ -211,4 +211,12 @@
             }
         }
     }
+
+    .new-width {
+        width: 70%;
+    }
+}
+
+.new-width {
+    width: 94%;
 }

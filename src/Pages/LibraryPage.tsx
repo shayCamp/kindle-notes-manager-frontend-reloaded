@@ -9,7 +9,6 @@ import Book from '../Components/LibraryComponents/Book';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { AiOutlineStar } from 'react-icons/ai';
 import '../Styling/darkTheme.scss';
-import NoBooksPlaceholder from '../Components/LibraryComponents/NoBooksPlaceholder';
 
 interface LibraryPageProps {
     modalToggle: () => void;
@@ -108,76 +107,71 @@ const LibraryPage = ({ modalToggle }: LibraryPageProps) => {
                     </div>
                 </div>
             </div>
-            {books?.length === 0 ? ( //If theres no books return place holder else map through books
-                <NoBooksPlaceholder modalToggle={modalToggle} />
-            ) : (
-                <div
-                    className={
-                        displayDrop
-                            ? `lib-page__bookSection margin ${
-                                  column_count === 3 ? `three` : column_count === 4 ? `four` : column_count === 5 ? `five` : null
-                              }`
-                            : `lib-page__bookSection ${
-                                  column_count === 3 ? `three` : column_count === 4 ? `four` : column_count === 5 ? `five` : null
-                              }`
-                    }
-                >
-                    {loading || books === undefined || books === null ? (
-                        <BarLoader color={'#FFFFFF'} css={override} />
-                    ) : recent ? (
-                        books
-                            .slice()
-                            .sort(function (a, b): number {
-                                if (rating) {
-                                    return b.rating - a.rating;
-                                } else {
-                                    return 0;
-                                }
-                            })
-                            .sort(function (a, b): number {
-                                if (genre) {
-                                    return b.genre > a.genre ? 1 : -1;
-                                } else {
-                                    return 0;
-                                }
-                            })
-                            .filter(
-                                (book) =>
-                                    book.deleted === false &&
-                                    (book.title.toUpperCase().includes(searchValue.toUpperCase()) ||
-                                        book.author.toUpperCase().includes(searchValue.toUpperCase()) ||
-                                        book.genre.toUpperCase().includes(searchValue.toUpperCase())),
-                            )
-                            .map((book, i) => <Book key={i} data={book} updateInfo={(prop: updateInfoProps) => updateInfo(prop)} />)
-                    ) : (
-                        books
-                            .slice()
-                            .reverse()
-                            .sort(function (a, b): number {
-                                if (rating) {
-                                    return b.rating - a.rating;
-                                } else {
-                                    return 0;
-                                }
-                            })
-                            .sort(function (a, b): number {
-                                if (genre) {
-                                    return b.genre > a.genre ? 1 : -1;
-                                } else {
-                                    return 0;
-                                }
-                            })
-                            .filter(
-                                (book) =>
-                                    book.deleted === false &&
-                                    (book.title.toUpperCase().includes(searchValue.toUpperCase()) ||
-                                        book.author.toUpperCase().includes(searchValue.toUpperCase()) ||
-                                        book.genre.toUpperCase().includes(searchValue.toUpperCase())),
-                            )
-                            .map((book, i) => <Book key={i} data={book} updateInfo={(prop: updateInfoProps) => updateInfo(prop)} />)
-                    )}
-                </div>
-            )}
+
+            <div
+                className={
+                    displayDrop
+                        ? `lib-page__bookSection margin ${
+                              column_count === 3 ? `three` : column_count === 4 ? `four` : column_count === 5 ? `five` : null
+                          }`
+                        : `lib-page__bookSection ${column_count === 3 ? `three` : column_count === 4 ? `four` : column_count === 5 ? `five` : null}`
+                }
+            >
+                {loading || books === undefined || books === null ? (
+                    <BarLoader color={'#FFFFFF'} css={override} />
+                ) : recent ? (
+                    books
+                        .slice()
+                        .sort(function (a, b): number {
+                            if (rating) {
+                                return b.rating - a.rating;
+                            } else {
+                                return 0;
+                            }
+                        })
+                        .sort(function (a, b): number {
+                            if (genre) {
+                                return b.genre > a.genre ? 1 : -1;
+                            } else {
+                                return 0;
+                            }
+                        })
+                        .filter(
+                            (book) =>
+                                book.deleted === false &&
+                                (book.title.toUpperCase().includes(searchValue.toUpperCase()) ||
+                                    book.author.toUpperCase().includes(searchValue.toUpperCase()) ||
+                                    book.genre.toUpperCase().includes(searchValue.toUpperCase())),
+                        )
+                        .map((book, i) => <Book key={i} data={book} updateInfo={(prop: updateInfoProps) => updateInfo(prop)} />)
+                ) : (
+                    books
+                        .slice()
+                        .reverse()
+                        .sort(function (a, b): number {
+                            if (rating) {
+                                return b.rating - a.rating;
+                            } else {
+                                return 0;
+                            }
+                        })
+                        .sort(function (a, b): number {
+                            if (genre) {
+                                return b.genre > a.genre ? 1 : -1;
+                            } else {
+                                return 0;
+                            }
+                        })
+                        .filter(
+                            (book) =>
+                                book.deleted === false &&
+                                (book.title.toUpperCase().includes(searchValue.toUpperCase()) ||
+                                    book.author.toUpperCase().includes(searchValue.toUpperCase()) ||
+                                    book.genre.toUpperCase().includes(searchValue.toUpperCase())),
+                        )
+                        .map((book, i) => <Book key={i} data={book} updateInfo={(prop: updateInfoProps) => updateInfo(prop)} />)
+                )}
+            </div>
         </div>
     );
 };
