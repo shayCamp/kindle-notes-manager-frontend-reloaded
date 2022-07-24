@@ -5,11 +5,13 @@
     height: 35px;
     width: 35px;
     margin-right: 10px;
-    background-color: $border;
-    border-radius: 50%;
 
     @include breakpoint-mixin('laptop-wide') {
         height: 45px;
         width: 45px;
+    }
+
+    #icon {
+        cursor: pointer;
     }
 }

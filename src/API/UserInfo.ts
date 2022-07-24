@@ -11,13 +11,12 @@ function UserInfoApi(prop: string | null) {
     const [hasBooks, setHasBooks] = useState<boolean>(true);
 
     function getUserInfo() {
-        console.log('function running');
         if (prop === null) {
             setUserInfo(undefined);
         } else {
             axios({
                 method: `GET`,
-                url: 'https://kindle-project-backend-v2.herokuapp.com/users/info',
+                url: `${process.env.REACT_APP_BACKENDURL}/users/info`,
                 headers: {
                     'x-auth-token': prop.replace(/\"/g, ''),
                 },
@@ -31,7 +30,7 @@ function UserInfoApi(prop: string | null) {
 
             axios({
                 method: `GET`,
-                url: 'https://kindle-project-backend-v2.herokuapp.com/books',
+                url: `${process.env.REACT_APP_BACKENDURL}/books`,
                 headers: {
                     'x-auth-token': prop.replace(/\"/g, ''),
                 },
@@ -44,6 +43,10 @@ function UserInfoApi(prop: string | null) {
                 });
         }
     }
+
+    const updateHasBooks = () => {
+        setHasBooks(true);
+    };
 
     function updateUserInfo(type: boolean | number) {
         setUserInfo(
@@ -74,7 +77,7 @@ function UserInfoApi(prop: string | null) {
 
             axios({
                 method: `PUT`,
-                url: 'https://kindle-project-backend-v2.herokuapp.com/users/info',
+                url: `${process.env.REACT_APP_BACKENDURL}/users/info`,
                 headers: {
                     'x-auth-token': prop.replace(/\"/g, ''),
                 },
@@ -95,6 +98,7 @@ function UserInfoApi(prop: string | null) {
         userInfo,
         updateUserInfo,
         hasBooks,
+        updateHasBooks,
     };
 }
 

@@ -14,7 +14,7 @@ function BooksApi() {
         } else {
             axios({
                 method: `GET`,
-                url: 'https://kindle-project-backend-v2.herokuapp.com/books',
+                url: `${process.env.REACT_APP_BACKENDURL}/books`,
                 headers: {
                     'x-auth-token': authToken.replace(/\"/g, ''),
                 },
@@ -55,7 +55,7 @@ function BooksApi() {
         } else {
             axios({
                 method: `PUT`,
-                url: `https://kindle-project-backend-v2.herokuapp.com/books/${book_id}`,
+                url: `${process.env.REACT_APP_BACKENDURL}/books/${book_id}`,
                 headers: {
                     'x-auth-token': authToken.replace(/\"/g, ''),
                 },

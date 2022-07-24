@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import '../Styling/IntermediateImportPage.scss';
+import { UserContext } from '../Context/UserContext';
+import UserInfoApi from '../API/UserInfo';
+import ImportOpt from '../Components/ModalComponents/ImportOpt';
 
-// interface IntermediateImportPageProps {
+interface IntermediateImportPageProps {
+    updateHasBooks: () => void;
+}
 
-// }
+const IntermediateImportPage = ({ updateHasBooks }: IntermediateImportPageProps) => {
+    const userInfo = useContext(UserContext);
+    const dark = userInfo?.dark_mode;
 
-const IntermediateImportPage = ({ ...props }) => {
-    console.log(props);
     return (
-        <div>
-            <h1>Redirect You Need To Import Books Bro</h1>
+        <div className="intermediateImportPage">
+            <div className="modal cd-dark text-dark">
+                <ImportOpt title={'First Time Importing?'} newUser={true} updateHasBooks={updateHasBooks} />
+            </div>
         </div>
     );
 };

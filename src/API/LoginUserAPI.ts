@@ -34,7 +34,7 @@ const LoginUserApi = () => {
             //if new account create account
             axios({
                 method: 'POST',
-                url: 'https://kindle-project-backend-v2.herokuapp.com/users/',
+                url: `${process.env.REACT_APP_BACKENDURL}/users/`,
                 headers: { 'Content-Type': 'application/json' },
                 data: {
                     username: username,
@@ -55,7 +55,7 @@ const LoginUserApi = () => {
             //else log user in
             axios({
                 method: `POST`,
-                url: 'https://kindle-project-backend-v2.herokuapp.com/login',
+                url: `${process.env.REACT_APP_BACKENDURL}/login`,
                 headers: { 'Content-Type': 'application/json' },
                 data: {
                     username: username,

@@ -4,6 +4,8 @@ import InputFields from './InputFields';
 import SubmitBtn from './SubmitBtn';
 import '../../Styling/FormBlock.scss';
 import DoneIcon from '@mui/icons-material/Done';
+import UseAnimations from 'react-useanimations';
+import checkbox from 'react-useanimations/lib/checkBox';
 
 interface InputFieldsBlockProps {
     isNewAccount: boolean;
@@ -27,7 +29,7 @@ const InputFieldsBlock = ({ isNewAccount, updateAuthToken }: InputFieldsBlockPro
                 updateAuthToken,
             }); //Create User function
         } else {
-            console.log('some error');
+            // console.log('some error');
         }
     });
 
@@ -81,6 +83,7 @@ const InputFieldsBlock = ({ isNewAccount, updateAuthToken }: InputFieldsBlockPro
             <p className="smallPrint">{localError ? `Please Enter ${localError}` : loginApiError ? `Check Credentials` : null}</p>
             <p className="smallPrint">Forgot Password?</p>
             <div className="serviceTerms">
+                {/* <UseAnimations className="radio-container" strokeColor="white" size={28} animation={checkbox} onClick={() => setTos(!tos)} /> */}
                 <div className="radio-container" onClick={() => setTos(!tos)}>
                     {tos ? <DoneIcon id="tickIcon" /> : null}
                 </div>

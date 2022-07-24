@@ -10,7 +10,6 @@ interface QuoteBannerProps {
 
 const QuoteBanner = ({ modalToggle }: QuoteBannerProps) => {
     const { getQuote, quote, author, loading, title } = RandomQuoteGenerator(); //Getting a random quote
-    const [noHighlights, setNoHighlights] = useState(false);
 
     const override = css`
         position: absolute;
@@ -34,23 +33,14 @@ const QuoteBanner = ({ modalToggle }: QuoteBannerProps) => {
     useEffect(() => {
         let isMounted = true;
 
-        if (quote === 'Currently Have No Highlights, Go To Settings To Import') {
-            //If they have no quotes dont continue to generate random quotes
-            setNoHighlights(true);
-        } else {
-            //If they have quotes then we can update quotes every minute
-            setNoHighlights(false);
-
-            const interval = setInterval(() => {
-                if (isMounted) {
-                    getQuote(); //secures a random quote every 60 seconds
-                }
-            }, 60000); // runs every 60 seconds
-
-            return () => clearInterval(interval);
-        }
+        const interval = setInterval(() => {
+            if (isMounted) {
+                getQuote(); //secures a random quote every 60 seconds
+            }
+        }, 60000); // runs every 60 seconds
 
         return () => {
+            clearInterval(interval);
             isMounted = false;
         };
     }, [quote]);
@@ -62,16 +52,10 @@ const QuoteBanner = ({ modalToggle }: QuoteBannerProps) => {
             ) : (
                 <>
                     <div className="QuoteHolder">
-                        <h1 className={noHighlights ? 'Quote cursor' : 'Quote'} onClick={noHighlights ? modalToggle : undefined}>
-                            {`"${quote}"`}
-                        </h1>
+                        <h1 className="Quote">{`"${quote}"`}</h1>
                     </div>
                     <div className="AuthorHolder">
-                        <p className={noHighlights ? 'Author cursor' : 'Author'} onClick={noHighlights ? modalToggle : undefined}>
-                            {`- ${author}`}
-                            {/* {` `}
-                            <span>{`in ${title}`}</span> */}
-                        </p>
+                        <p className="Author">{`- ${author}`}</p>
                     </div>
                 </>
             )}

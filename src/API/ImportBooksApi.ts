@@ -2,33 +2,57 @@ import React, { useContext, useState } from 'react';
 import { UserContext } from '../Context/UserContext';
 import useToken from '../API/useToken';
 import axios from 'axios';
+import { io } from 'socket.io-client';
 
 function ImportBooksApi() {
     const { authToken, setAuthToken } = useToken();
-    const [successful, setSuccessful] = useState<boolean>(false);
+    const [percentage, setPercentage] = useState<number>(0);
+    const [progress, setProgress] = useState<string>('None');
 
-    function uploadBooks(prop: File) {
+    const socket = io(`${process.env.REACT_APP_BACKENDURL}`);
+
+    socket.on('connect', () => {
+        console.log('connected to socket server');
+
+        socket.on('upload-progress', (data) => {
+            setPercentage(Number(data));
+            if (data === '100') {
+                setProgress('Complete');
+
+                setTimeout(() => {
+                    //After two seconds return upload button
+                    setProgress('None');
+                    setPercentage(0);
+                }, 2000);
+            }
+        });
+    });
+
+    function uploadBooks(prop: FormData) {
+        setProgress('Started');
+
         if (authToken === null) {
             throw new Error('no token supplied');
         } else {
             axios({
                 method: `POST`,
-                url: `https://kindle-project-backend-v2.herokuapp.com/upload`,
-                headers: { 'x-auth-token': authToken.replace(/\"/g, '') },
+                url: `${process.env.REACT_APP_BACKENDURL}/upload`,
+                headers: { 'x-auth-token': authToken.replace(/\"/g, ''), 'Content-Type': 'multipart/form-data' },
                 data: prop,
             })
                 .then(function (response) {
-                    setSuccessful(true);
+                    console.log('response: ', response);
                 })
                 .catch(function (error) {
-                    console.log(`error:`, error);
+                    setProgress('None'); //If error, make loading bar disappear
                 });
         }
     }
 
     return {
         uploadBooks,
-        successful,
+        percentage,
+        progress,
     };
 }
 

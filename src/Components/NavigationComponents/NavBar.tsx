@@ -6,6 +6,7 @@ import { IoAnalyticsSharp } from 'react-icons/io5';
 import { ImBooks } from 'react-icons/im';
 import { BsToggles } from 'react-icons/bs';
 import { IoSettingsOutline } from 'react-icons/io5';
+import settings from 'react-useanimations/lib/settings';
 import '../../Styling/darkTheme.scss';
 
 interface NavBarProps {
@@ -21,6 +22,7 @@ const NavBar = ({ show, toggle, scroll, libraryActive, modalToggle, modalActive 
     const username = sessionStorage.getItem('username');
     const userInfo = useContext(UserContext);
     const dark = userInfo?.dark_mode;
+
     return (
         <div
             className={dark ? (show ? 'show navBar cd-dark' : 'navBar cd-dark') : show ? 'show navBar cd-light' : 'navBar cd-light'}

@@ -17,7 +17,7 @@ const RandomQuoteGenerator = () => {
             //Axios call returns random highlight or message saying no highlights
             axios({
                 method: `GET`,
-                url: 'https://kindle-project-backend-v2.herokuapp.com/books/random-highlight',
+                url: `${process.env.REACT_APP_BACKENDURL}/books/random-highlight`,
                 headers: {
                     'x-auth-token': authToken.replace(/\"/g, ''),
                 },
