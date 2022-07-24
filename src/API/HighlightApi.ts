@@ -14,7 +14,7 @@ function HighlightApi() {
         } else {
             axios({
                 method: `GET`,
-                url: 'https://kindle-project-backend-v2.herokuapp.com/books/all-highlights',
+                url: `${process.env.REACT_APP_BACKENDURL}/books/all-highlights`,
                 headers: {
                     'x-auth-token': authToken.replace(/\"/g, ''),
                 },

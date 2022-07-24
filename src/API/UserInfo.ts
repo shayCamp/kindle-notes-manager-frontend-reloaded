@@ -31,7 +31,7 @@ function UserInfoApi(prop: string | null) {
 
             axios({
                 method: `GET`,
-                url: 'https://kindle-project-backend-v2.herokuapp.com/books',
+                url: `${process.env.REACT_APP_BACKENDURL}/books`,
                 headers: {
                     'x-auth-token': prop.replace(/\"/g, ''),
                 },

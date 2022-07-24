@@ -18,6 +18,17 @@ const ImportOpt = ({ title, newUser, updateHasBooks }: ImportOptProps) => {
     const [incomingFile, setIncomingFile] = useState<File | null>(null);
     const userInfo = useContext(UserContext); //allows the current page/component to access the variables stored within he userContext
     const dark = newUser ? true : userInfo?.dark_mode;
+    // const socket = io('http://localhost:3100');
+
+    // socket.on('connect', () => {
+    //     console.log('connected to socket server');
+
+    //     socket.on('status-update', (data) => {
+    //         console.log(`incoming message ${data}`);
+    //     });
+    // });
+
+    console.log('test socket client running ....');
 
     const uploadFile = () => {
         if (incomingFile === null) {

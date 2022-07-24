@@ -13,7 +13,7 @@ function ImportBooksApi() {
         } else {
             axios({
                 method: `POST`,
-                url: `https://kindle-project-backend-v2.herokuapp.com/upload`,
+                url: `${process.env.REACT_APP_BACKENDURL}/upload`,
                 headers: { 'x-auth-token': authToken.replace(/\"/g, '') },
                 data: prop,
             })
