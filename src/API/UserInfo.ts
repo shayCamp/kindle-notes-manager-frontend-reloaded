@@ -11,7 +11,6 @@ function UserInfoApi(prop: string | null) {
     const [hasBooks, setHasBooks] = useState<boolean>(true);
 
     function getUserInfo() {
-        console.log('function running');
         if (prop === null) {
             setUserInfo(undefined);
         } else {

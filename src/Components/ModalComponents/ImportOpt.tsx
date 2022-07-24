@@ -20,6 +20,10 @@ const ImportOpt = ({ title, newUser, updateHasBooks }: ImportOptProps) => {
     const dark = newUser ? true : userInfo?.dark_mode;
     // const socket = io('http://localhost:3100');
 
+    // https://kindle-project-backend-v2.herokuapp.com:3100
+
+    // const socket = io(`${process.env.REACT_APP_BACKENDURL}:3100`);
+
     // socket.on('connect', () => {
     //     console.log('connected to socket server');
 

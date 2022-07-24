@@ -27,7 +27,7 @@ const InputFieldsBlock = ({ isNewAccount, updateAuthToken }: InputFieldsBlockPro
                 updateAuthToken,
             }); //Create User function
         } else {
-            console.log('some error');
+            // console.log('some error');
         }
     });
 
