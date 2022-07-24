@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
 import '../../Styling/ImportOpt.scss';
-import { io } from 'socket.io-client';
 import axios from 'axios';
 import { UserContext } from '../../Context/UserContext';
 import '../../Styling/darkTheme.scss';
@@ -14,39 +13,32 @@ interface ImportOptProps {
 }
 
 const ImportOpt = ({ title, newUser, updateHasBooks }: ImportOptProps) => {
-    const { uploadBooks, successful } = ImportBooksApi();
+    const { uploadBooks, percentage, progress } = ImportBooksApi();
     const [incomingFile, setIncomingFile] = useState<File | null>(null);
     const userInfo = useContext(UserContext); //allows the current page/component to access the variables stored within he userContext
     const dark = newUser ? true : userInfo?.dark_mode;
-    // const socket = io('http://localhost:3100');
-
-    // https://kindle-project-backend-v2.herokuapp.com:3100
-
-    // const socket = io(`${process.env.REACT_APP_BACKENDURL}:3100`);
-
-    // socket.on('connect', () => {
-    //     console.log('connected to socket server');
-
-    //     socket.on('status-update', (data) => {
-    //         console.log(`incoming message ${data}`);
-    //     });
-    // });
-
-    console.log('test socket client running ....');
 
     const uploadFile = () => {
         if (incomingFile === null) {
             console.log('Please Select File');
         } else {
+            // console.log(incomingFile);
             const formData = new FormData(); // needed for uploading a file
             formData.append('clippingsFile', incomingFile); // adds the uploaded file under the name "clippingsFile" to the formData variable
-            uploadBooks(incomingFile);
+            console.log(formData);
+            uploadBooks(formData);
         }
     };
 
     /**
      * Next Function -- If its a new user (i.e passed from login), on books import success we need to call updateHasBooks in order to update the APP.tsx and say that the user now has books and can be passed into the main application
      */
+
+    useEffect(() => {
+        if (progress === 'Complete' && updateHasBooks !== undefined) {
+            updateHasBooks();
+        }
+    }, [progress]);
 
     const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod tellus erat, eget condimentum neque
     ullamcorper eget. Sed sodales lacus id lectus congue cursus. Praesent porttitor felis in mattis scelerisque. Ut
@@ -97,19 +89,30 @@ const ImportOpt = ({ title, newUser, updateHasBooks }: ImportOptProps) => {
                     <p>{incomingFile === null ? `Drag Clippings.txt here or upload using the button` : `Selected File: ${incomingFile.name}`}</p>
                 </div>
                 <div className="upload-sect">
-                    <div
-                        className={incomingFile === null ? 'upload-block' : 'upload-block active'}
-                        onClick={
-                            incomingFile === null
-                                ? undefined
-                                : (event) => {
-                                      event.preventDefault();
-                                      uploadFile();
-                                  }
-                        }
-                    >
-                        <p>{incomingFile === null ? `Select File` : `Upload`}</p>
-                    </div>
+                    {progress === 'None' ? ( //If progress is none, no call has been made or it errored
+                        <div
+                            className={incomingFile === null ? 'upload-block' : 'upload-block active'}
+                            onClick={
+                                incomingFile === null
+                                    ? undefined
+                                    : (event) => {
+                                          event.preventDefault();
+                                          uploadFile();
+                                      }
+                            }
+                        >
+                            <p>{incomingFile === null ? `Select File` : `Upload`}</p>
+                        </div>
+                    ) : progress === 'Started' ? (
+                        <>
+                            <p id="percentage-text">{`${percentage}%`}</p>
+                            <div className="progress-bar">
+                                <div className="loading-bar" style={{ width: `${percentage}%` }}></div>
+                            </div>
+                        </>
+                    ) : progress === 'Complete' ? (
+                        <p>Completed</p>
+                    ) : null}
                 </div>
             </label>
         </form>

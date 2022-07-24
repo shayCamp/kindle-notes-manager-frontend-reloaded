@@ -16,7 +16,7 @@ function UserInfoApi(prop: string | null) {
         } else {
             axios({
                 method: `GET`,
-                url: 'https://kindle-project-backend-v2.herokuapp.com/users/info',
+                url: `${process.env.REACT_APP_BACKENDURL}/users/info`,
                 headers: {
                     'x-auth-token': prop.replace(/\"/g, ''),
                 },
@@ -77,7 +77,7 @@ function UserInfoApi(prop: string | null) {
 
             axios({
                 method: `PUT`,
-                url: 'https://kindle-project-backend-v2.herokuapp.com/users/info',
+                url: `${process.env.REACT_APP_BACKENDURL}/users/info`,
                 headers: {
                     'x-auth-token': prop.replace(/\"/g, ''),
                 },

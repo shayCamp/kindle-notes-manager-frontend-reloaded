@@ -11,10 +11,10 @@ const SocialBlock = ({ ...props }) => {
         <div className="socialBlock">
             <span className="borderLine"></span>
             <div className="cardHolder">
-                <SocialCards />
-                <SocialCards />
-                <SocialCards />
-                <SocialCards />
+                <SocialCards icon={'github'} />
+                <SocialCards icon={'twitter'} />
+                <SocialCards icon={'instagram'} />
+                <SocialCards icon={'linkedin'} />
             </div>
         </div>
     );

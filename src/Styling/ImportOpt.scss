@@ -209,6 +209,34 @@
             .upload-block:hover {
                 background-color: $positiveBTN;
             }
+
+            #percentage-text {
+                margin-right: 20px;
+            }
+
+            .progress-bar {
+                height: 6%;
+                width: 60%;
+                border-radius: 5px;
+                background-color: $border;
+                display: flex;
+
+                @include breakpoint-mixin('laptop-wide') {
+                    width: 55%;
+                }
+                @include breakpoint-mixin('desktop') {
+                    width: 50%;
+                }
+
+                .loading-bar {
+                    height: 100%;
+                    min-width: 5px;
+                    background-color: $positiveBTN;
+                    border-radius: 5px;
+                    transition: 1s ease;
+                    transition-delay: 0.2s;
+                }
+            }
         }
     }
 

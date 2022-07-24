@@ -11,7 +11,6 @@ import IntermediateImportPage from './Pages/IntermediateImportPage';
 const App = () => {
     const { authToken, setAuthToken } = useToken(); //On page load we get authToken from local storage
     const { userInfo, getUserInfo, updateUserInfo, hasBooks, updateHasBooks } = UserInfoApi(authToken); //Get user info
-    console.log('url 88888', process.env.REACT_APP_BACKENDURL);
 
     if (userInfo === undefined) {
         //Only pass user into application if userInfo is present
