@@ -9,7 +9,6 @@ interface AppearanceProps {
     updateUserInfo: (prop: boolean | number) => void;
 }
 const AppearanceOpt = ({ title, updateUserInfo }: AppearanceProps) => {
-    console.log('updateUserInfo: ', updateUserInfo);
     const userInfo = useContext(UserContext); //allows the current page/component to access the variables stored within the userContext
     const dark = userInfo?.dark_mode;
 

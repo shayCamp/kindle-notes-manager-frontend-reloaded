@@ -35,13 +35,17 @@ function BooksApi() {
     }
 
     function updateInfo({ book_id, data }: updateInfoProps) {
-        console.log('books', books);
+        // const selected
 
         if (typeof data === 'number' && books !== undefined) {
             const newState = books.map((book) => {
                 //If book has same ID change rating locally
                 if (book._id === book_id) {
-                    return { ...book, rating: data };
+                    if (book.rating === data) {
+                        return { ...book, rating: data - 1 };
+                    } else {
+                        return { ...book, rating: data };
+                    }
                 } else return book;
             });
 
@@ -53,13 +57,26 @@ function BooksApi() {
         if (authToken === null) {
             throw new Error('no token supplied');
         } else {
+            let value;
+
+            books?.map((book) => {
+                //If book has same ID change rating locally
+                if (book._id === book_id) {
+                    if (book.rating === data) {
+                        value = data - 1;
+                    } else {
+                        value = data;
+                    }
+                }
+            });
+
             axios({
                 method: `PUT`,
                 url: `${process.env.REACT_APP_BACKENDURL}/books/${book_id}`,
                 headers: {
                     'x-auth-token': authToken.replace(/\"/g, ''),
                 },
-                data: typeof data === 'number' ? { rating: data } : null,
+                data: typeof data === 'number' ? { rating: value } : null,
             })
                 .then(function (response) {
                     console.log('rating updated');

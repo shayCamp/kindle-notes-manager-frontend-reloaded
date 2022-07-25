@@ -5,8 +5,7 @@ import { MdSpaceDashboard } from 'react-icons/md';
 import { IoAnalyticsSharp } from 'react-icons/io5';
 import { ImBooks } from 'react-icons/im';
 import { BsToggles } from 'react-icons/bs';
-import { IoSettingsOutline } from 'react-icons/io5';
-import settings from 'react-useanimations/lib/settings';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import '../../Styling/darkTheme.scss';
 
 interface NavBarProps {
@@ -30,7 +29,7 @@ const NavBar = ({ show, toggle, scroll, libraryActive, modalToggle, modalActive 
             onMouseLeave={() => toggle(false)}
         >
             <div className={dark ? 'toggleTag cd-dark text-dark' : 'toggleTag cd-light'} onClick={() => modalToggle()}>
-                <IoSettingsOutline id="icon" />
+                <GiHamburgerMenu id="icon" />
             </div>
             <div className={dark ? 'circleOpt text-dark' : 'circleOpt'}>
                 <div className="circle" onClick={() => modalToggle()}>
