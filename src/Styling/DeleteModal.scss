@@ -1,0 +1,98 @@
+@import '../Styling/Breakpoints.scss';
+@import '../Styling/Theme.scss';
+
+.delete-modal-container {
+    position: fixed;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow-y: hidden;
+    backdrop-filter: blur(6px);
+    // background-color: orange;
+
+    // overflow-y: hidden;
+
+    .delete-modal-container__modal {
+        border: 1px solid $border;
+        top: 15%;
+        position: relative;
+        height: fit-content;
+        width: 30%;
+        overflow: hidden;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 25px 20px 25px;
+
+        @include breakpoint-mixin('desktop') {
+            // font-size: 2000px;
+            top: 20%;
+        }
+
+        @include breakpoint-mixin('laptop-wide') {
+            // font-size: 2000px;
+            width: 25%;
+        }
+        @include breakpoint-mixin('desktop') {
+            // font-size: 2000px;
+            width: 18%;
+        }
+
+        #warning-text {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        #username {
+            font-size: 22px;
+            font-weight: 600;
+            color: $negativeBTN;
+            margin-bottom: 10px;
+        }
+
+        #delete-input {
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            padding-left: 10px;
+            height: 45px;
+            margin-bottom: 25px;
+            // font-size: 16px;
+        }
+
+        #delete-input-margin-top {
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            padding-left: 10px;
+            height: 45px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+
+            @include breakpoint-mixin('laptop-wide') {
+                margin-top: 20px;
+            }
+            // font-size: 16px;
+        }
+
+        .modal-button {
+            height: 35px;
+            width: 100%;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .delete-btn {
+            border: 1px solid $negativeBTN;
+            background-color: #ff4a4aa7;
+        }
+        .cancel-btn {
+            border: 1px solid $border;
+        }
+    }
+}
