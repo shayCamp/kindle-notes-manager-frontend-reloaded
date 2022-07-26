@@ -1,0 +1,57 @@
+@import '../Styling/Breakpoints.scss';
+@import '../Styling/Theme.scss';
+
+.invalid-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow-y: hidden;
+    backdrop-filter: blur(3px);
+    // background-color: orange;
+
+    // overflow-y: hidden;
+
+    .invalid-modal-container__modal {
+        border: 1px solid $border;
+        top: 30%;
+        position: relative;
+        height: fit-content;
+        width: 35%;
+        overflow: hidden;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 25px 25px 25px;
+
+        @include breakpoint-mixin('laptop-wide') {
+            // font-size: 2000px;
+            width: 30%;
+        }
+        @include breakpoint-mixin('desktop') {
+            // font-size: 2000px;
+            top: 35%;
+            width: 20%;
+        }
+
+        #instruction-text {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .cancel-button {
+            height: 35px;
+            width: 100%;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // margin-bottom: 15px;
+            cursor: pointer;
+            border: 1px solid $border;
+        }
+    }
+}

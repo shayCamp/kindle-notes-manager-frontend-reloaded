@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../Context/UserContext';
 import '../../Styling/DeleteModal.scss';
+import InvalidModal from './InvalidModal';
 
 interface DeleteModalProps {
     modalToggle: () => void;
@@ -10,9 +11,38 @@ interface DeleteModalProps {
 const DeleteModal = ({ modalToggle, deleteType }: DeleteModalProps) => {
     const userInfo = useContext(UserContext);
     const dark = userInfo?.dark_mode;
+    const [viewInvalidModal, setViewInvalidModal] = useState<boolean>(false);
     const [input, setInput] = useState<string>('');
+
+    const deleteFunc = () => {
+        if (deleteType === 'Account') {
+            if (input === userInfo?.username) {
+                console.log('can delete account');
+            } else {
+                setViewInvalidModal(true);
+            }
+        } else {
+            if (input === 'Clippings') {
+                console.log('can delete account');
+            } else {
+                setViewInvalidModal(true);
+            }
+        }
+    };
+
+    const invalidModalToggle = () => {
+        setViewInvalidModal(false);
+    };
+
+    document.addEventListener('keyup', function (event) {
+        //Checking whether the enter button is pressed, triggering advancement when pressed
+        if (event.key === 'Enter') {
+            deleteFunc();
+        }
+    });
+
     return (
-        <div className="delete-modal-container" onClick={() => modalToggle()}>
+        <div className="delete-modal-container" onClick={viewInvalidModal ? undefined : () => modalToggle()}>
             <div
                 className={dark ? 'delete-modal-container__modal bg-dark text-dark' : 'delete-modal-container__modal bg-light'}
                 onClick={(event) => event.stopPropagation()}
@@ -29,13 +59,14 @@ const DeleteModal = ({ modalToggle, deleteType }: DeleteModalProps) => {
                     onChange={(e) => setInput(e.target.value)}
                     placeholder={deleteType === 'Account' ? userInfo?.username : 'Clippings'}
                 />
-                <div className="modal-button delete-btn">
+                <div className="modal-button delete-btn" onClick={() => deleteFunc()}>
                     <p>{deleteType === 'Account' ? `Permanently delete account` : `Permanently delete books`}</p>
                 </div>
-                <div className="modal-button cancel-btn">
+                <div className="modal-button cancel-btn" onClick={() => modalToggle()}>
                     <p>Cancel</p>
                 </div>
             </div>
+            {viewInvalidModal ? <InvalidModal deleteType={deleteType} modalToggle={invalidModalToggle} /> : null}
         </div>
     );
 };
