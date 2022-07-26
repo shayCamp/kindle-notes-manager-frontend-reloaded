@@ -11,7 +11,6 @@ import '../../Styling/darkTheme.scss';
 
 const StreakBoard = ({ ...props }) => {
     const { highlights, getAllHighlights, loading } = HighlightApi();
-    console.log('highlights: ', highlights);
     const { shiftDate } = CalenderFunctions();
     const today = new Date();
     const userInfo = useContext(UserContext);

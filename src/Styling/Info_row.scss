@@ -1,0 +1,93 @@
+@import '../Styling/Breakpoints.scss';
+@import '../Styling/Theme.scss';
+
+.info-div {
+    height: 20%;
+    width: 85%;
+    // background-color: orange;
+
+    @include breakpoint-mixin('laptop-wide') {
+        width: 90%;
+    }
+
+    p {
+        margin: 0px;
+    }
+
+    .info-div__title {
+        height: 40%;
+        width: 100%;
+        // background-color: aqua;
+        display: flex;
+        align-items: flex-end;
+
+        .title {
+            opacity: 0.6;
+            font-size: 12px;
+
+            @include breakpoint-mixin('laptop-wide') {
+                font-size: 13px;
+            }
+            @include breakpoint-mixin('desktop') {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .info-div__content {
+        height: 60%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        #info-input {
+            height: 70%;
+            width: 70%;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            padding-left: 10px;
+            font-size: 16px;
+
+            @include breakpoint-mixin('laptop-wide') {
+                // font-size: 2000px;
+                font-size: 18px;
+            }
+
+            @include breakpoint-mixin('desktop') {
+                // font-size: 2000px;
+                font-size: 20px;
+            }
+        }
+
+        .content-text {
+            font-size: 18px;
+
+            @include breakpoint-mixin('laptop-wide') {
+                // font-size: 2000px;
+                font-size: 20px;
+            }
+
+            @include breakpoint-mixin('desktop') {
+                // font-size: 2000px;
+                font-size: 24px;
+            }
+        }
+
+        .editButton {
+            padding: 0px 10px 0px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 70%;
+            display: flex;
+            align-items: center;
+            background-color: $positiveBTN;
+
+            @include breakpoint-mixin('laptop-wide') {
+                padding: 0px 15px 0px 15px;
+                border-radius: 5px;
+            }
+        }
+    }
+}

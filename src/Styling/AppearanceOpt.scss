@@ -10,12 +10,15 @@
     padding-left: 5px;
     overflow-y: auto;
     flex-flow: wrap;
+    padding-right: 45px;
 
     .page-title {
         height: 9vh;
         width: 100%;
         font-size: 16px;
         font-weight: 500;
+        display: flex;
+        align-items: center;
 
         @include breakpoint-mixin('laptop-wide') {
             font-size: 18px;
@@ -56,7 +59,18 @@
 }
 
 .AppearanceOpt-page::-webkit-scrollbar {
-    display: none;
+    width: 15px;
+    height: 100%;
+    background-color: transparent;
+}
+
+.AppearanceOpt-page::-webkit-scrollbar-thumb {
+    background-color: $thumb;
+    border: 1px solid transparent;
+    background-clip: content-box;
+    border-radius: 10px;
+    height: 120px;
+    // border: 3px solid orange;
 }
 
 // .option-title {

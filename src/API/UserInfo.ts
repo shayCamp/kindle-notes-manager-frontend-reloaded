@@ -48,7 +48,8 @@ function UserInfoApi(prop: string | null) {
         setHasBooks(true);
     };
 
-    function updateUserInfo(type: boolean | number) {
+    function updateUserInfo(type: boolean | number | string) {
+        console.log('type: ', type);
         setUserInfo(
             userInfo === undefined
                 ? undefined
@@ -71,8 +72,10 @@ function UserInfoApi(prop: string | null) {
 
             if (typeof type === 'boolean') {
                 dataProp = { dark_mode: type };
-            } else {
+            } else if (typeof type === 'number') {
                 dataProp = { column_count: type };
+            } else if (typeof type === 'string') {
+                dataProp = { username: type };
             }
 
             axios({

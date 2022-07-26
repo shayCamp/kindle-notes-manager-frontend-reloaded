@@ -69,7 +69,7 @@ const ImportOpt = ({ title, newUser, updateHasBooks }: ImportOptProps) => {
                             <div className="screen">
                                 <p>{lorem}</p>
                             </div>
-                            <p>Kindle</p>
+                            <p id="kindle-title">Kindle</p>
                         </div>
                     </div>
                     <BsArrowRight id="arrow" />

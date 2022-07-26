@@ -56,7 +56,7 @@ export interface users {
 }
 
 export interface userInfo {
-    book_count: boolean;
+    book_count: number;
     profile_picture: string;
     following: users[];
     bookRecomDate: string;

@@ -7,6 +7,10 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #121212;
+
+    p {
+        margin: 0px;
+    }
 }
 
 body::-webkit-scrollbar {

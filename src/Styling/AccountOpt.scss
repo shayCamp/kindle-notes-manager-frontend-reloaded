@@ -4,82 +4,166 @@
 .AccountOpt-page {
     height: 100%;
     width: 90%;
-    // background-color: orange;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: flex-start;
+    align-items: center;
+    overflow-y: auto;
+    flex-flow: wrap;
+    padding-right: 50px;
 
-    .circle {
-        height: 85px;
-        width: 85px;
-        border-radius: 100%;
-        background-image: url('https://media-exp1.licdn.com/dms/image/C4D03AQGk3-BmeIKmTg/profile-displayphoto-shrink_200_200/0/1581169413950?e=1662595200&v=beta&t=PiI6Mel3reQpPjsQfQepv-dXxKpoRHt2qQYyb16a85s');
-        position: relative;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+    .page-title {
+        height: 9vh;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
 
         @include breakpoint-mixin('laptop-wide') {
-            height: 100px;
-            width: 100px;
+            font-size: 18px;
         }
         @include breakpoint-mixin('desktop') {
-            height: 110px;
-            width: 110px;
+            font-size: 20px;
+        }
+    }
+
+    .circle-section {
+        height: fit-content;
+        width: 100%;
+        display: flex;
+        margin-bottom: 35px;
+
+        @include breakpoint-mixin('laptop-wide') {
+            margin-bottom: 40px;
         }
 
-        .circle__edit {
-            position: absolute;
-            top: 0px;
-            left: 70%;
-            height: 20px;
-            width: 20px;
+        #input {
+            display: none;
+        }
+
+        .circle {
+            height: 85px;
+            width: 85px;
             border-radius: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: $card-background-light;
-            border: 2px solid black;
-            cursor: pointer;
-            z-index: 1;
+            background-image: url('https://media-exp1.licdn.com/dms/image/C4D03AQGk3-BmeIKmTg/profile-displayphoto-shrink_200_200/0/1581169413950?e=1662595200&v=beta&t=PiI6Mel3reQpPjsQfQepv-dXxKpoRHt2qQYyb16a85s');
+            position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
 
             @include breakpoint-mixin('laptop-wide') {
-                height: 24px;
-                width: 24px;
+                height: 100px;
+                width: 100px;
             }
-
             @include breakpoint-mixin('desktop') {
-                height: 26px;
-                width: 26px;
+                height: 110px;
+                width: 110px;
             }
 
-            #edit-icon {
-                font-size: 10px;
-                color: black;
+            .circle__edit {
+                position: absolute;
+                top: 0px;
+                left: 70%;
+                height: 20px;
+                width: 20px;
+                border-radius: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: $card-background-light;
+                border: 2px solid black;
+                cursor: pointer;
+                z-index: 1;
 
                 @include breakpoint-mixin('laptop-wide') {
-                    font-size: 12px;
+                    height: 24px;
+                    width: 24px;
+                }
+
+                @include breakpoint-mixin('desktop') {
+                    height: 26px;
+                    width: 26px;
+                }
+
+                #edit-icon {
+                    font-size: 10px;
+                    color: black;
+
+                    @include breakpoint-mixin('laptop-wide') {
+                        font-size: 12px;
+                    }
                 }
             }
-        }
 
-        .circle__edit:hover {
-            background-color: $positiveBTN;
+            .circle__edit:hover {
+                opacity: 0.8;
+            }
         }
     }
 
     .info-block {
         width: 100%;
-        height: 30%;
+        height: 55vh;
         border-radius: 10px;
         border: 1px solid $border;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 40px;
+
+        @include breakpoint-mixin('desktop') {
+            height: 50vh;
+        }
     }
     .linked-block {
         width: 100%;
-        height: 20%;
+        height: 15vh;
+        margin-bottom: 30px;
         border-radius: 10px;
         border: 1px solid $border;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include breakpoint-mixin('laptop-wide') {
+            height: 13vh;
+        }
+        @include breakpoint-mixin('desktop') {
+            height: 11vh;
+        }
+
+        .info-div__title {
+            height: 40%;
+            width: 90%;
+            // background-color: aqua;
+            display: flex;
+            align-items: center;
+
+            .title {
+                opacity: 0.6;
+                font-size: 12px;
+
+                @include breakpoint-mixin('laptop-wide') {
+                    font-size: 13px;
+                }
+                @include breakpoint-mixin('desktop') {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .info-div__content {
+            height: 60%;
+            width: 100%;
+            // background-color: yellowgreen;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+            #icon {
+                cursor: pointer;
+            }
+        }
     }
     .signOut-block {
         width: 20%;
@@ -92,9 +176,25 @@
         justify-content: center;
         transition: all 0.5s ease;
         border: 1px solid $border;
+        margin-bottom: 40px;
     }
 
     .signOut-block:hover {
         background-color: $negativeBTN;
     }
+}
+
+.AccountOpt-page::-webkit-scrollbar {
+    width: 15px;
+    height: 100%;
+    background-color: transparent;
+}
+
+.AccountOpt-page::-webkit-scrollbar-thumb {
+    background-color: $thumb;
+    border: 1px solid transparent;
+    background-clip: content-box;
+    border-radius: 10px;
+    height: 120px;
+    // border: 3px solid orange;
 }
