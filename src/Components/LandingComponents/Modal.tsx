@@ -12,11 +12,10 @@ import '../../Styling/darkTheme.scss';
 
 interface ModalProps {
     modalToggle: () => void;
-    updateUserInfo: (prop: boolean | number) => void;
+    updateUserInfo: (prop: boolean | number | string) => void;
 }
 
 const Modal = ({ modalToggle, updateUserInfo }: ModalProps) => {
-    const username = sessionStorage.getItem('username');
     const [setting_opt, setSetting_opt] = useState('Account');
     const userInfo = useContext(UserContext);
     const dark = userInfo?.dark_mode;
@@ -29,7 +28,7 @@ const Modal = ({ modalToggle, updateUserInfo }: ModalProps) => {
             >
                 <div className={dark ? 'modal__navbar bg-dark ' : 'modal__navbar bg-light'}>
                     <div className="modal__navbar__title">
-                        <p id="title">{username}</p>
+                        <p id="title">{userInfo?.username}</p>
                     </div>
                     <div
                         className={setting_opt === 'Account' ? 'modal__navbar__option active' : 'modal__navbar__option'}
@@ -64,7 +63,7 @@ const Modal = ({ modalToggle, updateUserInfo }: ModalProps) => {
                 </div>
                 <div className="modal__content">
                     {setting_opt === 'Account' ? (
-                        <AccountOpt title={setting_opt} />
+                        <AccountOpt title={setting_opt} updateUserInfo={(prop: boolean | number | string) => updateUserInfo(prop)} />
                     ) : setting_opt === 'Appearance' ? (
                         <AppearanceOpt title={setting_opt} updateUserInfo={(prop: boolean | number) => updateUserInfo(prop)} />
                     ) : setting_opt === 'Import' ? (

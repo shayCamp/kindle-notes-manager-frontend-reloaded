@@ -26,7 +26,7 @@ const App = () => {
                         {' '}
                         {/**passing user info down as context */}
                         <Routes>
-                            <Route path="/" element={<LandingPage updateUserInfo={(prop: boolean | number) => updateUserInfo(prop)} />} />
+                            <Route path="/" element={<LandingPage updateUserInfo={(prop: boolean | number | string) => updateUserInfo(prop)} />} />
                         </Routes>
                     </UserContext.Provider>
                 </Router>

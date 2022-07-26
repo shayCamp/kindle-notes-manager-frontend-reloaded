@@ -11,7 +11,7 @@ import Modal from '../Components/LandingComponents/Modal';
 import '../Styling/darkTheme.scss';
 
 interface LandingPageProps {
-    updateUserInfo: (prop: boolean | number) => void;
+    updateUserInfo: (prop: boolean | number | string) => void;
 }
 
 const LandingPage = ({ updateUserInfo }: LandingPageProps) => {
@@ -20,6 +20,15 @@ const LandingPage = ({ updateUserInfo }: LandingPageProps) => {
     const [viewModal, setViewModal] = useState(false);
     const userInfo = useContext(UserContext);
     const dark = userInfo?.dark_mode;
+
+    useEffect(() => {
+        //Disabling scroll when modal is open
+        if (viewModal) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'scroll';
+        }
+    }, [viewModal]);
 
     const { ref, inView, entry } = useInView({
         /* Optional options */
@@ -74,7 +83,7 @@ const LandingPage = ({ updateUserInfo }: LandingPageProps) => {
                     <LibraryPage modalToggle={modalToggle} />
                 </div>
             </div>
-            {viewModal ? <Modal modalToggle={modalToggle} updateUserInfo={(prop: boolean | number) => updateUserInfo(prop)} /> : null}
+            {viewModal ? <Modal modalToggle={modalToggle} updateUserInfo={(prop: boolean | number | string) => updateUserInfo(prop)} /> : null}
         </div>
     );
 };

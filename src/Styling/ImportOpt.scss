@@ -81,7 +81,7 @@
                     .screen {
                         position: absolute;
                         width: 70%;
-                        height: 65%;
+                        height: 68%;
                         top: 10%;
                         background-color: white;
                         display: flex;
@@ -92,6 +92,10 @@
                             font-size: 6px;
                             color: black;
                             max-width: 90%;
+
+                            @include breakpoint-mixin('desktop') {
+                                margin-top: 5px;
+                            }
                         }
 
                         @include breakpoint-mixin('laptop-wide') {
@@ -99,10 +103,19 @@
                         }
                     }
 
-                    p {
+                    #kindle-title {
                         height: 10px;
                         font-size: 10px;
                         color: white;
+                        margin-bottom: 7px;
+
+                        @include breakpoint-mixin('laptop-wide') {
+                            margin-bottom: 10px;
+                        }
+
+                        @include breakpoint-mixin('desktop') {
+                            margin-bottom: 15px;
+                        }
                     }
                 }
             }

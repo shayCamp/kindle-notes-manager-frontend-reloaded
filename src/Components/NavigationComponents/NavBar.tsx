@@ -18,7 +18,6 @@ interface NavBarProps {
 }
 
 const NavBar = ({ show, toggle, scroll, libraryActive, modalToggle, modalActive }: NavBarProps) => {
-    const username = sessionStorage.getItem('username');
     const userInfo = useContext(UserContext);
     const dark = userInfo?.dark_mode;
 
@@ -28,14 +27,14 @@ const NavBar = ({ show, toggle, scroll, libraryActive, modalToggle, modalActive 
             onMouseEnter={() => toggle(true)}
             onMouseLeave={() => toggle(false)}
         >
-            <div className={dark ? 'toggleTag cd-dark text-dark' : 'toggleTag cd-light'} onClick={() => modalToggle()}>
+            <div className={dark ? 'toggleTag cd-dark text-dark' : 'toggleTag cd-light'}>
                 <GiHamburgerMenu id="icon" />
             </div>
             <div className={dark ? 'circleOpt text-dark' : 'circleOpt'}>
                 <div className="circle" onClick={() => modalToggle()}>
                     <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGk3-BmeIKmTg/profile-displayphoto-shrink_200_200/0/1581169413950?e=1662595200&v=beta&t=PiI6Mel3reQpPjsQfQepv-dXxKpoRHt2qQYyb16a85s" />
                 </div>
-                <p>{username?.toLocaleUpperCase()}</p>
+                <p>{userInfo?.username.toLocaleUpperCase()}</p>
             </div>
             <div className={dark ? 'navOpt icon-dark' : 'navOpt icon-light'}>
                 <MdSpaceDashboard className={libraryActive ? 'icon' : 'active icon'} onClick={() => scroll('scrollTo')} />

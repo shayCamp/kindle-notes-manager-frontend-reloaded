@@ -58,11 +58,22 @@
         width: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
         flex-direction: column;
+        overflow: hidden;
 
         @include breakpoint-mixin('desktop') {
             height: 27%;
+        }
+
+        p {
+            padding-left: 5px;
+            margin: 0px;
+            width: 80%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            text-align: center;
         }
 
         .circle {
