@@ -23,7 +23,7 @@ const Info_row = ({ title, updateUserInfo }: Info_rowProps) => {
         if (newUsername.replace(/\s/g, '') && updateUserInfo) {
             updateUserInfo(newUsername);
         } else {
-            console.log('Username unavailabel');
+            console.log('Username unavailable');
         }
     };
 

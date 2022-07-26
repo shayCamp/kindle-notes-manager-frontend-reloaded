@@ -8,6 +8,7 @@ import instagram from 'react-useanimations/lib/instagram';
 import twitter from 'react-useanimations/lib/twitter';
 import linkedin from 'react-useanimations/lib/linkedin';
 import Info_row from './Info_row';
+import DeleteModal from './DeleteModal';
 
 interface MyAccountProps {
     title: string;
@@ -17,9 +18,30 @@ interface MyAccountProps {
 const AccountOpt = ({ title, updateUserInfo }: MyAccountProps) => {
     const userInfo = useContext(UserContext);
     const dark = userInfo?.dark_mode;
+
     const [profileImage, setProfileImage] = useState<File | null>(null);
     const [newUsername, setNewUsername] = useState<string>(userInfo ? userInfo.username : '');
     const [newPassword, setNewPassword] = useState<string>('');
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const [viewModal, setViewModal] = useState(false);
+    const [deleteType, setDeleteType] = useState('');
+    window.addEventListener('resize', () => setScreenWidth(window.innerWidth));
+
+    const iconSize = () => {
+        if (screenWidth < 1366) {
+            return 25;
+        } else if (screenWidth < 1800) {
+            return 32;
+        } else if (screenWidth >= 1800) {
+            return 34;
+        } else {
+            return 28;
+        }
+    };
+
+    const modalToggle = () => {
+        setViewModal(!viewModal);
+    };
 
     return (
         <div className="AccountOpt-page">
@@ -54,14 +76,39 @@ const AccountOpt = ({ title, updateUserInfo }: MyAccountProps) => {
                 <Info_row title={'Highlight Count'} />
             </div>
             <div className={dark ? 'linked-block bg-dark' : 'linked-block bg-light'}>
-                <div className="info-div__title">
+                <div className="linked-block__title">
                     <p className="title">Link Socials</p>
                 </div>
-                <div className="info-div__content">
-                    <UseAnimations id="icon" strokeColor={dark ? 'white' : 'black'} size={28} animation={instagram} />
-                    <UseAnimations id="icon" strokeColor={dark ? 'white' : 'black'} size={28} animation={github} />
-                    <UseAnimations id="icon" strokeColor={dark ? 'white' : 'black'} size={28} animation={linkedin} />
-                    <UseAnimations id="icon" strokeColor={dark ? 'white' : 'black'} size={28} animation={twitter} />
+                <div className="linked-block__content">
+                    <UseAnimations id="icon" strokeColor={dark ? 'white' : 'black'} size={iconSize()} animation={instagram} />
+                    <UseAnimations id="icon" strokeColor={dark ? 'white' : 'black'} size={iconSize()} animation={github} />
+                    <UseAnimations id="icon" strokeColor={dark ? 'white' : 'black'} size={iconSize()} animation={linkedin} />
+                    <UseAnimations id="icon" strokeColor={dark ? 'white' : 'black'} size={iconSize()} animation={twitter} />
+                </div>
+            </div>
+            <div className={dark ? 'linked-block bg-dark' : 'linked-block bg-light'}>
+                <div className="linked-block__title">
+                    <p className="title">Danger Zone</p>
+                </div>
+                <div className="linked-block__content">
+                    <div
+                        className="delete-btn"
+                        onClick={() => {
+                            setViewModal(!viewModal);
+                            setDeleteType('Account');
+                        }}
+                    >
+                        Delete Account
+                    </div>
+                    <div
+                        className="delete-btn"
+                        onClick={() => {
+                            setViewModal(!viewModal);
+                            setDeleteType('Books');
+                        }}
+                    >
+                        Delete All Books
+                    </div>
                 </div>
             </div>
             <div
@@ -73,6 +120,7 @@ const AccountOpt = ({ title, updateUserInfo }: MyAccountProps) => {
             >
                 <p>Sign Out</p>
             </div>
+            {viewModal ? <DeleteModal modalToggle={modalToggle} deleteType={deleteType} /> : null}
         </div>
     );
 };

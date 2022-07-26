@@ -109,6 +109,7 @@
         display: flex;
         align-items: center;
         flex-direction: column;
+        padding: 5px 0px 5px 0px;
         margin-bottom: 40px;
 
         @include breakpoint-mixin('desktop') {
@@ -132,7 +133,7 @@
             height: 11vh;
         }
 
-        .info-div__title {
+        .linked-block__title {
             height: 40%;
             width: 90%;
             // background-color: aqua;
@@ -152,19 +153,46 @@
             }
         }
 
-        .info-div__content {
+        .linked-block__content {
             height: 60%;
-            width: 100%;
+            width: 90%;
             // background-color: yellowgreen;
             display: flex;
             align-items: center;
-            justify-content: space-evenly;
+            // justify-content: space-evenly;
 
             #icon {
                 cursor: pointer;
+                margin-right: 50px;
+
+                @include breakpoint-mixin('laptop-wide') {
+                    margin-right: 40px;
+                }
+                @include breakpoint-mixin('desktop') {
+                    margin-right: 70px;
+                }
+            }
+
+            .delete-btn {
+                padding: 5px 20px 5px 20px;
+                border-radius: 5px;
+                border: 1.5px solid $negativeBTN;
+                margin-right: 25px;
+                cursor: pointer;
+
+                @include breakpoint-mixin('laptop-wide') {
+                    padding: 7px 25px 7px 25px;
+                    margin-right: 35px;
+                }
+            }
+
+            .delete-btn:hover {
+                background-color: $negativeBTN;
+                opacity: 0.7;
             }
         }
     }
+
     .signOut-block {
         width: 20%;
         height: 10%;
