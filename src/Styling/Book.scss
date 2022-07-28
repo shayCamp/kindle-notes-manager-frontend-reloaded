@@ -19,6 +19,11 @@
     cursor: pointer;
     // border: 1px solid $border;
 
+    &:hover {
+        transition: all 1s ease;
+        transform: scale(1.05);
+    }
+
     @include breakpoint-mixin('laptop-wide') {
         height: 60vh;
     }
@@ -42,8 +47,7 @@
     .book__description {
         height: 35%;
         width: 100%;
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         align-items: center;
         justify-content: center;
 
@@ -134,9 +138,4 @@
             }
         }
     }
-}
-
-.book:hover {
-    transition: all 1s ease;
-    transform: scale(1.05);
 }

@@ -4,11 +4,10 @@
 .quoteBanner {
     height: 35vh;
     width: 100%;
-    display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    flex-direction: column;
+    @include flex-column;
     // margin: 0px;
 
     .QuoteHolder {
@@ -54,10 +53,9 @@
     }
 
     .AuthorHolder {
-        display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
+        @include flex-column;
         height: 20%;
         width: 80%;
 

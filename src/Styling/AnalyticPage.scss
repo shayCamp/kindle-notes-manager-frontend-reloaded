@@ -7,8 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
 
     .section1 {
         height: 60%;

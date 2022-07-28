@@ -11,6 +11,11 @@
     cursor: pointer;
     border: 1px solid $border;
 
+    &:hover {
+        transition: all 1s ease;
+        transform: scale(1.05);
+    }
+
     .calenderContainer {
         width: 95%;
 
@@ -19,9 +24,4 @@
             fill: #aaa;
         }
     }
-}
-
-.boardContainer:hover {
-    transition: all 1s ease;
-    transform: scale(1.05);
 }

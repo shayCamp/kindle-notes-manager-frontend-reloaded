@@ -4,11 +4,11 @@ import '../../Styling/Modal.scss';
 import { BiImport } from 'react-icons/bi';
 import { BiExport } from 'react-icons/bi';
 import { AiOutlineFormatPainter } from 'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai';
 import { VscAccount } from 'react-icons/vsc';
 import AccountOpt from '../ModalComponents/AccountOpt';
 import AppearanceOpt from '../ModalComponents/AppearanceOpt';
 import ImportOpt from '../ModalComponents/ImportOpt';
-import '../../Styling/darkTheme.scss';
 
 interface ModalProps {
     modalToggle: () => void;
@@ -28,7 +28,8 @@ const Modal = ({ modalToggle, updateUserInfo }: ModalProps) => {
             >
                 <div className={dark ? 'modal__navbar bg-dark ' : 'modal__navbar bg-light'}>
                     <div className="modal__navbar__title">
-                        <p id="title">{userInfo?.username}</p>
+                        <AiOutlineClose className="icon" onClick={() => modalToggle()} />
+                        <p>{userInfo?.username}</p>
                     </div>
                     <div
                         className={setting_opt === 'Account' ? 'modal__navbar__option active' : 'modal__navbar__option'}

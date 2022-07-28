@@ -4,29 +4,27 @@
 .landing-page {
     // height: 100vh;
     width: 100%;
-    display: flex;
     background-image: url('../Assests/landscape.jpg');
     background-position: center center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: auto 100vh; /* Resize the background image to cover the entire container */
     background-attachment: fixed;
-    flex-direction: column;
     transition-delay: 1.2s;
     transition-duration: 2s;
+    @include flex-column;
 
     .landing-page__bottom {
         // height: 200vh;
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         height: fit-content;
         width: 100%;
         transform: translateY(100%);
         transition: transform 2s;
-    }
 
-    .bottom__library {
-        min-height: 100vh;
-        width: 100%;
+        .bottom__library {
+            min-height: 100vh;
+            width: 100%;
+        }
     }
 
     .move-bottom {

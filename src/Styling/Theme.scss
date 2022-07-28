@@ -1,3 +1,7 @@
+/*
+THEME BLOCK
+*/
+
 //Light Theme
 $background-light: #e5e5e5;
 $card-background-light: white;
@@ -20,3 +24,47 @@ $boxShadow: rgba(50, 49, 49, 0.561);
 
 //Scroll-thumb
 $thumb: rgba(33, 33, 33, 0.614);
+
+/*
+THEME CLASS BLOCK
+*/
+
+.bg-dark {
+    background-color: $background-dark;
+}
+.bg-light {
+    background-color: $background-light;
+}
+
+.cd-light {
+    background-color: $card-background-light;
+}
+.cd-dark {
+    background-color: $card-background-dark;
+}
+
+.hover-dark {
+    background-color: $hover-dark;
+}
+.hover-light {
+    background-color: $hover-light;
+}
+
+.text-dark {
+    color: white;
+}
+
+.icon-dark {
+    color: $icons-dark;
+}
+.icon-light {
+    color: $icons-light;
+}
+
+/*
+Common Styles
+*/
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}

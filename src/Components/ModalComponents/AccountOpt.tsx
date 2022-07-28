@@ -109,6 +109,15 @@ const AccountOpt = ({ title, updateUserInfo }: MyAccountProps) => {
                     >
                         Delete All Books
                     </div>
+                    <div
+                        className="delete-btn"
+                        onClick={() => {
+                            setViewModal(!viewModal);
+                            setDeleteType('Notes');
+                        }}
+                    >
+                        Delete All Notes
+                    </div>
                 </div>
             </div>
             <div

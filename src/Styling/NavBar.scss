@@ -10,8 +10,7 @@
     width: 95px;
     height: 65vh;
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     justify-content: space-evenly;
     cursor: pointer;
     border: 1px solid $border;
@@ -56,10 +55,9 @@
     .circleOpt {
         height: 30%;
         width: 100%;
-        display: flex;
         align-items: center;
         justify-content: space-evenly;
-        flex-direction: column;
+        @include flex-column;
         overflow: hidden;
 
         @include breakpoint-mixin('desktop') {
@@ -82,6 +80,12 @@
             border-radius: 100%;
             overflow: hidden;
 
+            &:hover {
+                border: 2px solid $positiveBTN;
+                transition: all 0.1s ease-in-out;
+                transform: scale(1.05);
+            }
+
             @include breakpoint-mixin('laptop-wide') {
                 width: 80px;
                 height: 80px;
@@ -92,12 +96,6 @@
                 width: 100%;
                 object-fit: cover;
             }
-        }
-
-        .circle:hover {
-            border: 2px solid $positiveBTN;
-            transition: all 0.1s ease-in-out;
-            transform: scale(1.05);
         }
     }
 
@@ -113,10 +111,11 @@
             font-size: 25px;
             border-radius: 5px;
             padding: 5px;
-        }
-        .icon:hover {
-            transition: all 0.5s ease;
-            transform: scale(1.2);
+
+            &:hover {
+                transition: all 0.5s ease;
+                transform: scale(1.2);
+            }
         }
 
         .active {

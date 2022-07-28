@@ -8,7 +8,7 @@ import LibraryPage from './LibraryPage';
 import { UserContext } from '../Context/UserContext';
 import { useInView } from 'react-intersection-observer';
 import Modal from '../Components/LandingComponents/Modal';
-import '../Styling/darkTheme.scss';
+import '../Styling/Theme.scss';
 
 interface LandingPageProps {
     updateUserInfo: (prop: boolean | number | string) => void;

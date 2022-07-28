@@ -4,17 +4,26 @@
 .ImportOpt-page {
     height: 100%;
     width: 90%;
-    display: flex;
-    flex-direction: column;
-    // justify-content: center;
+    @include flex-column;
     align-items: center;
-    // background-color: orange;
 
     .page-title {
         height: 9vh;
         width: 100%;
         font-size: 16px;
         font-weight: 500;
+        display: flex;
+        align-items: center;
+
+        #back-arrow {
+            margin-right: 20px;
+            font-size: 20px;
+            cursor: pointer;
+
+            @include breakpoint-mixin('laptop-wide') {
+                font-size: 22px;
+            }
+        }
 
         @include breakpoint-mixin('laptop-wide') {
             font-size: 18px;
@@ -32,8 +41,7 @@
         height: 100%;
         width: 100%;
         // background-color: aqua;
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         justify-content: center;
 
         .diagram-sect {
@@ -125,8 +133,7 @@
                 height: 100%;
                 width: 30%;
                 border-radius: 10px;
-                display: flex;
-                flex-direction: column;
+                @include flex-column;
                 justify-content: space-evenly;
                 align-items: center;
 
@@ -209,6 +216,10 @@
                 transition: all 0.5s ease;
                 border: 1px solid $border;
 
+                &:hover {
+                    background-color: $positiveBTN;
+                }
+
                 @include breakpoint-mixin('desktop') {
                     width: 15%;
                     height: 50%;
@@ -216,10 +227,6 @@
             }
 
             .active {
-                background-color: $positiveBTN;
-            }
-
-            .upload-block:hover {
                 background-color: $positiveBTN;
             }
 

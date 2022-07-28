@@ -4,8 +4,7 @@
 .AccountOpt-page {
     height: 100%;
     width: 90%;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     align-items: center;
     overflow-y: auto;
     flex-flow: wrap;
@@ -93,10 +92,10 @@
                         font-size: 12px;
                     }
                 }
-            }
 
-            .circle__edit:hover {
-                opacity: 0.8;
+                &:hover {
+                    opacity: 0.8;
+                }
             }
         }
     }
@@ -106,9 +105,8 @@
         height: 55vh;
         border-radius: 10px;
         border: 1px solid $border;
-        display: flex;
+        @include flex-column;
         align-items: center;
-        flex-direction: column;
         padding: 5px 0px 5px 0px;
         margin-bottom: 40px;
 
@@ -122,8 +120,7 @@
         margin-bottom: 30px;
         border-radius: 10px;
         border: 1px solid $border;
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         align-items: center;
 
         @include breakpoint-mixin('laptop-wide') {
@@ -136,7 +133,6 @@
         .linked-block__title {
             height: 40%;
             width: 90%;
-            // background-color: aqua;
             display: flex;
             align-items: center;
 
@@ -156,10 +152,8 @@
         .linked-block__content {
             height: 60%;
             width: 90%;
-            // background-color: yellowgreen;
             display: flex;
             align-items: center;
-            // justify-content: space-evenly;
 
             #icon {
                 cursor: pointer;
@@ -184,11 +178,11 @@
                     padding: 7px 25px 7px 25px;
                     margin-right: 35px;
                 }
-            }
 
-            .delete-btn:hover {
-                background-color: $negativeBTN;
-                opacity: 0.7;
+                &:hover {
+                    background-color: $negativeBTN;
+                    opacity: 0.7;
+                }
             }
         }
     }
@@ -205,10 +199,10 @@
         transition: all 0.5s ease;
         border: 1px solid $border;
         margin-bottom: 40px;
-    }
 
-    .signOut-block:hover {
-        background-color: $negativeBTN;
+        &:hover {
+            background-color: $negativeBTN;
+        }
     }
 }
 

@@ -2,8 +2,9 @@ import React, { useContext, useState, useEffect } from 'react';
 import '../../Styling/ImportOpt.scss';
 import axios from 'axios';
 import { UserContext } from '../../Context/UserContext';
-import '../../Styling/darkTheme.scss';
+
 import { BsArrowRight } from 'react-icons/bs';
+import { IoReturnUpBackSharp } from 'react-icons/io5';
 import ImportBooksApi from '../../API/ImportBooksApi';
 
 interface ImportOptProps {
@@ -36,7 +37,7 @@ const ImportOpt = ({ title, newUser, updateHasBooks }: ImportOptProps) => {
 
     useEffect(() => {
         if (progress === 'Complete' && updateHasBooks !== undefined) {
-            updateHasBooks();
+            // updateHasBooks();
         }
     }, [progress]);
 
@@ -47,6 +48,15 @@ const ImportOpt = ({ title, newUser, updateHasBooks }: ImportOptProps) => {
     return (
         <form className={newUser ? 'ImportOpt-page new-width' : 'ImportOpt-page'}>
             <div className="page-title">
+                {newUser ? (
+                    <IoReturnUpBackSharp
+                        id="back-arrow"
+                        onClick={() => {
+                            sessionStorage.clear();
+                            history.go(0);
+                        }}
+                    />
+                ) : null}
                 <p>{title}</p>
             </div>
             <input

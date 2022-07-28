@@ -25,7 +25,11 @@ const InvalidModal = ({ deleteType, modalToggle }: InvalidModalProps) => {
                 onClick={(event) => event.stopPropagation()}
             >
                 <p id="instruction-text">
-                    {deleteType === 'Account' ? `Please type "${userInfo?.username}" to continue` : `Please Type "Clippings" to continue`}
+                    {deleteType === 'Account'
+                        ? `Please type "${userInfo?.username}" to continue`
+                        : deleteType === 'Books'
+                        ? `Please Type "Clippings" to continue`
+                        : `Please Type "Notes" to continue`}
                 </p>
                 <div className="cancel-button" onClick={() => modalToggle()}>
                     <p>Okay</p>

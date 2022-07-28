@@ -5,7 +5,6 @@ import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 import HighlightApi from '../../API/HighlightApi';
 import CalenderFunctions from '../../API/CalenderFunctions';
-import '../../Styling/darkTheme.scss';
 
 // interface StreakBoardProps {}
 

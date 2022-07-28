@@ -6,7 +6,6 @@ import { IoAnalyticsSharp } from 'react-icons/io5';
 import { ImBooks } from 'react-icons/im';
 import { BsToggles } from 'react-icons/bs';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import '../../Styling/darkTheme.scss';
 
 interface NavBarProps {
     show: boolean; //Triggers when to show or hide bar

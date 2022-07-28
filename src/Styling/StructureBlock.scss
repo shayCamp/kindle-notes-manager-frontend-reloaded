@@ -3,8 +3,7 @@
 
 .structure-example-container {
     // width: 40%;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     height: 100%;
     padding-bottom: 30px;
     margin-right: 25px;
@@ -31,6 +30,12 @@
         cursor: pointer;
         padding: 0px 5px 0px 5px;
         // background-color: red;
+
+        &:hover {
+            border: 2px solid $positiveBTN;
+            transition: all 0.5s ease;
+            transform: scale(1.02);
+        }
 
         @include breakpoint-mixin('desktop') {
             padding: 0px 10px 0px 10px;
@@ -88,12 +93,6 @@
     }
     .dark {
         background-color: $background-dark;
-    }
-
-    .structure-example:hover {
-        border: 2px solid $positiveBTN;
-        transition: all 0.5s ease;
-        transform: scale(1.02);
     }
 
     .block-name {

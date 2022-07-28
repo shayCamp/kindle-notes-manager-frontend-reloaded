@@ -3,8 +3,7 @@
 
 .theme-example-container {
     width: 40%;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     height: 100%;
     margin-right: 25px;
 
@@ -21,12 +20,17 @@
         height: 80%;
         width: 100%;
         border-radius: 15px;
-        display: flex;
         justify-content: space-evenly;
-        flex-direction: column;
+        @include flex-column;
         align-items: center;
         border: 1px solid $border;
         cursor: pointer;
+
+        &:hover {
+            border: 2px solid $positiveBTN;
+            transition: all 0.5s ease;
+            transform: scale(1.02);
+        }
 
         .bar {
             height: 17%;
@@ -80,12 +84,6 @@
     }
     .Dark {
         background-color: $background-dark;
-    }
-
-    .theme-example:hover {
-        border: 2px solid $positiveBTN;
-        transition: all 0.5s ease;
-        transform: scale(1.02);
     }
 
     .block-name {

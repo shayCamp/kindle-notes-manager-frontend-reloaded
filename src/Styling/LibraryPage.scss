@@ -5,19 +5,17 @@
     min-height: 100vh;
     height: fit-content;
     width: 100%;
-    display: flex;
     justify-content: center;
-    flex-direction: column;
+    @include flex-column;
     margin-top: 50px;
     align-items: center;
 
     .lib-page__search-section {
         height: 10vh;
         width: 100%;
-        display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
+        @include flex-column;
 
         .search-section__search-bar {
             height: 78%;
@@ -32,6 +30,10 @@
             cursor: pointer;
             // box-shadow: 5px 5px 5px $boxShadow;
             border: 1px solid $border;
+
+            &:hover {
+                border: 2px solid $border;
+            }
 
             @include breakpoint-mixin('laptop-wide') {
                 height: 75%;
@@ -89,8 +91,7 @@
 
                 .drop-part__drop {
                     position: absolute;
-                    display: flex;
-                    flex-direction: column;
+                    @include flex-column;
                     top: 150%;
                     width: 100%;
                     border-radius: 10px;
@@ -105,6 +106,9 @@
                         padding-left: 15px;
                         width: 100%;
                         font-size: 15px;
+                        height: 50px;
+                        display: flex;
+                        align-items: center;
                         // background-color: orange;
                     }
 
@@ -136,6 +140,11 @@
                     transform: rotate(-90deg);
                     transition: all 0.5s ease;
 
+                    &:hover {
+                        background-color: $icons-light;
+                        color: white;
+                    }
+
                     @include breakpoint-mixin('laptop-wide') {
                         padding: 1px;
                     }
@@ -148,16 +157,7 @@
                     transition: all 0.5s ease;
                     transform: rotate(0deg);
                 }
-
-                .arrow:hover {
-                    background-color: $icons-light;
-                    color: white;
-                }
             }
-        }
-
-        .search-section__searchBar:hover {
-            border: 2px solid $border;
         }
     }
 
