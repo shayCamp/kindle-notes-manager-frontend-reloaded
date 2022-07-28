@@ -32,7 +32,7 @@ const LandingPage = ({ updateUserInfo }: LandingPageProps) => {
 
     const { ref, inView, entry } = useInView({
         /* Optional options */
-        threshold: 0.1, //When the form is in the viewport set inView to true
+        threshold: 0.1, //When the library is in the viewport set inView to true
     });
 
     //When the page loads, after a delay the landing page animation is triggered
@@ -76,10 +76,8 @@ const LandingPage = ({ updateUserInfo }: LandingPageProps) => {
                     slide ? (dark ? 'landing-page__bottom move-bottom bg-dark' : 'landing-page__bottom move-bottom bg-light') : 'landing-page__bottom'
                 }
             >
-                <div id="bottom__dashboard">
-                    <AnalyticPage />
-                </div>
-                <div id="bottom__library" ref={ref}>
+                <AnalyticPage />
+                <div ref={ref}>
                     <LibraryPage modalToggle={modalToggle} />
                 </div>
             </div>

@@ -18,5 +18,11 @@
         height: calc(100% - 5px);
         display: flex;
         align-items: center;
+
+        .icon {
+            color: white;
+            font-size: 20px;
+            margin-right: 20px;
+        }
     }
 }
