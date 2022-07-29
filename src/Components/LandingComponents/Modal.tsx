@@ -4,11 +4,13 @@ import '../../Styling/Modal.scss';
 import { BiImport } from 'react-icons/bi';
 import { BiExport } from 'react-icons/bi';
 import { AiOutlineFormatPainter } from 'react-icons/ai';
+import { IoBookOutline } from 'react-icons/io5';
 import { AiOutlineClose } from 'react-icons/ai';
 import { VscAccount } from 'react-icons/vsc';
 import AccountOpt from '../ModalComponents/AccountOpt';
 import AppearanceOpt from '../ModalComponents/AppearanceOpt';
 import ImportOpt from '../ModalComponents/ImportOpt';
+import MyBooks from '../ModalComponents/MyBooks';
 
 interface ModalProps {
     modalToggle: () => void;
@@ -52,6 +54,16 @@ const Modal = ({ modalToggle, updateUserInfo }: ModalProps) => {
                         <p>Appearance</p>
                     </div>
                     <div
+                        className={setting_opt === 'My Books' ? 'modal__navbar__option active' : 'modal__navbar__option'}
+                        onClick={(event) => {
+                            event.stopPropagation();
+                            setSetting_opt('My Books');
+                        }}
+                    >
+                        <IoBookOutline className="icon" />
+                        <p>My Books</p>
+                    </div>
+                    <div
                         className={setting_opt === 'Import' ? 'modal__navbar__option active' : 'modal__navbar__option'}
                         onClick={(event) => {
                             event.stopPropagation();
@@ -69,6 +81,8 @@ const Modal = ({ modalToggle, updateUserInfo }: ModalProps) => {
                         <AppearanceOpt title={setting_opt} updateUserInfo={(prop: boolean | number) => updateUserInfo(prop)} />
                     ) : setting_opt === 'Import' ? (
                         <ImportOpt title={setting_opt} />
+                    ) : setting_opt === 'My Books' ? (
+                        <MyBooks title={setting_opt} />
                     ) : null}
                 </div>
             </div>
