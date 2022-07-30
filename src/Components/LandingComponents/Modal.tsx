@@ -10,7 +10,7 @@ import { VscAccount } from 'react-icons/vsc';
 import AccountOpt from '../ModalComponents/AccountOpt';
 import AppearanceOpt from '../ModalComponents/AppearanceOpt';
 import ImportOpt from '../ModalComponents/ImportOpt';
-import MyBooks from '../ModalComponents/MyBooks';
+import MyBooksOpt from '../ModalComponents/MyBooksOpt';
 
 interface ModalProps {
     modalToggle: () => void;
@@ -82,7 +82,7 @@ const Modal = ({ modalToggle, updateUserInfo }: ModalProps) => {
                     ) : setting_opt === 'Import' ? (
                         <ImportOpt title={setting_opt} />
                     ) : setting_opt === 'My Books' ? (
-                        <MyBooks title={setting_opt} />
+                        <MyBooksOpt title={setting_opt} />
                     ) : null}
                 </div>
             </div>
