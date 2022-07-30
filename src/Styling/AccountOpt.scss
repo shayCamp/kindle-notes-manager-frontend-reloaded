@@ -10,6 +10,10 @@
     flex-flow: wrap;
     padding-right: 50px;
 
+    @include breakpoint-mixin('laptop-wide') {
+        font-size: 18px;
+    }
+
     .page-title {
         height: 9vh;
         width: 100%;
@@ -171,11 +175,17 @@
                 padding: 5px 20px 5px 20px;
                 border-radius: 5px;
                 border: 1.5px solid $negativeBTN;
-                margin-right: 25px;
+                margin-right: 5px;
                 cursor: pointer;
+                font-size: 14px;
 
                 @include breakpoint-mixin('laptop-wide') {
                     padding: 7px 25px 7px 25px;
+                    margin-right: 10px;
+                    font-size: 16px;
+                }
+
+                @include breakpoint-mixin('desktop') {
                     margin-right: 35px;
                 }
 
@@ -207,16 +217,9 @@
 }
 
 .AccountOpt-page::-webkit-scrollbar {
-    width: 15px;
-    height: 100%;
-    background-color: transparent;
+    @include scroll-bar;
 }
 
 .AccountOpt-page::-webkit-scrollbar-thumb {
-    background-color: $thumb;
-    border: 1px solid transparent;
-    background-clip: content-box;
-    border-radius: 10px;
-    height: 120px;
-    // border: 3px solid orange;
+    @include scroll-thumb;
 }
